@@ -511,12 +511,6 @@ body.dark-mode .theme-toggle .moon-icon { display: block; }
   }
   .nav-links a { font-size: 0.75rem; }
   .theme-toggle { margin-left: auto; }
-}
-
-@media (pointer: coarse) {
-  .cursor-dot, .cursor-follower { display: none !important; }
-  * { cursor: auto !important; }
-}
   
   /* Sections & Layout */
   .posh-section { padding: 4rem 0; }
@@ -656,3 +650,8 @@ body.dark-mode .article-body pre { background: rgba(255,255,255,0.05); }
 .share-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
 .share-links a { font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; text-decoration: none; color: var(--color-text-primary); transition: color 0.3s ease; }
 .share-links a:hover { color: var(--pastel-purple); }
+
+@media (pointer: coarse) {
+  .cursor-dot, .cursor-follower { display: none !important; }
+  * { cursor: auto !important; }
+}
