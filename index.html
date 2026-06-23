@@ -242,7 +242,15 @@
       <div class="nav-dot" data-target="blog"><span class="nav-label">04 // Blog</span></div>
     </aside>
 
-    <script src="cursor.js"></script>
-    <script type="module" src="main.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="./cursor.js"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
