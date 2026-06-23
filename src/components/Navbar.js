@@ -1,12 +1,32 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(useGSAP);
 
 export default function Navbar() {
+  const navRef = useRef(null);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const pathname = usePathname();
+
+  useGSAP(() => {
+    const magnets = document.querySelectorAll('.nav-cta, .nav-logo a, .theme-toggle');
+    magnets.forEach((elem) => {
+      elem.addEventListener('mousemove', (e) => {
+        const rect = elem.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        gsap.to(elem, { x: x * 0.4, y: y * 0.4, duration: 0.5, ease: 'power2.out' });
+      });
+      elem.addEventListener('mouseleave', () => {
+        gsap.to(elem, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.3)' });
+      });
+    });
+  }, { scope: navRef });
 
   useEffect(() => {
     // Check OS preference or localStorage
@@ -74,7 +94,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="top-nav">
+      <nav className="top-nav" ref={navRef}>
         <div className="nav-container">
           <div className="nav-logo">
             <Link href="/">DEVJOTI.</Link>

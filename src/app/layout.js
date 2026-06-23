@@ -3,7 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Cursor from '@/components/Cursor';
 import WebGLBackground from '@/components/WebGLBackground';
-import ScrollReveal from '@/components/ScrollReveal';
+
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const lora = Lora({ subsets: ['latin'], variable: '--font-serif' });
@@ -25,7 +25,6 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.variable} ${lora.variable}`}>
       <body>
         <WebGLBackground />
-        <ScrollReveal />
         <Cursor />
         <Navbar />
         {children}

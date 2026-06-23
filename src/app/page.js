@@ -1,14 +1,21 @@
+'use client';
+
 import Link from 'next/link';
+import { useRef } from 'react';
+import PageAnimator from '@/components/PageAnimator';
 
 export default function Home() {
+  const mainRef = useRef(null);
+
   return (
-    <main className="scroll-container">
+    <main className="scroll-container" ref={mainRef}>
+      <PageAnimator pageRef={mainRef} />
       {/* HERO */}
       <section className="posh-section hero" id="hero">
         <div className="ambient-glow glow-top-left"></div>
         <div className="ambient-glow glow-bottom-right"></div>
         <div className="posh-container">
-          <div className="hero-wrapper reveal-up">
+          <div className="hero-wrapper">
             <p className="mono-sub">01 // IDENTITY</p>
             <h1 className="hero-title">DEVJOTI<br/>KUNDU.</h1>
             <h2 className="hero-subtitle">BIOTECHNOLOGY UNDERGRADUATE</h2>
@@ -19,7 +26,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="scroll-indicator reveal-up delay-2">
+          <div className="scroll-indicator">
             <div className="mouse"><div className="wheel"></div></div>
             <p>SCROLL</p>
           </div>
@@ -29,13 +36,13 @@ export default function Home() {
       {/* ACADEMICS & TOOLKIT BENTO GRID */}
       <section className="posh-section" id="academics">
         <div className="posh-container">
-          <div className="section-header reveal-up">
+          <div className="section-header">
             <div className="ambient-glow glow-heading"></div>
             <p className="mono-sub">02 // ACADEMICS & TOOLKIT</p>
             <h2 className="massive-heading">KNOWLEDGE<br/>ARCHITECTURE</h2>
           </div>
           
-          <div className="bento-grid reveal-up delay-1 stagger-children">
+          <div className="bento-grid">
             {/* Cell 1: University (Large) */}
             <div className="bento-card bento-large">
               <div className="bento-glow"></div>
@@ -103,12 +110,12 @@ export default function Home() {
       <section className="posh-section" id="projects">
         <div className="posh-container">
           <div className="posh-row">
-            <div className="posh-left reveal-up">
+            <div className="posh-left">
               <div className="ambient-glow glow-heading"></div>
               <p className="mono-sub">03 // RESEARCH</p>
               <h2 className="massive-heading">ONGOING<br/>PROJECTS</h2>
             </div>
-            <div className="posh-right reveal-up delay-1">
+            <div className="posh-right">
               <div className="project-card">
                 <div className="project-header">
                   <h4>COMPUTATIONAL ANALYSIS OF ALZHEIMER&apos;S</h4>
@@ -129,13 +136,13 @@ export default function Home() {
       {/* BLOG */}
       <section className="posh-section" id="blog">
         <div className="posh-container">
-          <div className="section-header reveal-up">
+          <div className="section-header">
             <div className="ambient-glow glow-heading"></div>
             <p className="mono-sub">04 // WRITINGS</p>
             <h2 className="massive-heading">INSIGHTS &<br/>BLOG</h2>
           </div>
           
-          <div className="blog-grid full-grid reveal-up delay-1 stagger-children">
+          <div className="blog-grid full-grid">
             <Link href="/blog" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
               <article className="blog-tile" style={{ height: '100%' }}>
                 <div className="blog-glow"></div>
@@ -179,7 +186,7 @@ export default function Home() {
 
       {/* FOOTER */}
       <section className="posh-section footer" id="contact">
-        <div className="posh-container text-center reveal-up">
+        <div className="posh-container text-center">
           <h2 className="massive-cta">LET&apos;S CONNECT</h2>
           <div className="thin-line centered-line"></div>
           <div className="contact-links">
