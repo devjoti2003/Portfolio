@@ -139,6 +139,8 @@ h1:hover, h2:hover, h3:hover, h4:hover, p:hover, .bento-meta:hover, .blog-date:h
   backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--nav-border); z-index: 100; padding: 1.5rem 0;
   transition: all 0.3s ease, background 0.5s ease;
+  transform: translateZ(0); /* Force hardware acceleration for blur */
+  will-change: backdrop-filter, background-color;
 }
 .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 4rem; display: flex; justify-content: space-between; align-items: center; }
 .nav-logo a { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--color-text-primary); text-decoration: none; letter-spacing: -0.05em; }
