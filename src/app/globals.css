@@ -45,7 +45,7 @@ body.dark-mode {
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
 }
 
 body {
@@ -166,7 +166,7 @@ body.dark-mode .top-nav {
   z-index: 1;
   width: 100%;
   padding-top: 100px;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Posh Sections */
