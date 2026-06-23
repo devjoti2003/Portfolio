@@ -35,7 +35,7 @@ export default function Home() {
             <h2 className="massive-heading">KNOWLEDGE<br/>ARCHITECTURE</h2>
           </div>
           
-          <div className="bento-grid reveal-up delay-1">
+          <div className="bento-grid reveal-up delay-1 stagger-children">
             {/* Cell 1: University (Large) */}
             <div className="bento-card bento-large">
               <div className="bento-glow"></div>
@@ -135,7 +135,7 @@ export default function Home() {
             <h2 className="massive-heading">INSIGHTS &<br/>BLOG</h2>
           </div>
           
-          <div className="blog-grid full-grid reveal-up delay-1">
+          <div className="blog-grid full-grid reveal-up delay-1 stagger-children">
             <Link href="/blog" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
               <article className="blog-tile" style={{ height: '100%' }}>
                 <div className="blog-glow"></div>
