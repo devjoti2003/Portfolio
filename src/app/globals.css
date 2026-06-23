@@ -114,14 +114,14 @@ body {
   66% { background: var(--pastel-rose); color: var(--pastel-rose); }
   100% { background: #ff2a5f; color: #ff2a5f; } /* Deep Red */
 }
-.cursor-follower { width: 40px; height: 40px; border: 1px solid rgba(155, 81, 224, 0.4); }
+.cursor-follower { width: 24px; height: 24px; border: 1px solid rgba(155, 81, 224, 0.4); }
 
 .cursor-follower.hover-active {
-  width: 60px; height: 60px; background: rgba(255, 117, 140, 0.15);
+  width: 40px; height: 40px; background: rgba(255, 117, 140, 0.15);
   backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
 }
 .cursor-follower.nav-hover {
-  width: 40px; height: 40px; background: transparent;
+  width: 30px; height: 30px; background: transparent;
   border: 2px solid var(--pastel-cyan);
 }
 
