@@ -24,7 +24,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${lora.variable}`}>
       <body>
-        <div className="noise-overlay"></div>
         <Preloader />
         <WebGLBackground />
         <Cursor />
