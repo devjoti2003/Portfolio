@@ -1,0 +1,18 @@
+[
+  {
+    "id": "data-and-biology",
+    "title": "THE INTERSECTION OF DATA AND BIOLOGY",
+    "date": "2026-06-20",
+    "topic": "biotech data",
+    "views": "1200",
+    "excerpt": "Thoughts on modern computational pipelines in biotech and how big data is reshaping drug discovery."
+  },
+  {
+    "id": "kegg-pathways",
+    "title": "UNDERSTANDING KEGG PATHWAYS",
+    "date": "2026-05-15",
+    "topic": "biotech",
+    "views": "3400",
+    "excerpt": "A beginner's guide to pathway analysis for neurodegenerative diseases."
+  }
+]

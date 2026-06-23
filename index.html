@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Devjoti Kundu - Immersive 3D Portfolio</title>
+    <meta name="description" content="Portfolio of Devjoti Kundu, Biotechnology Undergraduate." />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="#hero">DEVJOTI.</a>
+        </div>
+        <div class="nav-links">
+          <a href="#hero">Identity</a>
+          <a href="#academics">Academics & Skills</a>
+          <a href="#projects">Research</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact" class="nav-cta">Connect</a>
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" viewBox="0 0 24 24">
+              <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18.75a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-1.5a.75.75 0 01.75-.75zM6.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 101.06-1.061l-1.59-1.59zM4.5 12a.75.75 0 01-.75.75H1.5a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM6.166 6.166a.75.75 0 011.06-1.06l1.59 1.59a.75.75 0 01-1.06 1.061l-1.59-1.59z" />
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Fixed 3D WebGL Background -->
+    <div id="webgl-container"></div>
+
+    <!-- True Scrolling Overlay -->
+    <main class="scroll-container">
+      
+      <!-- HERO -->
+      <section class="posh-section hero" id="hero">
+        <div class="ambient-glow glow-top-left"></div>
+        <div class="ambient-glow glow-bottom-right"></div>
+        <div class="posh-container">
+          <div class="hero-wrapper reveal-up">
+            <p class="mono-sub">01 // IDENTITY</p>
+            <h1 class="hero-title">DEVJOTI<br>KUNDU.</h1>
+            <h2 class="hero-subtitle">BIOTECHNOLOGY UNDERGRADUATE</h2>
+            <div class="hero-desc-wrapper">
+              <div class="thin-line"></div>
+              <p class="editorial-desc">
+                Bridging the gap between computational logic and biological complexity. Eager to solve neurodegenerative mysteries using data structures.
+              </p>
+            </div>
+          </div>
+          <div class="scroll-indicator reveal-up delay-2">
+            <div class="mouse"><div class="wheel"></div></div>
+            <p>SCROLL</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACADEMICS & TOOLKIT BENTO GRID -->
+      <section class="posh-section" id="academics">
+        <div class="posh-container">
+          <div class="section-header reveal-up">
+            <div class="ambient-glow glow-heading"></div>
+            <p class="mono-sub">02 // ACADEMICS & TOOLKIT</p>
+            <h2 class="massive-heading">KNOWLEDGE<br>ARCHITECTURE</h2>
+          </div>
+          
+          <div class="bento-grid reveal-up delay-1">
+            <!-- Cell 1: University (Large) -->
+            <div class="bento-card bento-large">
+              <div class="bento-glow"></div>
+              <div class="bento-content">
+                <span class="ed-date">2024 - 2028</span>
+                <h3>BACHELOR OF ENGINEERING,<br>BIOTECHNOLOGY</h3>
+                <p class="bento-meta">CHANDIGARH UNIVERSITY</p>
+                <div class="bento-gpa">
+                  <span class="gpa-number">8.11</span>
+                  <span class="gpa-text">/ 10.0 GPA</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cell 2: Computational Skills (Medium) -->
+            <div class="bento-card bento-medium">
+              <div class="bento-glow"></div>
+              <div class="bento-content">
+                <div class="bento-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <h3>COMPUTATIONAL<br>TOOLKIT</h3>
+                <div class="skill-tags">
+                  <span class="skill-tag">Python</span>
+                  <span class="skill-tag">C/C++</span>
+                  <span class="skill-tag">Pandas</span>
+                  <span class="skill-tag">NumPy</span>
+                  <span class="skill-tag">Matplotlib</span>
+                  <span class="skill-tag">KEGG</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cell 3: Lab Skills (Wide) -->
+            <div class="bento-card bento-wide">
+              <div class="bento-glow"></div>
+              <div class="bento-content split-content">
+                <div class="split-left">
+                  <div class="bento-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"></path><path d="M14 9.3V1.99"></path><path d="M8.5 2h7"></path><path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path><path d="M5.52 16h12.96"></path></svg>
+                  </div>
+                  <h3>LABORATORY<br>SKILLS</h3>
+                  <div class="skill-tags">
+                    <span class="skill-tag">Microscopy</span>
+                    <span class="skill-tag">PCR</span>
+                    <span class="skill-tag">Gel Electrophoresis</span>
+                    <span class="skill-tag">Cell Culture</span>
+                    <span class="skill-tag">Spectroscopy</span>
+                    <span class="skill-tag">ELISA</span>
+                  </div>
+                </div>
+                <div class="split-right">
+                  <span class="ed-date">2022</span>
+                  <h3>HIGHER SECONDARY (CBSE XII)</h3>
+                  <p class="bento-meta">SHIV JYOTI INT. SCHOOL</p>
+                  <p class="ed-highlight">92.2% SCORE</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="posh-section" id="projects">
+        <div class="posh-container">
+          <div class="posh-row">
+            <div class="posh-left reveal-up">
+              <div class="ambient-glow glow-heading"></div>
+              <p class="mono-sub">03 // RESEARCH</p>
+              <h2 class="massive-heading">ONGOING<br>PROJECTS</h2>
+            </div>
+            <div class="posh-right reveal-up delay-1">
+              <div class="project-card">
+                <div class="project-header">
+                  <h4>COMPUTATIONAL ANALYSIS OF ALZHEIMER'S</h4>
+                  <span class="status-pill">ACTIVE</span>
+                </div>
+                <p class="ed-meta">Academic Project // Aug 2025 - Present</p>
+                <p class="project-desc">
+                  Investigating potential drug targets for Alzheimer’s disease by analyzing biological pathways.
+                  Utilizing KEGG pathway maps to identify and study signaling cascades related to AD progression. 
+                  Applying Python, Pandas, and NumPy for data processing and analysis of pathway components.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BLOG -->
+      <section class="posh-section" id="blog">
+        <div class="posh-container">
+          <div class="section-header reveal-up">
+            <div class="ambient-glow glow-heading"></div>
+            <p class="mono-sub">04 // WRITINGS</p>
+            <h2 class="massive-heading">INSIGHTS &<br>BLOG</h2>
+          </div>
+          
+          <div class="blog-grid full-grid reveal-up delay-1">
+            <a href="./blog.html" style="text-decoration: none; color: inherit; display: block;">
+              <article class="blog-tile" style="height: 100%;">
+                <div class="blog-glow"></div>
+                <div class="blog-content">
+                  <span class="blog-date">COMING SOON</span>
+                  <h3>THE INTERSECTION OF DATA AND BIOLOGY</h3>
+                  <p class="blog-excerpt">Thoughts on modern computational pipelines in biotech.</p>
+                  <div class="blog-footer">
+                    <span class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                  </div>
+                </div>
+              </article>
+            </a>
+
+            <a href="./blog.html" style="text-decoration: none; color: inherit; display: block;">
+              <article class="blog-tile" style="height: 100%;">
+                <div class="blog-glow"></div>
+                <div class="blog-content">
+                  <span class="blog-date">COMING SOON</span>
+                  <h3>UNDERSTANDING KEGG PATHWAYS</h3>
+                  <p class="blog-excerpt">A beginner's guide to pathway analysis for neurodegenerative diseases.</p>
+                  <div class="blog-footer">
+                    <span class="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                  </div>
+                </div>
+              </article>
+            </a>
+            
+            <a href="./blog.html" style="text-decoration: none; color: inherit; display: block;">
+              <article class="blog-tile empty-tile" style="height: 100%;">
+                <div class="blog-content">
+                  <span class="blog-date">FUTURE</span>
+                  <h3>MORE ARTICLES ON THE HORIZON</h3>
+                  <p class="blog-excerpt">Stay tuned for deep dives into genomics, AI, and protein folding.</p>
+                </div>
+              </article>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <section class="posh-section footer" id="contact">
+        <div class="posh-container text-center reveal-up">
+          <h2 class="massive-cta">LET'S CONNECT</h2>
+          <div class="thin-line centered-line"></div>
+          <div class="contact-links">
+            <a href="mailto:devjoti.kundu2003@gmail.com" class="posh-btn">EMAIL ME</a>
+            <a href="https://linkedin.com/in/devjotikundu" target="_blank" class="posh-btn">LINKEDIN</a>
+          </div>
+          <p class="mono-sub mt-4">+91 96098 78969 // KOLKATA, INDIA</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Vertical Navigation Bar -->
+    <aside class="vertical-nav">
+      <div class="nav-dot active" data-target="hero"><span class="nav-label">01 // Identity</span></div>
+      <div class="nav-dot" data-target="academics"><span class="nav-label">02 // Academics</span></div>
+      <div class="nav-dot" data-target="projects"><span class="nav-label">03 // Research</span></div>
+      <div class="nav-dot" data-target="blog"><span class="nav-label">04 // Blog</span></div>
+    </aside>
+
+    <script src="cursor.js"></script>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
