@@ -222,7 +222,6 @@ h1:hover, h2:hover, h3:hover, h4:hover, p:hover, .bento-meta:hover, .blog-date:h
   font-family: var(--font-sans); font-size: clamp(3.5rem, 6vw, 5rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 2rem; text-transform: uppercase;
   /* Themeable Effect */
   color: var(--glass-text); 
-  mix-blend-mode: var(--glass-blend);
   -webkit-text-stroke: var(--glass-stroke-width) var(--glass-stroke-color);
   text-shadow: var(--glass-shadow);
   transition: color 0.5s ease, -webkit-text-stroke 0.5s ease, text-shadow 0.5s ease;
@@ -288,7 +287,6 @@ body.dark-mode .glow-heading {
   font-family: var(--font-sans); font-size: clamp(3rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; text-transform: uppercase;
   /* Themeable Effect */
   color: var(--glass-text); 
-  mix-blend-mode: var(--glass-blend);
   -webkit-text-stroke: var(--glass-stroke-width) var(--glass-stroke-color);
   text-shadow: var(--glass-shadow);
   transition: color 0.5s ease, -webkit-text-stroke 0.5s ease, text-shadow 0.5s ease;
