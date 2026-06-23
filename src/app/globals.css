@@ -678,10 +678,14 @@ body.dark-mode .theme-toggle .moon-icon { display: block; }
 }
 
 .reading-canvas {
-  width: 100%; max-width: 850px; background: var(--bento-bg);
-  backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
+  width: 100%; max-width: 850px; 
+  background: rgba(247, 245, 239, 0.35);
+  backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
   border: 1px solid var(--nav-border); border-radius: 24px; padding: 4rem;
   margin: 2rem 1rem 6rem 1rem; box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+body.dark-mode .reading-canvas {
+  background: rgba(13, 15, 20, 0.4);
 }
 
 .back-link {
