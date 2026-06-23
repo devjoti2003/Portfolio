@@ -638,7 +638,33 @@ body.dark-mode .theme-toggle .moon-icon { display: block; }
   
   /* Sections & Layout */
   .posh-section { padding: 4rem 0; }
-  .posh-container { padding: 0 1.5rem; }
+  .posh-container { padding: 0 1rem; }
+  
+  /* Cards Mobile Scaling */
+  .bento-card, .project-card, .hero-id-card { 
+    padding: 1.5rem !important; 
+    border-radius: 12px !important;
+  }
+  
+  /* Hero Section Mobile */
+  .hero-layout { gap: 2rem; }
+  .hero-id-card { padding: 1.5rem !important; }
+  .hero-title { font-size: clamp(2.5rem, 10vw, 4rem); }
+  
+  /* Bento Grid Mobile */
+  .bento-grid { 
+    grid-template-columns: 1fr; /* Stack bento grid vertically */
+    gap: 1rem;
+  }
+  .bento-large, .bento-medium { grid-column: span 1; }
+  .gpa-number { font-size: 3.5rem; }
+  
+  /* Projects Mobile */
+  .project-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .project-header h4 { font-size: 1.5rem; max-width: 100%; }
+  
+  /* Blog Mobile */
+  .blog-grid { grid-template-columns: 1fr; gap: 1rem; }
   
   /* Headings */
   .massive-heading { font-size: 2.2rem; }
