@@ -769,3 +769,78 @@ body.dark-mode .article-body pre { background: rgba(255,255,255,0.05); }
 .preloader-bar {
   height: 100%; background: #fff; transition: width 0.1s linear;
 }
+
+/* =========================================
+   CINEMATIC MICRO-INTERACTIONS
+   ========================================= */
+
+/* Custom Text Selection */
+::selection {
+  background: rgba(155, 81, 224, 0.3);
+  color: inherit;
+}
+::-moz-selection {
+  background: rgba(155, 81, 224, 0.3);
+  color: inherit;
+}
+
+/* Custom Elegant Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(155, 81, 224, 0.2);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(155, 81, 224, 0.5);
+}
+
+/* Film Grain Noise Overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 9998; /* Just below preloader, above everything else */
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Animated Link Sweeps */
+.article-body a, .project-desc a {
+  position: relative;
+  text-decoration: none;
+  color: var(--pastel-cyan);
+  font-weight: 600;
+}
+.article-body a::after, .project-desc a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--pastel-cyan);
+  transform-origin: bottom right;
+  transition: transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.article-body a:hover::after, .project-desc a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Card Hover micro-interactions */
+.bento-card, .project-card, .blog-tile {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+.bento-card:hover, .project-card:hover, .blog-tile:hover {
+  transform: scale(1.02) translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+body.dark-mode .bento-card:hover, body.dark-mode .project-card:hover, body.dark-mode .blog-tile:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
