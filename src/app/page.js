@@ -13,7 +13,6 @@ export default function Home() {
       {/* HERO */}
       <section className="posh-section hero" id="hero">
         <div className="ambient-glow glow-top-left"></div>
-        <div className="ambient-glow glow-bottom-right"></div>
         <div className="posh-container">
           <div className="hero-wrapper">
             <p className="mono-sub">01 // IDENTITY</p>
