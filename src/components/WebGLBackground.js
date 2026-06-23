@@ -36,9 +36,9 @@ export default function WebGLBackground() {
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const color1 = new THREE.Color('#00d2ff'); // Cyan
-    const color2 = new THREE.Color('#10b981'); // Bio Emerald
-    const color3 = new THREE.Color('#00ff88'); // Neon Mint
+    const color1 = new THREE.Color('#00d2ff');
+    const color2 = new THREE.Color('#00e676');
+    const color3 = new THREE.Color('#ff758c');
 
     const strand1Points = [];
     const strand2Points = [];
@@ -58,8 +58,10 @@ export default function WebGLBackground() {
         angle = y * 0.4 + Math.PI + (Math.random() - 0.5) * 0.2;
         if (Math.random() > 0.90) strand2Points.push(new THREE.Vector3(Math.cos(angle)*radius, y, Math.sin(angle)*radius));
       } else {
-        radius = Math.random() * 8;
-        angle = Math.random() * Math.PI * 2;
+        radius = (Math.random()) * 4;
+        const step = Math.round(y * 0.4 / (Math.PI/2)) * (Math.PI/2);
+        angle = step + (Math.random() < 0.5 ? 0 : Math.PI);
+        angle += (Math.random() - 0.5) * 0.5;
       }
 
       positions[i3] = Math.cos(angle) * radius;
@@ -75,12 +77,10 @@ export default function WebGLBackground() {
         mixedColor.copy(color2).lerp(color3, (heightRatio - 0.5) * 2);
       }
 
-      // Add "mutation" highlights (Bright Cyan/White instead of Magenta)
-      if (Math.random() > 0.95) {
-        mixedColor.lerp(new THREE.Color('#00ffff'), 0.5);
+      if (Math.random() > 0.85) {
+        mixedColor.lerp(new THREE.Color('#ff2a5f'), 0.4);
       }
-      
-      // Core glowing points
+
       if (type >= 0.8) mixedColor.lerp(new THREE.Color('#ffffff'), 0.5);
 
       colors[i3] = mixedColor.r;
