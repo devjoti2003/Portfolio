@@ -12,19 +12,19 @@ export default function PageAnimator({ pageRef }) {
     // Slower, dramatic hero text animation with motion blur, delayed for Preloader
     gsap.fromTo('.hero-title', 
       { y: 120, opacity: 0, filter: 'blur(25px)', letterSpacing: '0.3em' },
-      { y: 0, opacity: 1, filter: 'blur(0px)', letterSpacing: 'normal', duration: 2.5, ease: 'power3.out', delay: 1.8 }
+      { y: 0, opacity: 1, filter: 'blur(0px)', letterSpacing: 'normal', duration: 2.5, ease: 'power3.out', delay: 0.8 }
     );
     gsap.fromTo('.hero-subtitle', 
       { y: 60, opacity: 0, filter: 'blur(15px)' },
-      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 2.5, ease: 'power3.out', delay: 2.3 }
+      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 2.5, ease: 'power3.out', delay: 1.3 }
     );
     gsap.fromTo('.editorial-desc', 
       { y: 40, opacity: 0, filter: 'blur(10px)' },
-      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 2.5, ease: 'power3.out', delay: 2.6 }
+      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 2.5, ease: 'power3.out', delay: 1.6 }
     );
     gsap.fromTo('.scroll-indicator', 
       { opacity: 0, filter: 'blur(10px)' },
-      { opacity: 1, filter: 'blur(0px)', duration: 3, ease: 'power2.out', delay: 3.5 }
+      { opacity: 1, filter: 'blur(0px)', duration: 3, ease: 'power2.out', delay: 2.5 }
     );
 
     // Deep Parallax on Ambient Glow Orbs
