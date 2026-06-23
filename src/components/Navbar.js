@@ -99,20 +99,25 @@ export default function Navbar() {
           <div className="nav-logo">
             <Link href="/">DEVJOTI.</Link>
           </div>
-          <div className="nav-actions">
-            <div className="nav-menu-wrapper">
-              <div className="menu-trigger">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="12" r="2"/></svg>
+          <div className="nav-menu-wrapper">
+            <div className="menu-trigger">
+              <div className="burger-icon">
+                <span className="burger-line"></span>
+                <span className="burger-line"></span>
               </div>
-              <div className="nav-links hidden-links">
-                <Link href="/#hero">IDENTITY</Link>
-                <Link href="/#academics">ACADEMICS & SKILLS</Link>
-                <Link href="/#projects">RESEARCH</Link>
-                <Link href="/#coding-projects">PROJECTS</Link>
-                <Link href="/blog">BLOG</Link>
-                <Link href="/#contact" className="nav-cta">CONNECT</Link>
-              </div>
+              <span className="menu-text">MENU</span>
             </div>
+            <div className="nav-links hidden-links">
+              <Link href="/#hero">IDENTITY</Link>
+              <Link href="/#academics">ACADEMICS & SKILLS</Link>
+              <Link href="/#projects">RESEARCH</Link>
+              <Link href="/#coding-projects">PROJECTS</Link>
+              <Link href="/blog">BLOG</Link>
+              <Link href="/#contact" className="nav-cta">CONNECT</Link>
+            </div>
+          </div>
+
+          <div className="nav-right">
             <button id="theme-toggle" className="theme-toggle" onClick={toggleTheme}>
               {isDarkMode ? (
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
