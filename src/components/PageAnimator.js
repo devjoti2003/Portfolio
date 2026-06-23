@@ -9,45 +9,45 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function PageAnimator({ pageRef }) {
   useGSAP(() => {
-    // Basic hero text animation
+    // Slower, dramatic hero text animation with motion blur
     gsap.fromTo('.hero-title', 
-      { y: 80, opacity: 0, filter: 'blur(10px)', letterSpacing: '0.2em' },
-      { y: 0, opacity: 1, filter: 'blur(0px)', letterSpacing: 'normal', duration: 1.5, ease: 'power4.out', delay: 0.2 }
+      { y: 120, opacity: 0, filter: 'blur(25px)', letterSpacing: '0.3em' },
+      { y: 0, opacity: 1, filter: 'blur(0px)', letterSpacing: 'normal', duration: 2.5, ease: 'power3.out', delay: 0.3 }
     );
     gsap.fromTo('.hero-subtitle', 
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out', delay: 0.5 }
+      { y: 60, opacity: 0, filter: 'blur(15px)' },
+      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 2.5, ease: 'power3.out', delay: 0.8 }
     );
     gsap.fromTo('.editorial-desc', 
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out', delay: 0.7 }
+      { y: 40, opacity: 0, filter: 'blur(10px)' },
+      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 2.5, ease: 'power3.out', delay: 1.2 }
     );
     gsap.fromTo('.scroll-indicator', 
-      { opacity: 0 },
-      { opacity: 1, duration: 2, ease: 'power2.out', delay: 1.5 }
+      { opacity: 0, filter: 'blur(10px)' },
+      { opacity: 1, filter: 'blur(0px)', duration: 3, ease: 'power2.out', delay: 2 }
     );
 
-    // Parallax on Ambient Glow Orbs
+    // Deep Parallax on Ambient Glow Orbs
     gsap.to('.ambient-glow', {
-      yPercent: 30,
+      yPercent: 60,
       ease: 'none',
       scrollTrigger: {
         trigger: '.hero',
         start: 'top top',
         end: 'bottom top',
-        scrub: true
+        scrub: 1.5 // Added scrub smoothing for "slower" feel
       }
     });
 
-    // Animate Bento Cards sequentially on scroll
+    // Animate Bento Cards sequentially on scroll with heavy motion blur
     const bentoCards = gsap.utils.toArray('.bento-card');
     if (bentoCards.length) {
       gsap.fromTo(bentoCards, 
-        { y: 100, opacity: 0, scale: 0.95 },
+        { y: 150, opacity: 0, scale: 0.9, filter: 'blur(20px)' },
         {
-          y: 0, opacity: 1, scale: 1,
-          duration: 1,
-          stagger: 0.15,
+          y: 0, opacity: 1, scale: 1, filter: 'blur(0px)',
+          duration: 2,
+          stagger: 0.25,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: '.bento-grid',
@@ -57,15 +57,15 @@ export default function PageAnimator({ pageRef }) {
       );
     }
 
-    // Animate Blog Tiles sequentially on scroll
+    // Animate Blog Tiles sequentially on scroll with heavy motion blur
     const blogTiles = gsap.utils.toArray('.blog-tile');
     if (blogTiles.length) {
       gsap.fromTo(blogTiles, 
-        { y: 80, opacity: 0 },
+        { y: 150, opacity: 0, scale: 0.95, filter: 'blur(15px)' },
         {
-          y: 0, opacity: 1,
-          duration: 1,
-          stagger: 0.15,
+          y: 0, opacity: 1, scale: 1, filter: 'blur(0px)',
+          duration: 2,
+          stagger: 0.25,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: '.blog-grid',
@@ -75,16 +75,16 @@ export default function PageAnimator({ pageRef }) {
       );
     }
 
-    // Parallax effect on sections
+    // "Feel the shift" effect on sections: Animate the section headers massively
     const sections = gsap.utils.toArray('.posh-section:not(.hero)');
     sections.forEach((sec) => {
       const header = sec.querySelector('.section-header');
       if (header) {
         gsap.fromTo(header,
-          { y: 50, opacity: 0, filter: 'blur(5px)' },
+          { y: 100, opacity: 0, filter: 'blur(30px)', scale: 0.95 },
           {
-            y: 0, opacity: 1, filter: 'blur(0px)',
-            duration: 1.2,
+            y: 0, opacity: 1, filter: 'blur(0px)', scale: 1,
+            duration: 2.5,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: sec,
