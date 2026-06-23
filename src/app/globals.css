@@ -679,13 +679,21 @@ body.dark-mode .theme-toggle .moon-icon { display: block; }
 
 .reading-canvas {
   width: 100%; max-width: 850px; 
-  background: rgba(247, 245, 239, 0.35);
-  backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-  border: 1px solid var(--nav-border); border-radius: 24px; padding: 4rem;
-  margin: 2rem 1rem 6rem 1rem; box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(40px) saturate(150%); 
+  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  position: relative;
+  z-index: 10;
+  transform: translateZ(0); /* Force hardware compositing for the blur */
+  border: 1px solid rgba(255, 255, 255, 0.5); 
+  border-radius: 24px; padding: 4rem;
+  margin: 2rem 1rem 6rem 1rem; 
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 body.dark-mode .reading-canvas {
-  background: rgba(13, 15, 20, 0.4);
+  background: rgba(15, 17, 23, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .back-link {
