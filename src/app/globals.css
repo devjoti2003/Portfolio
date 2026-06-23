@@ -86,7 +86,15 @@ body {
   opacity: 0; pointer-events: none; white-space: nowrap;
   transition: opacity 0.3s ease, right 0.3s ease;
 }
-.nav-dot:hover .nav-label, .nav-dot.active .nav-label { opacity: 1; right: 20px; }
+.nav-dot:hover .nav-label { opacity: 1 !important; right: 20px !important; animation: none !important; }
+.nav-dot.active .nav-label { animation: showLabelThenFade 2.5s forwards; }
+
+@keyframes showLabelThenFade {
+  0% { opacity: 0; right: 15px; }
+  10% { opacity: 1; right: 20px; }
+  80% { opacity: 1; right: 20px; }
+  100% { opacity: 0; right: 15px; }
+}
 
 /* Custom Cursor */
 .cursor-dot, .cursor-follower {
