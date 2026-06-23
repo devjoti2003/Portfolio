@@ -291,7 +291,7 @@ body.dark-mode .glow-heading {
 
 .section-header, .posh-left, .hero-wrapper { position: relative; z-index: 2; }
 .hero-desc-wrapper { position: relative; padding-left: 2rem; max-width: 600px; }
-.editorial-desc { font-size: 1.4rem; line-height: 1.7; color: var(--color-text-primary); font-weight: 300; transition: color 0.5s ease; }
+.editorial-desc { font-size: 1.1rem; line-height: 1.7; color: var(--color-text-primary); font-weight: 300; transition: color 0.5s ease; }
 
 .massive-heading { 
   font-family: var(--font-sans); font-size: clamp(3rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; text-transform: uppercase;
@@ -350,11 +350,11 @@ body.dark-mode .glow-heading {
 
 /* Bento Typography */
 .bento-card h3 { font-family: var(--font-sans); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.05em; margin: 1rem 0 0.5rem 0; line-height: 1.3; color: var(--color-text-primary); }
-.bento-meta { font-size: 0.9rem; color: var(--color-text-secondary); letter-spacing: 0.1em; text-transform: uppercase; }
+.bento-meta { font-size: 0.8rem; color: var(--color-text-secondary); letter-spacing: 0.1em; text-transform: uppercase; }
 .bento-icon { width: 48px; height: 48px; color: var(--pastel-purple); margin-bottom: 1rem; }
 .bento-gpa { margin-top: auto; padding-top: 2rem; display: flex; align-items: baseline; gap: 0.5rem; }
 .gpa-number { font-size: 5rem; font-weight: 300; line-height: 1; color: var(--pastel-cyan); letter-spacing: -0.04em; }
-.gpa-text { font-size: 1rem; color: var(--color-text-secondary); letter-spacing: 0.2em; text-transform: uppercase; }
+.gpa-text { font-size: 0.85rem; color: var(--color-text-secondary); letter-spacing: 0.2em; text-transform: uppercase; }
 
 /* Skill Tags */
 .skill-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: auto; padding-top: 2rem; }
@@ -390,7 +390,7 @@ body.dark-mode .project-card {
 .project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
 .project-header h4 { font-size: 2rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; max-width: 80%;}
 .status-pill { border: 1px solid var(--pastel-cyan); color: var(--pastel-cyan); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; }
-.project-desc { font-size: 1.3rem; line-height: 1.7; color: var(--color-text-primary); font-weight: 300; }
+.project-desc { font-size: 1.0rem; line-height: 1.7; color: var(--color-text-primary); font-weight: 300; }
 
 /* Blog */
 .blog-link { text-decoration: none; color: inherit; display: block;}
@@ -432,7 +432,7 @@ body.dark-mode .project-card {
 .blog-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
 .blog-date { font-family: monospace; font-size: 0.85rem; color: var(--pastel-cyan); letter-spacing: 0.1em; margin-bottom: 1rem; }
 .blog-tile h3 { font-family: var(--font-sans); font-size: 1.4rem; font-weight: 500; line-height: 1.3; color: var(--color-text-primary); margin-bottom: 1rem; transition: color 0.3s ease; }
-.blog-excerpt { font-size: 1rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 2rem; flex-grow: 1; }
+.blog-excerpt { font-size: 0.9rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 2rem; flex-grow: 1; }
 .blog-footer { margin-top: auto; border-top: 1px solid var(--nav-border); padding-top: 1.5rem; transition: border-color 0.3s ease; }
 .read-more { display: flex; align-items: center; gap: 0.5rem; font-family: monospace; font-size: 0.9rem; color: var(--color-text-primary); text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.3s ease; }
 .read-more svg { width: 16px; height: 16px; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -735,7 +735,7 @@ body.dark-mode .reading-canvas {
 }
 
 .article-body {
-  font-family: 'Lora', serif; font-size: 1.25rem; line-height: 1.8; color: var(--color-text-primary);
+  font-family: 'Lora', serif; font-size: 1.1rem; line-height: 1.8; color: var(--color-text-primary);
 }
 
 .article-body p { margin-bottom: 1.5rem; }
@@ -751,7 +751,7 @@ body.dark-mode .reading-canvas {
 }
 body.dark-mode .article-body pre { background: rgba(255,255,255,0.05); }
 
-.lead-paragraph { font-size: 1.5rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 3rem !important; }
+.lead-paragraph { font-size: 1.2rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 3rem !important; }
 
 .share-section { text-align: center; margin-top: 4rem; }
 .share-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
