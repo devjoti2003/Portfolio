@@ -228,7 +228,6 @@ body.dark-mode .top-nav {
 
 .hero {
   position: relative;
-  overflow: hidden; /* Ensure glow doesn't break layout bounds */
 }
 
 .ambient-glow {
