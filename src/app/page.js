@@ -15,15 +15,27 @@ export default function Home() {
         <div className="ambient-glow glow-top-left"></div>
         <div className="ambient-glow glow-bottom-right"></div>
         <div className="posh-container">
-          <div className="hero-wrapper">
-            <p className="mono-sub">01 // IDENTITY</p>
-            <h1 className="hero-title">DEVJOTI<br/>KUNDU.</h1>
-            <h2 className="hero-subtitle">BIOTECHNOLOGY UNDERGRADUATE</h2>
-            <div className="hero-desc-wrapper">
-              <div className="thin-line"></div>
-              <p className="editorial-desc">
-                Bridging the gap between computational logic and biological complexity. Eager to solve neurodegenerative mysteries using data structures.
-              </p>
+          <div className="hero-layout">
+            <div className="hero-left">
+              <p className="mono-sub">01 // IDENTITY</p>
+              <h1 className="hero-title">DEVJOTI<br/>KUNDU.</h1>
+              <h2 className="hero-subtitle">BIOTECHNOLOGY UNDERGRADUATE</h2>
+            </div>
+            
+            <div className="hero-right">
+              <div className="bento-card hero-id-card">
+                <div className="id-header">
+                  <span className="status-indicator"><span className="pulse-dot"></span> SYSTEM ONLINE</span>
+                </div>
+                <div className="thin-line"></div>
+                <p className="editorial-desc">
+                  Bridging the gap between computational logic and biological complexity. Eager to solve neurodegenerative mysteries using data structures.
+                </p>
+                <div className="id-footer">
+                  <span className="mono-sub" style={{marginBottom: 0, fontSize: '0.75rem'}}>LOCATION // CHANDIGARH, IN</span>
+                  <span className="mono-sub" style={{marginBottom: 0, fontSize: '0.75rem'}}>STATUS // COMPILING DNA</span>
+                </div>
+              </div>
             </div>
           </div>
           <div className="scroll-indicator">

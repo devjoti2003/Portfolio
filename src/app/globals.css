@@ -289,10 +289,40 @@ body.dark-mode .glow-heading {
   100% { transform: scale(1.1) translate3d(3%, 3%, 0); opacity: 0.5; }
 }
 
-.section-header, .posh-left, .hero-wrapper { position: relative; z-index: 2; }
-.hero-desc-wrapper { position: relative; padding-left: 2rem; max-width: 600px; }
-.editorial-desc { font-size: 1.1rem; line-height: 1.7; color: var(--color-text-primary); font-weight: 300; transition: color 0.5s ease; }
+.section-header, .posh-left { position: relative; z-index: 2; }
+.hero-layout { display: flex; flex-direction: column; gap: 4rem; position: relative; z-index: 2; width: 100%; }
+@media (min-width: 1024px) {
+  .hero-layout { flex-direction: row; align-items: flex-start; justify-content: space-between; }
+  .hero-left { flex: 1.2; }
+  .hero-right { flex: 0.8; padding-top: 2rem; }
+}
 
+.hero-id-card {
+  position: relative;
+  border-radius: 16px !important;
+  padding: 2.5rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.id-header { display: flex; align-items: center; justify-content: flex-end; }
+.status-indicator {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: monospace; font-size: 0.8rem; color: var(--pastel-cyan); letter-spacing: 0.1em;
+}
+.pulse-dot {
+  width: 8px; height: 8px; background-color: var(--pastel-cyan); border-radius: 50%;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+@keyframes pulseDot {
+  0% { transform: scale(0.8); opacity: 0.5; box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.4); }
+  50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 10px 4px rgba(0, 210, 255, 0.2); }
+  100% { transform: scale(0.8); opacity: 0.5; box-shadow: 0 0 0 0 rgba(0, 210, 255, 0); }
+}
+
+.id-footer { display: flex; flex-direction: column; gap: 0.5rem; border-top: 1px solid var(--nav-border); padding-top: 1rem; }
+.editorial-desc { font-size: 1.1rem; line-height: 1.7; color: var(--color-text-primary); font-weight: 300; transition: color 0.5s ease; position: relative; }
+.thin-line { width: 40px; height: 2px; background: var(--pastel-cyan); opacity: 0.5; border-radius: 2px; }
 .massive-heading { 
   font-family: var(--font-sans); font-size: clamp(3rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; text-transform: uppercase;
   /* Themeable Effect */
@@ -302,7 +332,6 @@ body.dark-mode .glow-heading {
   transition: color 0.5s ease, -webkit-text-stroke 0.5s ease, text-shadow 0.5s ease;
 }
 
-.thin-line { width: 1px; height: 100%; position: absolute; left: 0; top: 0; background: var(--color-text-primary); opacity: 0.2; }
 .centered-line { position: relative; width: 1px; height: 100px; margin: 3rem auto; background: var(--pastel-purple); opacity: 0.5; }
 /* Bento Grid Architecture */
 .section-header { margin-bottom: 4rem; }
