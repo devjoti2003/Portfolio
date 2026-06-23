@@ -407,7 +407,7 @@ body.dark-mode .project-card {
 }
 .blog-tile {
   position: relative;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 24px;
   padding: 3rem;
@@ -423,7 +423,7 @@ body.dark-mode .project-card {
   text-decoration: none;
 }
 body.dark-mode .blog-tile {
-  background: rgba(15, 17, 23, 0.75);
+  background: rgba(15, 17, 23, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
