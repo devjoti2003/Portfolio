@@ -328,7 +328,7 @@ body.dark-mode .glow-heading {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 body.dark-mode .bento-card {
-  background: rgba(15, 17, 23, 0.75);
+  background: rgba(15, 17, 23, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
@@ -384,7 +384,7 @@ body.dark-mode .skill-tag { background: rgba(0, 0, 0, 0.2); }
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 body.dark-mode .project-card {
-  background: rgba(15, 17, 23, 0.75);
+  background: rgba(15, 17, 23, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
@@ -423,7 +423,7 @@ body.dark-mode .project-card {
   text-decoration: none;
 }
 body.dark-mode .blog-tile {
-  background: rgba(15, 17, 23, 0.85);
+  background: rgba(15, 17, 23, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
@@ -716,7 +716,7 @@ body.dark-mode .theme-toggle .moon-icon { display: block; }
   box-shadow: 0 30px 60px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 body.dark-mode .reading-canvas {
-  background: rgba(15, 17, 23, 0.85);
+  background: rgba(15, 17, 23, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
