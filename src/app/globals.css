@@ -3,7 +3,7 @@
   --color-bg: #f7f5ef;
   --color-text-primary: #1a1a1a;
   --color-text-secondary: #5c6b89;
-  --nav-bg: rgba(255, 255, 255, 0.6);
+  --nav-bg: rgba(255, 255, 255, 0.95);
   --nav-border: rgba(0,0,0,0.05);
   
   --bento-bg: rgba(255, 255, 255, 0.7);
@@ -23,7 +23,7 @@ body.dark-mode {
   --color-bg: #0d0f14;
   --color-text-primary: #f7f5ef;
   --color-text-secondary: #8b9bb4;
-  --nav-bg: rgba(13, 15, 20, 0.6);
+  --nav-bg: rgba(13, 15, 20, 0.95);
   --nav-border: rgba(255,255,255,0.05);
   
   --bento-bg: rgba(255, 255, 255, 0.15);
@@ -136,12 +136,16 @@ h1:hover, h2:hover, h3:hover, h4:hover, p:hover, .bento-meta:hover, .blog-date:h
 .top-nav {
   position: fixed; top: 0; left: 0; width: 100%;
   background: var(--nav-bg);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--nav-border); z-index: 100; padding: 1.5rem 0;
   transition: all 0.3s ease;
-  transform: translate3d(0, 0, 0);
-  will-change: transform, backdrop-filter;
+}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  :root { --nav-bg: rgba(255, 255, 255, 0.6); }
+  body.dark-mode { --nav-bg: rgba(13, 15, 20, 0.6); }
+  .top-nav {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
 }
 .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 4rem; display: flex; justify-content: space-between; align-items: center; }
 .nav-logo a { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--color-text-primary); text-decoration: none; letter-spacing: -0.05em; }
