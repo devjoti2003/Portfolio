@@ -37,8 +37,8 @@ export default function WebGLBackground() {
     const colors = new Float32Array(particleCount * 3);
 
     const color1 = new THREE.Color('#00d2ff'); // Cyan
-    const color2 = new THREE.Color('#10b981'); // Bio Emerald
-    const color3 = new THREE.Color('#00ff88'); // Neon Mint
+    const color2 = new THREE.Color('#9b51e0'); // Purple
+    const color3 = new THREE.Color('#ff758c'); // Rose/Pink
 
     const strand1Points = [];
     const strand2Points = [];
@@ -75,7 +75,7 @@ export default function WebGLBackground() {
         mixedColor.copy(color2).lerp(color3, (heightRatio - 0.5) * 2);
       }
 
-      // Add "mutation" highlights (Bright Cyan/White instead of Magenta)
+      // Add "mutation" highlights (Bright Cyan/White)
       if (Math.random() > 0.95) {
         mixedColor.lerp(new THREE.Color('#00ffff'), 0.5);
       }
