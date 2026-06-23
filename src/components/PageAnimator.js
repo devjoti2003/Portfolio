@@ -78,7 +78,9 @@ export default function PageAnimator({ pageRef }) {
     // "Feel the shift" effect on sections: Animate the section headers massively
     const sections = gsap.utils.toArray('.posh-section:not(.hero)');
     sections.forEach((sec) => {
-      const header = sec.querySelector('.section-header');
+      const header = sec.querySelector('.section-header, .posh-left');
+      const rightContent = sec.querySelector('.posh-right');
+
       if (header) {
         gsap.fromTo(header,
           { y: 100, opacity: 0, filter: 'blur(30px)', scale: 0.95 },
@@ -86,6 +88,22 @@ export default function PageAnimator({ pageRef }) {
             y: 0, opacity: 1, filter: 'blur(0px)', scale: 1,
             duration: 2.5,
             ease: 'power3.out',
+            scrollTrigger: {
+              trigger: sec,
+              start: 'top 80%',
+            }
+          }
+        );
+      }
+
+      if (rightContent) {
+        gsap.fromTo(rightContent,
+          { x: 50, opacity: 0, filter: 'blur(20px)' },
+          {
+            x: 0, opacity: 1, filter: 'blur(0px)',
+            duration: 2.5,
+            ease: 'power3.out',
+            delay: 0.2,
             scrollTrigger: {
               trigger: sec,
               start: 'top 80%',

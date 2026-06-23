@@ -133,12 +133,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PROJECTS */}
+      <section className="posh-section" id="coding-projects">
+        <div className="posh-container">
+          <div className="posh-row">
+            <div className="posh-left">
+              <div className="ambient-glow glow-heading"></div>
+              <p className="mono-sub">04 // DEVELOPMENT</p>
+              <h2 className="massive-heading">CODING<br/>PROJECTS</h2>
+            </div>
+            <div className="posh-right">
+              <div className="project-card">
+                <div className="project-header">
+                  <h4>NEXT.JS BIOINFORMATICS PORTFOLIO</h4>
+                  <span className="status-pill" style={{ borderColor: 'var(--pastel-cyan)', color: 'var(--pastel-cyan)', boxShadow: '0 0 10px rgba(0, 210, 255, 0.2)' }}>SHIPPED</span>
+                </div>
+                <p className="ed-meta">Full Stack // June 2026</p>
+                <p className="project-desc">
+                  Designed and developed a highly interactive, physics-driven portfolio using Next.js, GSAP ScrollTrigger, and Three.js WebGL. Implemented a custom Markdown CMS for blogging.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* BLOG */}
       <section className="posh-section" id="blog">
         <div className="posh-container">
           <div className="section-header">
             <div className="ambient-glow glow-heading"></div>
-            <p className="mono-sub">04 // WRITINGS</p>
+            <p className="mono-sub">05 // WRITINGS</p>
             <h2 className="massive-heading">INSIGHTS &<br/>BLOG</h2>
           </div>
           
