@@ -47,5 +47,14 @@ function markdownManifestPlugin() {
 }
 
 export default defineConfig({
-  plugins: [markdownManifestPlugin()]
+  plugins: [markdownManifestPlugin()],
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        blog: path.resolve(__dirname, 'blog.html'),
+        article: path.resolve(__dirname, 'article.html')
+      }
+    }
+  }
 });
