@@ -37,7 +37,7 @@ export default function WebGLBackground() {
     const colors = new Float32Array(particleCount * 3);
 
     const color1 = new THREE.Color('#00d2ff');
-    const color2 = new THREE.Color('#9b51e0');
+    const color2 = new THREE.Color('#00e676');
     const color3 = new THREE.Color('#ff758c');
 
     const strand1Points = [];
