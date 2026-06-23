@@ -132,20 +132,18 @@ h1:hover, h2:hover, h3:hover, h4:hover, p:hover, .bento-meta:hover, .blog-date:h
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none;
 }
 
-/* Top Navigation Bar */
+/* Top Navigation Bar — Simulated frosted glass (WebGL-safe) */
 .top-nav {
   position: fixed; top: 0; left: 0; width: 100%;
-  background: var(--nav-bg);
-  border-bottom: 1px solid var(--nav-border); z-index: 100; padding: 1.5rem 0;
-  transition: all 0.3s ease;
+  background: rgba(247, 245, 239, 0.92);
+  border-bottom: 1px solid var(--nav-border);
+  z-index: 100; padding: 1.5rem 0;
+  transition: background 0.5s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
 }
-@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
-  :root { --nav-bg: rgba(255, 255, 255, 0.6); }
-  body.dark-mode { --nav-bg: rgba(13, 15, 20, 0.6); }
-  .top-nav {
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-  }
+body.dark-mode .top-nav {
+  background: rgba(13, 15, 20, 0.92);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
 }
 .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 4rem; display: flex; justify-content: space-between; align-items: center; }
 .nav-logo a { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--color-text-primary); text-decoration: none; letter-spacing: -0.05em; }
