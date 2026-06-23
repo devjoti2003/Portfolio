@@ -101,9 +101,8 @@ export default function Navbar() {
           </div>
           <div className="nav-links">
             <Link href="/#hero">IDENTITY</Link>
+            <Link href="/#research-projects">RESEARCH & PROJECTS</Link>
             <Link href="/#academics">ACADEMICS & SKILLS</Link>
-            <Link href="/#projects">RESEARCH</Link>
-            <Link href="/#coding-projects">PROJECTS</Link>
             <Link href="/blog">BLOG</Link>
             <Link href="/#contact" className="nav-cta">CONNECT</Link>
             <button id="theme-toggle" className="theme-toggle" onClick={toggleTheme}>
@@ -120,10 +119,9 @@ export default function Navbar() {
       {pathname === '/' && (
         <aside className="vertical-nav">
           <Link href="#hero" className="nav-dot" data-target="hero"><span className="nav-label">01 // Identity</span></Link>
-          <Link href="#academics" className="nav-dot" data-target="academics"><span className="nav-label">02 // Academics</span></Link>
-          <Link href="#projects" className="nav-dot" data-target="projects"><span className="nav-label">03 // Research</span></Link>
-          <Link href="#coding-projects" className="nav-dot" data-target="coding-projects"><span className="nav-label">04 // Projects</span></Link>
-          <Link href="/blog" className="nav-dot" data-target="blog"><span className="nav-label">05 // Blog</span></Link>
+          <Link href="#research-projects" className="nav-dot" data-target="research-projects"><span className="nav-label">02 // Research & Projects</span></Link>
+          <Link href="#academics" className="nav-dot" data-target="academics"><span className="nav-label">03 // Academics & Skills</span></Link>
+          <Link href="/blog" className="nav-dot" data-target="blog"><span className="nav-label">04 // Blog</span></Link>
         </aside>
       )}
     </>
