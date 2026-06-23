@@ -313,24 +313,27 @@ body.dark-mode .glow-heading {
 }
 .bento-card {
   position: relative;
-  background: var(--bento-bg);
-  border: 1px solid var(--nav-border);
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 24px;
   padding: 3rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  backdrop-filter: blur(100px);
-  -webkit-backdrop-filter: blur(100px);
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+  backdrop-filter: blur(40px) saturate(150%);
+  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  transform: translateZ(0);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+body.dark-mode .bento-card {
+  background: rgba(15, 17, 23, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 .bento-card:hover {
   transform: translate3d(0, -5px, 0) scale(1.02);
-  border-color: rgba(155, 81, 224, 0.3);
 }
 .bento-glow {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -368,7 +371,26 @@ body.dark-mode .skill-tag { background: rgba(0, 0, 0, 0.2); }
 .split-left, .split-right { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
 .split-right { border-left: 1px solid var(--nav-border); padding-left: 3rem; }
 /* Projects */
-.project-card { border-top: 1px solid rgba(0,0,0,0.1); padding-top: 2rem; }
+.project-card { 
+  position: relative;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  padding: 3rem;
+  backdrop-filter: blur(40px) saturate(150%);
+  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  transform: translateZ(0);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+body.dark-mode .project-card {
+  background: rgba(15, 17, 23, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+.project-card:hover {
+  transform: translate3d(0, -5px, 0) scale(1.02);
+}
 .project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
 .project-header h4 { font-size: 2rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; max-width: 80%;}
 .status-pill { border: 1px solid var(--pastel-cyan); color: var(--pastel-cyan); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; }
@@ -385,25 +407,28 @@ body.dark-mode .skill-tag { background: rgba(0, 0, 0, 0.2); }
 }
 .blog-tile {
   position: relative;
-  background: var(--bento-bg);
-  border: 1px solid var(--nav-border);
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
   padding: 3rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  backdrop-filter: blur(100px);
-  -webkit-backdrop-filter: blur(100px);
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
-  cursor: none; /* Let custom cursor handle it */
+  backdrop-filter: blur(40px) saturate(150%);
+  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  transform: translateZ(0);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  cursor: none;
   text-decoration: none;
+}
+body.dark-mode .blog-tile {
+  background: rgba(15, 17, 23, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 .blog-tile:hover {
   transform: translate3d(0, -10px, 0) scale(1.02);
-  border-color: var(--pastel-cyan);
 }
 .blog-glow {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
