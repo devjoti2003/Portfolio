@@ -48,13 +48,15 @@ export default function Home() {
       {/* ACADEMICS & TOOLKIT BENTO GRID */}
       <section className="posh-section" id="academics">
         <div className="posh-container">
-          <div className="section-header">
-            <div className="ambient-glow glow-heading"></div>
-            <p className="mono-sub">02 // ACADEMICS & TOOLKIT</p>
-            <h2 className="massive-heading">KNOWLEDGE<br/>ARCHITECTURE</h2>
-          </div>
-          
-          <div className="bento-grid">
+          <div className="posh-row">
+            <div className="posh-left">
+              <div className="ambient-glow glow-heading"></div>
+              <p className="mono-sub">02 // ACADEMICS & TOOLKIT</p>
+              <h2 className="massive-heading">KNOWLEDGE<br/>ARCHITECTURE</h2>
+            </div>
+            
+            <div className="posh-right">
+              <div className="bento-grid">
             {/* Cell 1: University (Large) */}
             <div className="bento-card bento-large">
               <div className="bento-glow"></div>
@@ -112,6 +114,8 @@ export default function Home() {
                   <p className="bento-meta">SHIV JYOTI INT. SCHOOL</p>
                   <p className="ed-highlight">92.2% SCORE</p>
                 </div>
+              </div>
+            </div>
               </div>
             </div>
           </div>
@@ -173,13 +177,15 @@ export default function Home() {
       {/* BLOG */}
       <section className="posh-section" id="blog">
         <div className="posh-container">
-          <div className="section-header">
-            <div className="ambient-glow glow-heading"></div>
-            <p className="mono-sub">05 // WRITINGS</p>
-            <h2 className="massive-heading">INSIGHTS &<br/>BLOG</h2>
-          </div>
-          
-          <div className="blog-grid full-grid">
+          <div className="posh-row">
+            <div className="posh-left">
+              <div className="ambient-glow glow-heading"></div>
+              <p className="mono-sub">05 // WRITINGS</p>
+              <h2 className="massive-heading">INSIGHTS &<br/>BLOG</h2>
+            </div>
+            
+            <div className="posh-right">
+              <div className="blog-grid full-grid">
             <Link href="/blog" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
               <article className="blog-tile" style={{ height: '100%' }}>
                 <div className="blog-glow"></div>
@@ -217,6 +223,8 @@ export default function Home() {
                 </div>
               </article>
             </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

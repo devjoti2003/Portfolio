@@ -254,7 +254,7 @@ body.dark-mode .hidden-links { box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 8rem;
+  gap: 5rem;
 }
 
 .reverse-row {
@@ -262,13 +262,15 @@ body.dark-mode .hidden-links { box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
 }
 
 .posh-left {
-  flex: 1;
-  position: relative;
+  flex: 0 0 320px;
+  position: sticky;
+  top: 150px;
+  z-index: 10;
 }
 
 .posh-right {
   flex: 1;
-  padding-top: 2rem;
+  min-width: 0; /* Prevents flex children from blowing out container width */
 }
 
 /* Typography */
@@ -637,7 +639,8 @@ body.dark-mode .theme-toggle .moon-icon { display: block; }
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .posh-row { flex-direction: column; gap: 4rem; }
-  .posh-right { padding-top: 0; }
+  .posh-left { flex: none; position: relative; top: 0; width: 100%; }
+  .posh-right { padding-top: 0; width: 100%; }
   .posh-section { padding: 6rem 0; }
   .massive-heading { font-size: 3rem; }
   
