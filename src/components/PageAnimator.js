@@ -49,7 +49,7 @@ export default function PageAnimator({ pageRef }) {
           duration: 2,
           stagger: 0.25,
           ease: 'power3.out',
-          clearProps: 'filter',
+          clearProps: 'all',
           scrollTrigger: {
             trigger: '.bento-grid',
             start: 'top 85%',
@@ -68,7 +68,7 @@ export default function PageAnimator({ pageRef }) {
           duration: 2,
           stagger: 0.25,
           ease: 'power3.out',
-          clearProps: 'filter',
+          clearProps: 'all',
           scrollTrigger: {
             trigger: '.blog-grid',
             start: 'top 85%',

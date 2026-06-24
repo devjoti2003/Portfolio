@@ -268,5 +268,10 @@ export default function WebGLBackground() {
     };
   }, []);
 
-  return <div id="webgl-container" ref={mountRef} />;
+  return (
+    <>
+      <div id="bg-color-layer" />
+      <div id="webgl-container" ref={mountRef} />
+    </>
+  );
 }
