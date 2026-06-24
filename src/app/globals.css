@@ -680,6 +680,7 @@ body.dark-mode .theme-toggle .moon-icon { display: block; }
   }
   
   /* Hero Section Mobile */
+  .posh-left { padding-top: 140px; }
   .hero-layout { gap: 2rem; }
   .hero-id-card { padding: 1.5rem !important; }
   .hero-title { font-size: clamp(2.5rem, 10vw, 4rem); }
