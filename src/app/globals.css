@@ -177,9 +177,20 @@ body.dark-mode .top-nav {
   padding: 0.6rem 1.2rem; border-radius: 50px; 
   background: rgba(255,255,255,0.02); border: 1px solid var(--nav-border);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0);
 }
-.menu-trigger:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
-body.dark-mode .menu-trigger:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.15); }
+.menu-trigger:hover { 
+  background: rgba(255,255,255,0.08); 
+  border-color: rgba(255,255,255,0.2); 
+  backdrop-filter: blur(20px) saturate(150%); 
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+body.dark-mode .menu-trigger:hover { 
+  background: rgba(255,255,255,0.1); 
+  border-color: rgba(255,255,255,0.15); 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
 
 .burger-icon { display: flex; flex-direction: column; gap: 4px; width: 22px; }
 .burger-line { display: block; height: 2px; background-color: currentColor; border-radius: 2px; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
