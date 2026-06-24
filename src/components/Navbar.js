@@ -74,6 +74,14 @@ export default function Navbar() {
     };
   }, []);
 
+  // Animate the icon whenever the theme is toggled
+  useEffect(() => {
+    gsap.fromTo('#theme-toggle svg', 
+      { rotation: -180, scale: 0.3, opacity: 0 }, 
+      { rotation: 0, scale: 1, opacity: 1, duration: 0.6, ease: 'back.out(1.7)' }
+    );
+  }, [isDarkMode]);
+
   const toggleTheme = () => {
     setIsDarkMode((prev) => {
       const newMode = !prev;
