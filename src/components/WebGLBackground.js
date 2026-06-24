@@ -36,9 +36,9 @@ export default function WebGLBackground() {
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const color1 = new THREE.Color('#00d2ff'); // Cyan
-    const color2 = new THREE.Color('#9b51e0'); // Purple
-    const color3 = new THREE.Color('#ff758c'); // Rose/Pink
+    const color1 = new THREE.Color('#0044ff'); // Blue
+    const color2 = new THREE.Color('#7a00ff'); // Indigo
+    const color3 = new THREE.Color('#d400ff'); // Purple
 
     const strand1Points = [];
     const strand2Points = [];
@@ -91,9 +91,45 @@ export default function WebGLBackground() {
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
+    const customUniforms = { uTime: { value: 0 } };
+
     const material = new THREE.PointsMaterial({
       size: 0.12, vertexColors: true, blending: THREE.AdditiveBlending, transparent: true, opacity: 0.8, sizeAttenuation: true
     });
+
+    material.onBeforeCompile = (shader) => {
+      shader.uniforms.uTime = customUniforms.uTime;
+      shader.vertexShader = `
+        uniform float uTime;
+        
+        vec3 rgb2hsv(vec3 c) {
+            vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+            vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+            vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+            float d = q.x - min(q.w, q.y);
+            float e = 1.0e-10;
+            return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+        }
+        
+        vec3 hsv2rgb(vec3 c) {
+            vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+            vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+            return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+        }
+
+        ${shader.vertexShader}
+      `.replace(
+        '#include <color_vertex>',
+        `#include <color_vertex>
+         vec3 hsv = rgb2hsv(vColor.rgb);
+         if (hsv.y > 0.1) {
+           float shift = sin(uTime * 0.8 + position.y * 0.05) * 0.2 + (uTime * 0.1);
+           hsv.x = fract(hsv.x + shift);
+           vColor.rgb = hsv2rgb(hsv);
+         }
+        `
+      );
+    };
 
     const helix = new THREE.Points(geometry, material);
     dnaGroup.add(helix);
@@ -123,6 +159,7 @@ export default function WebGLBackground() {
     lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
     lineGeometry.setAttribute('color', new THREE.Float32BufferAttribute(lineColors, 3));
     const lineMaterial = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.25, blending: THREE.AdditiveBlending });
+    lineMaterial.onBeforeCompile = material.onBeforeCompile;
     const dnaBonds = new THREE.LineSegments(lineGeometry, lineMaterial);
     dnaGroup.add(dnaBonds);
 
@@ -177,6 +214,7 @@ export default function WebGLBackground() {
       const elapsedTime = clock.getElapsedTime();
 
       // Smooth interpolation for scroll and mouse
+      customUniforms.uTime.value = elapsedTime;
       scrollY += (targetScrollY - scrollY) * 0.12;
       mouseX += (targetMouseX - mouseX) * 0.12;
       mouseY += (targetMouseY - mouseY) * 0.12;
