@@ -123,7 +123,7 @@ export default function WebGLBackground() {
         `#include <color_vertex>
          vec3 hsv = rgb2hsv(vColor.rgb);
          if (hsv.y > 0.1) {
-           float shift = sin(uTime * 0.8 + position.y * 0.05) * 0.2 + (uTime * 0.1);
+           float shift = sin(uTime * 0.2 + position.y * 0.05) * 0.2 + (uTime * 0.03);
            hsv.x = fract(hsv.x + shift);
            vColor.rgb = hsv2rgb(hsv);
          }
