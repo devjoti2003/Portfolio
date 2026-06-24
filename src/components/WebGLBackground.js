@@ -123,8 +123,10 @@ export default function WebGLBackground() {
         `#include <color_vertex>
          vec3 hsv = rgb2hsv(vColor.rgb);
          if (hsv.y > 0.1) {
-           float shift = sin(uTime * 0.2 + position.y * 0.05) * 0.2 + (uTime * 0.03);
-           hsv.x = fract(hsv.x + shift);
+           // Wave smoothly oscillates between -1.0 and 1.0
+           float wave = sin(uTime * 0.2 + position.y * 0.05);
+           // Lock hue strictly between 0.62 (Blue) and 0.98 (Red), centered on 0.80 (Purple)
+           hsv.x = 0.80 + (wave * 0.18);
            vColor.rgb = hsv2rgb(hsv);
          }
         `
