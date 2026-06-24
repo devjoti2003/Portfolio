@@ -12,19 +12,19 @@ export default function PageAnimator({ pageRef }) {
     // Slower, dramatic hero text animation with motion blur, delayed for Preloader
     gsap.fromTo('.hero-title', 
       { y: 120, opacity: 0, filter: 'blur(25px)', letterSpacing: '0.3em' },
-      { y: 0, opacity: 1, filter: 'blur(0px)', letterSpacing: 'normal', duration: 2.5, ease: 'power3.out', delay: 0.8 }
+      { y: 0, opacity: 1, filter: 'blur(0px)', letterSpacing: 'normal', duration: 2.5, ease: 'power3.out', delay: 0.8, clearProps: 'filter' }
     );
     gsap.fromTo('.hero-subtitle', 
       { y: 60, opacity: 0, filter: 'blur(15px)' },
-      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 2.5, ease: 'power3.out', delay: 1.3 }
+      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 2.5, ease: 'power3.out', delay: 1.3, clearProps: 'filter' }
     );
     gsap.fromTo('.editorial-desc', 
       { y: 40, opacity: 0, filter: 'blur(10px)' },
-      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 2.5, ease: 'power3.out', delay: 1.6 }
+      { y: 0, opacity: 1, filter: 'blur(0px)', duration: 2.5, ease: 'power3.out', delay: 1.6, clearProps: 'filter' }
     );
     gsap.fromTo('.scroll-indicator', 
       { opacity: 0, filter: 'blur(10px)' },
-      { opacity: 1, filter: 'blur(0px)', duration: 3, ease: 'power2.out', delay: 2.5 }
+      { opacity: 1, filter: 'blur(0px)', duration: 3, ease: 'power2.out', delay: 2.5, clearProps: 'filter' }
     );
 
     // Deep Parallax on Ambient Glow Orbs
@@ -49,6 +49,7 @@ export default function PageAnimator({ pageRef }) {
           duration: 2,
           stagger: 0.25,
           ease: 'power3.out',
+          clearProps: 'filter',
           scrollTrigger: {
             trigger: '.bento-grid',
             start: 'top 85%',
@@ -67,6 +68,7 @@ export default function PageAnimator({ pageRef }) {
           duration: 2,
           stagger: 0.25,
           ease: 'power3.out',
+          clearProps: 'filter',
           scrollTrigger: {
             trigger: '.blog-grid',
             start: 'top 85%',
@@ -88,6 +90,7 @@ export default function PageAnimator({ pageRef }) {
             y: 0, opacity: 1, filter: 'blur(0px)', scale: 1,
             duration: 2.5,
             ease: 'power3.out',
+            clearProps: 'filter',
             scrollTrigger: {
               trigger: sec,
               start: 'top 80%',
@@ -103,6 +106,7 @@ export default function PageAnimator({ pageRef }) {
             x: 0, opacity: 1, filter: 'blur(0px)',
             duration: 2.5,
             ease: 'power3.out',
+            clearProps: 'filter',
             delay: 0.2,
             scrollTrigger: {
               trigger: sec,

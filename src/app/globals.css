@@ -209,10 +209,7 @@ body.dark-mode .hidden-links { box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
 
 /* Scroll Container */
 .scroll-container {
-  position: relative;
-  z-index: 1;
   width: 100%;
-  overflow-x: clip;
 }
 
 /* Posh Sections */
