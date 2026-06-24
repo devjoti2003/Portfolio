@@ -21,6 +21,7 @@ export default function Cursor() {
     };
 
     const onMouseOver = (e) => {
+      if (!e.target || !e.target.closest) return;
       if (e.target.closest('.nav-links a')) {
         followerRef.current?.classList.add('nav-hover');
       } else if (e.target.closest('button, a, .posh-btn, .skill-tag, .read-more, .nav-cta, .bento-large, .bento-medium, .bento-wide')) {
@@ -29,6 +30,7 @@ export default function Cursor() {
     };
 
     const onMouseOut = (e) => {
+      if (!e.target || !e.target.closest) return;
       if (e.target.closest('.nav-links a')) {
         followerRef.current?.classList.remove('nav-hover');
       } else if (e.target.closest('button, a, .posh-btn, .skill-tag, .read-more, .nav-cta, .bento-large, .bento-medium, .bento-wide')) {
