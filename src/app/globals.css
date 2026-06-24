@@ -7,7 +7,7 @@
   --nav-border: rgba(0,0,0,0.05);
   --nav-border: rgba(0,0,0,0.05);
   
-  --bento-bg: rgba(255, 255, 255, 0.7);
+  --bento-bg: rgba(255, 255, 255, 0.15);
   
   --glass-text: #000000;
   --glass-blend: multiply;
@@ -28,7 +28,7 @@ body.dark-mode {
   --nav-border: rgba(255,255,255,0.05);
   --nav-border: rgba(255,255,255,0.05);
   
-  --bento-bg: rgba(15, 17, 23, 0.7);
+  --bento-bg: rgba(15, 17, 23, 0.25);
   
   /* Glowing White Text (No Border) */
   --glass-text: #ffffff;
