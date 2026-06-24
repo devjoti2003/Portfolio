@@ -383,7 +383,7 @@ body.dark-mode .glow-heading {
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(300px, auto);
+  grid-auto-rows: minmax(240px, auto);
   gap: 1.5rem;
   width: 100%;
 }
@@ -392,7 +392,7 @@ body.dark-mode .glow-heading {
   background: var(--bento-bg);
   border: 1px solid var(--nav-border);
   border-radius: 24px;
-  padding: 3rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -421,15 +421,15 @@ body.dark-mode .glow-heading {
 .bento-wide { grid-column: span 3; }
 
 /* Bento Typography */
-.bento-card h3 { font-family: var(--font-sans); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.05em; margin: 1rem 0 0.5rem 0; line-height: 1.3; color: var(--color-text-primary); }
+.bento-card h3 { font-family: var(--font-sans); font-size: 1.35rem; font-weight: 500; letter-spacing: 0.05em; margin: 1rem 0 0.5rem 0; line-height: 1.3; color: var(--color-text-primary); }
 .bento-meta { font-size: 0.8rem; color: var(--color-text-secondary); letter-spacing: 0.1em; text-transform: uppercase; }
 .bento-icon { width: 48px; height: 48px; color: var(--pastel-purple); margin-bottom: 1rem; }
-.bento-gpa { margin-top: auto; padding-top: 2rem; display: flex; align-items: baseline; gap: 0.5rem; }
-.gpa-number { font-size: 5rem; font-weight: 300; line-height: 1; color: var(--pastel-cyan); letter-spacing: -0.04em; }
-.gpa-text { font-size: 0.85rem; color: var(--color-text-secondary); letter-spacing: 0.2em; text-transform: uppercase; }
+.bento-gpa { margin-top: auto; padding-top: 1.5rem; display: flex; align-items: baseline; gap: 0.5rem; }
+.gpa-number { font-size: 4rem; font-weight: 300; line-height: 1; color: var(--pastel-cyan); letter-spacing: -0.04em; }
+.gpa-text { font-size: 0.8rem; color: var(--color-text-secondary); letter-spacing: 0.2em; text-transform: uppercase; }
 
 /* Skill Tags */
-.skill-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: auto; padding-top: 2rem; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: auto; padding-top: 1.5rem; }
 .skill-tag { 
   padding: 0.6rem 1.2rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--nav-border); 
   border-radius: 50px; font-size: 0.85rem; letter-spacing: 0.05em; color: var(--color-text-primary);
@@ -448,7 +448,7 @@ body.dark-mode .skill-tag { background: rgba(0, 0, 0, 0.2); }
   background: var(--bento-bg);
   border: 1px solid var(--nav-border);
   border-radius: 24px;
-  padding: 3rem;
+  padding: 2.5rem;
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
   z-index: 10;
@@ -468,8 +468,8 @@ body.dark-mode .project-card {
 /* Blog Tiles Architecture */
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
   width: 100%;
 }
 .blog-tile {
@@ -477,7 +477,7 @@ body.dark-mode .project-card {
   background: var(--bento-bg);
   border: 1px solid var(--nav-border);
   border-radius: 16px;
-  padding: 3rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   backdrop-filter: blur(16px);
