@@ -1,7 +1,7 @@
 :root {
   /* Light Mode (Default) */
   --color-bg: #f7f5ef;
-  --color-text-primary: #1a1a1a;
+  --color-text-primary: #000000;
   --color-text-secondary: #5c6b89;
   --nav-bg: rgba(255, 255, 255, 0.95);
   --nav-border: rgba(0,0,0,0.05);
@@ -9,7 +9,7 @@
   
   --bento-bg: rgba(255, 255, 255, 0.7);
   
-  --glass-text: rgba(45, 55, 72, 0.7);
+  --glass-text: #000000;
   --glass-blend: multiply;
   --glass-stroke-width: 1px;
   --glass-stroke-color: rgba(45, 55, 72, 0.2);
@@ -62,7 +62,7 @@ body {
 /* Vertical Navigation Bar */
 .vertical-nav {
   position: fixed;
-  right: 2rem;
+  left: 2rem;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -82,20 +82,20 @@ body {
 .nav-dot:hover { opacity: 0.7; height: 30px; background: var(--pastel-cyan); }
 .nav-dot.active { opacity: 1; height: 40px; background: var(--pastel-purple); box-shadow: 0 0 10px var(--pastel-purple); }
 .nav-label {
-  position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
+  position: absolute; left: 15px; top: 50%; transform: translateY(-50%);
   font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--color-text-primary);
   opacity: 0; pointer-events: none; white-space: nowrap;
-  transition: opacity 0.3s ease, right 0.3s ease;
+  transition: opacity 0.3s ease, left 0.3s ease;
 }
-.nav-dot:hover .nav-label { opacity: 1 !important; right: 20px !important; animation: none !important; }
+.nav-dot:hover .nav-label { opacity: 1 !important; left: 20px !important; animation: none !important; }
 .nav-dot.active .nav-label { animation: showLabelThenFade 2.5s forwards; }
 
 @keyframes showLabelThenFade {
-  0% { opacity: 0; right: 15px; }
-  10% { opacity: 1; right: 20px; }
-  80% { opacity: 1; right: 20px; }
-  100% { opacity: 0; right: 15px; }
+  0% { opacity: 0; left: 15px; }
+  10% { opacity: 1; left: 20px; }
+  80% { opacity: 1; left: 20px; }
+  100% { opacity: 0; left: 15px; }
 }
 
 /* Custom Cursor */
