@@ -665,11 +665,28 @@ body.dark-mode .theme-toggle .moon-icon { display: block; }
   .desktop-only { display: none !important; }
 }
 
+/* Global Mobile Utilities */
+.mobile-only { display: none !important; }
+
+.mobile-menu-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+body.light-mode .mobile-menu-overlay {
+  background: rgba(255, 255, 255, 0.95);
+}
+.mobile-menu-overlay.open {
+  opacity: 1; pointer-events: all;
+}
+
 @media (max-width: 768px) {
   /* Prevent horizontal zoom/scroll on mobile completely */
   html, body {
-    width: 100%;
-    max-width: 100vw;
+    overflow-x: hidden;
   }
   
   .vertical-nav { display: none; } /* Hide vertical nav on tiny screens */
@@ -686,21 +703,6 @@ body.dark-mode .theme-toggle .moon-icon { display: block; }
   }
   .nav-logo { margin-bottom: 0; }
   .mobile-only { display: block !important; }
-
-  .mobile-menu-overlay {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    z-index: 1000;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-  }
-  body.light-mode .mobile-menu-overlay {
-    background: rgba(255, 255, 255, 0.95);
-  }
-  .mobile-menu-overlay.open {
-    opacity: 1; pointer-events: all;
-  }
   
   /* Sections & Layout */
   .posh-section { padding: 4rem 0; }
@@ -734,7 +736,8 @@ body.dark-mode .theme-toggle .moon-icon { display: block; }
   .blog-grid { grid-template-columns: 1fr; gap: 1rem; }
   .reading-canvas { 
     padding: 2rem 1.5rem !important; 
-    margin: 1rem 0.5rem 4rem 0.5rem !important; 
+    margin: 1rem auto 4rem auto !important; 
+    border-radius: 16px !important;
   }
   .article-body { font-size: 1.05rem; }
   .article-body p:first-of-type::first-letter { font-size: 3rem; padding-right: 0.2rem; }
@@ -834,7 +837,7 @@ body.dark-mode .theme-toggle .moon-icon { display: block; }
   z-index: 10;
   border: 1px solid rgba(255, 255, 255, 0.5); 
   border-radius: 24px; padding: 5rem 4rem;
-  margin: 2rem 1rem 6rem 1rem; 
+  margin: 2rem auto 6rem auto; 
   box-shadow: 0 30px 60px rgba(0,0,0,0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
 }
 body.dark-mode .reading-canvas {

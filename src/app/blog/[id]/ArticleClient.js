@@ -145,7 +145,7 @@ export default function ArticleClient({ postData, contentHtml, formattedDate, ne
         )}
 
         <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
-          <article className="reading-canvas reveal-up is-visible" style={{ margin: headings.length > 0 ? '2rem 1rem 6rem 1rem' : '2rem 1rem 6rem 1rem' }}>
+          <article className="reading-canvas reveal-up is-visible">
             <Link href="/blog" className="back-link">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
               BACK TO ARCHIVE
