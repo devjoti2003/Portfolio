@@ -17,13 +17,13 @@ export default function Home() {
         <div className="posh-container">
           <div className="hero-layout">
             <div className="hero-left">
-              <div className="bento-card" style={{ padding: '3rem 4rem', borderRadius: '16px', display: 'inline-block' }}>
+              <div className="bento-card" style={{ padding: '3rem 4rem', borderRadius: '40px', display: 'inline-block' }}>
                 <h1 className="hero-title" style={{ margin: 0 }}>DEVJOTI<br/>KUNDU.</h1>
               </div>
             </div>
             
             <div className="hero-right">
-              <div className="bento-card" style={{ padding: '2rem', borderRadius: '16px', display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', textAlign: 'center' }}>
+              <div className="bento-card" style={{ padding: '2rem', borderRadius: '40px', display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', textAlign: 'center' }}>
                 <span className="status-indicator"><span className="pulse-dot"></span> SYSTEM ONLINE</span>
                 <p style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: '1.6', fontSize: '1.1rem' }}>
                   Bridging the gap between computational logic and biological complexity.

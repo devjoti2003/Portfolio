@@ -478,7 +478,7 @@ body.dark-mode .project-card {
   position: relative;
   background: var(--bento-bg);
   border: 1px solid var(--nav-border);
-  border-radius: 16px;
+  border-radius: 32px;
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
