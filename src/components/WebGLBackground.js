@@ -28,7 +28,22 @@ export default function WebGLBackground() {
     container.appendChild(renderer.domElement);
 
     const dnaGroup = new THREE.Group();
+    dnaGroup.position.x = 8; // Move DNA to the right side
     scene.add(dnaGroup);
+
+    // Create Circle Texture for Points
+    const getCircleTexture = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 64;
+      canvas.height = 64;
+      const ctx = canvas.getContext('2d');
+      ctx.beginPath();
+      ctx.arc(32, 32, 30, 0, 2 * Math.PI);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+      return new THREE.CanvasTexture(canvas);
+    };
+    const circleTexture = getCircleTexture();
 
     // 3. Create Particle DNA Helix
     const particleCount = 6000;
@@ -94,7 +109,8 @@ export default function WebGLBackground() {
     const customUniforms = { uTime: { value: 0 } };
 
     const material = new THREE.PointsMaterial({
-      size: 0.12, vertexColors: true, blending: THREE.AdditiveBlending, transparent: true, opacity: 0.8, sizeAttenuation: true
+      size: 0.16, vertexColors: true, blending: THREE.AdditiveBlending, transparent: true, opacity: 0.8, sizeAttenuation: true,
+      map: circleTexture, alphaTest: 0.1
     });
 
     material.onBeforeCompile = (shader) => {
@@ -170,7 +186,10 @@ export default function WebGLBackground() {
     const dustPositions = new Float32Array(600 * 3);
     for(let i=0; i<600*3; i++) { dustPositions[i] = (Math.random() - 0.5) * 40; }
     dustGeometry.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
-    const dustMaterial = new THREE.PointsMaterial({ color: 0x8b9bb4, size: 0.05, transparent: true, opacity: 0.4 });
+    const dustMaterial = new THREE.PointsMaterial({ 
+      color: 0x8b9bb4, size: 0.08, transparent: true, opacity: 0.4,
+      map: circleTexture, alphaTest: 0.1 
+    });
     const dust = new THREE.Points(dustGeometry, dustMaterial);
     scene.add(dust);
 
