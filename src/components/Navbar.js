@@ -67,6 +67,7 @@ export default function Navbar() {
             <Link href="/#experience" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 500, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>EXPERIENCE</Link>
             <Link href="/#publications" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 500, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>PUBLICATIONS</Link>
             <Link href="/#skills" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 500, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>SKILLS</Link>
+            <Link href="/#blog" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 500, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>BLOG</Link>
           </div>
 
           <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
@@ -105,6 +106,7 @@ export default function Navbar() {
           <Link href="#experience" className="nav-dot" data-target="experience"><span className="nav-label">03 // Experience</span></Link>
           <Link href="#publications" className="nav-dot" data-target="publications"><span className="nav-label">04 // Publications</span></Link>
           <Link href="#skills" className="nav-dot" data-target="skills"><span className="nav-label">05 // Skills</span></Link>
+          <Link href="#blog" className="nav-dot" data-target="blog"><span className="nav-label">06 // Blog</span></Link>
         </aside>
       )}
     </>

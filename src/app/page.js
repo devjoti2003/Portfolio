@@ -193,6 +193,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* BLOG */}
+      <section className="posh-section" id="blog" style={{ backgroundColor: 'var(--tint-bg)', padding: '6rem 0', minHeight: 'auto', margin: '4rem 0' }}>
+        <div className="posh-container">
+          <div className="section-header" style={{ marginBottom: '3rem' }}>
+            <h2 className="massive-heading" style={{ color: 'var(--color-text-secondary)', fontSize: '10px' }}>06 // THOUGHTS & WRITING</h2>
+            <div style={{ width: '100%', height: '1px', backgroundColor: 'var(--nav-border)', marginTop: '1rem' }}></div>
+          </div>
+          
+          <div className="blog-grid full-grid reveal-up delay-1 stagger-children" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '2rem' }}>
+            <Link href="/blog/data-and-biology" className="blog-tile">
+              <span className="blog-date" style={{ fontSize: '10px', color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>May 2026</span>
+              <h3 style={{ fontSize: '16px', fontWeight: 500, margin: '1rem 0' }}>Data, Biology, and Computational Systems</h3>
+              <p style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>Exploring the intersection of deep learning and complex biological pathways.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
       <section className="posh-section footer" id="contact" style={{ minHeight: 'auto', padding: '3rem 0', borderTop: '1px solid var(--nav-border)' }}>
         <div className="posh-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px', color: 'var(--color-text-primary)', fontWeight: 500 }}>
