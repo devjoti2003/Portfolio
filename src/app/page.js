@@ -208,6 +208,13 @@ export default function Home() {
               <p style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>Exploring the intersection of deep learning and complex biological pathways.</p>
             </Link>
           </div>
+          
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
+            <Link href="/blog" className="posh-btn" style={{ padding: '1rem 2rem', border: '1px solid var(--nav-border)', borderRadius: '30px', textDecoration: 'none', color: 'var(--color-text-primary)', fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+              VIEW FULL ARCHIVE
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </Link>
+          </div>
         </div>
       </section>
 
