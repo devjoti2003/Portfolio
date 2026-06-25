@@ -130,7 +130,7 @@ export default function ArticleClient({ postData, contentHtml, formattedDate, ne
         
         {/* Sticky TOC */}
         {headings.length > 0 && (
-          <aside className="article-toc" style={{ position: 'sticky', top: '120px', left: '0', width: '250px', padding: '0 2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <aside className="article-toc desktop-only" style={{ position: 'sticky', top: '120px', left: '0', width: '250px', padding: '0 2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <h4 style={{ fontSize: '0.8rem', letterSpacing: '0.1em', color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>ON THIS PAGE</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
               {headings.map(h => (

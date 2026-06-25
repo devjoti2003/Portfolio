@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 export default function Navbar() {
   const pathname = usePathname();
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const isDark = document.body.classList.contains('dark-mode');
@@ -62,7 +63,7 @@ export default function Navbar() {
             <Link href="/" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '1.2rem', letterSpacing: '0.05em' }}>DK.</Link>
           </div>
           
-          <div className="nav-links-horizontal" style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
+          <div className="nav-links-horizontal desktop-only" style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
             <Link href="/#work" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 500, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>RESEARCH</Link>
             <Link href="/#experience" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 500, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>EXPERIENCE</Link>
             <Link href="/#publications" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 500, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>PUBLICATIONS</Link>
@@ -70,7 +71,7 @@ export default function Navbar() {
             <Link href="/#blog" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 500, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>BLOG</Link>
           </div>
 
-          <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          <div className="nav-right desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             <button className="theme-toggle" onClick={toggleTheme} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', color: 'var(--color-text-primary)', padding: 0 }}>
               {isDarkMode ? (
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
@@ -95,6 +96,43 @@ export default function Navbar() {
               CONNECT
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
             </Link>
+          </div>
+
+          <div className="mobile-menu-toggle mobile-only" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} style={{ display: 'none', cursor: 'pointer', zIndex: 1001 }}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              {isMobileMenuOpen ? (
+                <>
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </>
+              ) : (
+                <>
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </>
+              )}
+            </svg>
+          </div>
+        </div>
+
+        {/* Mobile Menu Overlay */}
+        <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
+          <div className="mobile-nav-links" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+            <Link href="/#work" onClick={() => setIsMobileMenuOpen(false)} style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '1.5rem', letterSpacing: '0.1em' }}>RESEARCH</Link>
+            <Link href="/#experience" onClick={() => setIsMobileMenuOpen(false)} style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '1.5rem', letterSpacing: '0.1em' }}>EXPERIENCE</Link>
+            <Link href="/#publications" onClick={() => setIsMobileMenuOpen(false)} style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '1.5rem', letterSpacing: '0.1em' }}>PUBLICATIONS</Link>
+            <Link href="/#skills" onClick={() => setIsMobileMenuOpen(false)} style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '1.5rem', letterSpacing: '0.1em' }}>SKILLS</Link>
+            <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '1.5rem', letterSpacing: '0.1em' }}>BLOG</Link>
+            
+            <div style={{ display: 'flex', gap: '2rem', marginTop: '2rem', alignItems: 'center' }}>
+              <button onClick={() => { toggleTheme(); setIsMobileMenuOpen(false); }} style={{ background: 'none', border: 'none', color: 'var(--color-text-primary)', cursor: 'pointer' }}>
+                {isDarkMode ? 'LIGHT MODE' : 'DARK MODE'}
+              </button>
+              <a href="https://github.com/devjoti2003" onClick={() => setIsMobileMenuOpen(false)} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-text-primary)', textDecoration: 'none', fontWeight: 600 }}>GITHUB</a>
+            </div>
+            
+            <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="posh-btn" style={{ padding: '0.8rem 2rem', marginTop: '1rem', border: '1px solid var(--color-text-primary)', borderRadius: '30px', color: 'var(--color-text-primary)', textDecoration: 'none' }}>CONNECT</Link>
           </div>
         </div>
       </nav>
