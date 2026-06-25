@@ -197,7 +197,7 @@ export default function Home() {
       <section className="posh-section" id="blog" style={{ backgroundColor: 'var(--tint-bg)', padding: '6rem 0', minHeight: 'auto', margin: '4rem 0' }}>
         <div className="posh-container">
           <div className="section-header" style={{ marginBottom: '3rem' }}>
-            <h2 className="massive-heading" style={{ color: 'var(--color-text-secondary)', fontSize: '10px' }}>06 // THOUGHTS & WRITING</h2>
+            <h2 className="massive-heading" style={{ color: 'var(--color-text-secondary)', fontSize: '10px' }}>06 // BLOG</h2>
             <div style={{ width: '100%', height: '1px', backgroundColor: 'var(--nav-border)', marginTop: '1rem' }}></div>
           </div>
           
