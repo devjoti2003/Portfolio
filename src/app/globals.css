@@ -393,7 +393,7 @@ body.dark-mode .glow-heading {
   position: relative;
   background: var(--bento-bg);
   border: 1px solid var(--nav-border);
-  border-radius: 24px;
+  border-radius: 48px;
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
@@ -449,7 +449,7 @@ body.dark-mode .skill-tag { background: rgba(0, 0, 0, 0.2); }
   position: relative;
   background: var(--bento-bg);
   border: 1px solid var(--nav-border);
-  border-radius: 24px;
+  border-radius: 48px;
   padding: 2.5rem;
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
@@ -478,7 +478,7 @@ body.dark-mode .project-card {
   position: relative;
   background: var(--bento-bg);
   border: 1px solid var(--nav-border);
-  border-radius: 32px;
+  border-radius: 48px;
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
