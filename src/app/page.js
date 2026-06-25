@@ -48,7 +48,6 @@ export default function Home() {
             <div className="project-card">
               <div className="project-header">
                 <h4>COMPUTATIONAL ANALYSIS OF ALZHEIMER&apos;S</h4>
-                <span className="status-pill">ACTIVE</span>
               </div>
               <p className="ed-meta">Academic Project // Aug 2025 - Present</p>
               <p className="project-desc">
@@ -61,7 +60,6 @@ export default function Home() {
             <div className="project-card">
               <div className="project-header">
                 <h4>NEXT.JS BIOINFORMATICS PORTFOLIO</h4>
-                <span className="status-pill" style={{ borderColor: 'var(--pastel-cyan)', color: 'var(--pastel-cyan)', boxShadow: '0 0 10px rgba(0, 210, 255, 0.2)' }}>SHIPPED</span>
               </div>
               <p className="ed-meta">Full Stack // June 2026</p>
               <p className="project-desc">
