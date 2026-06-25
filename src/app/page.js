@@ -11,208 +11,177 @@ export default function Home() {
     <main className="scroll-container" ref={mainRef}>
       <PageAnimator pageRef={mainRef} />
       {/* HERO */}
-      <section className="posh-section hero" id="hero">
-        <div className="ambient-glow glow-top-left"></div>
-        <div className="ambient-glow glow-bottom-right"></div>
+      <section className="posh-section hero" id="hero" style={{ paddingBottom: '2rem', minHeight: 'auto' }}>
         <div className="posh-container">
-          <div className="hero-layout">
-            <div className="hero-left">
-              <h1 className="hero-title">DEVJOTI<br/>KUNDU.</h1>
+          <div className="hero-layout" style={{ alignItems: 'flex-start', textAlign: 'left', gap: '1rem', marginTop: '4rem' }}>
+            <span style={{ fontSize: '10px', fontWeight: 600, letterSpacing: '0.1em', color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>01 // IDENTITY</span>
+            <h1 className="hero-title">Devjoti<br/>Kundu.</h1>
+            <p className="editorial-desc" style={{ maxWidth: '600px', fontSize: '13px', lineHeight: '1.6', marginBottom: '1.5rem', color: 'var(--color-text-primary)', fontWeight: 400 }}>
+              Computational biologist focused on aspartic protease drug design and KEGG-driven pathway analysis. B.E. Biotechnology &middot; Chandigarh University.
+            </p>
+            <div className="status-indicator" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '11px', color: 'var(--color-text-secondary)', fontWeight: 500 }}>
+              <span className="pulse-dot" style={{ backgroundColor: '#00C853', width: '6px', height: '6px', borderRadius: '50%', display: 'inline-block' }}></span>
+              Active &mdash; BACE1/AD review manuscript in preparation
             </div>
-
-          </div>
-          <div className="scroll-indicator">
-            <div className="mouse"><div className="wheel"></div></div>
-            <p>SCROLL</p>
           </div>
         </div>
       </section>
 
-      {/* WORK (Combined Research & Projects) */}
-      <section className="posh-section" id="work">
+      {/* STATS ROW */}
+      <section className="posh-section" style={{ minHeight: 'auto', padding: '0 0 4rem 0' }}>
         <div className="posh-container">
-          <div className="section-header">
-            <div className="ambient-glow glow-heading"></div>
-            <h2 className="massive-heading">RESEARCH &<br/>PROJECTS</h2>
+          <div className="stats-row">
+            <div className="stat-block">
+              <span className="stat-number">8.11</span>
+              <span className="stat-label">GPA / 10.0</span>
+            </div>
+            <div className="stat-block">
+              <span className="stat-number">4th</span>
+              <span className="stat-label">SEMESTER</span>
+            </div>
+            <div className="stat-block">
+              <span className="stat-number">1</span>
+              <span className="stat-label">MANUSCRIPT IN PREP</span>
+            </div>
+            <div className="stat-block">
+              <span className="stat-number">14+</span>
+              <span className="stat-label">BIOINFORMATICS TOOLS</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WORK / RESEARCH */}
+      <section className="posh-section" id="work" style={{ minHeight: 'auto', padding: '4rem 0' }}>
+        <div className="posh-container">
+          <div className="section-header" style={{ marginBottom: '2rem' }}>
+            <h2 className="massive-heading" style={{ color: 'var(--color-text-secondary)', fontSize: '10px' }}>02 // RESEARCH</h2>
+            <div style={{ width: '100%', height: '1px', backgroundColor: 'var(--nav-border)', marginTop: '1rem' }}></div>
           </div>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            <div className="project-card">
+          <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+            <div className="project-card primary-accent-card" style={{ flex: '1 1 400px' }}>
+              <div style={{ fontSize: '10px', color: 'var(--color-text-secondary)', letterSpacing: '0.1em', marginBottom: '1rem', textTransform: 'uppercase' }}>Manuscript In Prep &middot; 2025 - Present</div>
               <div className="project-header">
-                <h4>COMPUTATIONAL ANALYSIS OF ALZHEIMER&apos;S</h4>
+                <h4 style={{ fontSize: '18px', fontWeight: 500, lineHeight: 1.4 }}>BACE1-Targeted Alzheimer&apos;s Drug Design: Structural Biology & Selectivity</h4>
               </div>
-              <p className="ed-meta">Academic Project // Aug 2025 - Present</p>
-              <p className="project-desc">
-                Investigating potential drug targets for Alzheimer&apos;s disease by analyzing the hsa05010 biological pathway.
-                Utilizing a docking pipeline to target BACE1 (P56817) and running MM-GBSA calculations to study binding affinities. 
-                Tools used: AutoDock Vina, PyMOL, BioPython.
+              <p className="project-desc" style={{ fontSize: '13px', marginTop: '1rem' }}>
+                Structural analysis of Asp32/Asp228 catalytic dyad, &beta;-hairpin flap dynamics, and S1-S4 subsite topology. Selectivity profiling vs BACE2 and Cathepsin-D. Anchored to PDB 2WJO &middot; UniProt P56817.
               </p>
+              <div className="skill-tags" style={{ marginTop: '1.5rem', paddingTop: 0 }}>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.3rem 0.8rem' }}>PyMOL</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.3rem 0.8rem' }}>AutoDock Vina</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.3rem 0.8rem' }}>KEGG hsa05010</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.3rem 0.8rem' }}>PDB 2WJO</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.3rem 0.8rem' }}>UniProt P56817</span>
+              </div>
             </div>
             
-            <div className="project-card">
+            <div className="project-card" style={{ flex: '1 1 400px' }}>
+              <div style={{ fontSize: '10px', color: 'var(--color-text-secondary)', letterSpacing: '0.1em', marginBottom: '1rem', textTransform: 'uppercase' }}>Full Stack &middot; June 2026</div>
               <div className="project-header">
-                <h4>NEXT.JS BIOINFORMATICS PORTFOLIO</h4>
+                <h4 style={{ fontSize: '18px', fontWeight: 500, lineHeight: 1.4 }}>Bioinformatics Portfolio &mdash; Next.js + Three.js</h4>
               </div>
-              <p className="ed-meta">Full Stack // June 2026</p>
-              <p className="project-desc">
-                Designed and developed a highly interactive, physics-driven portfolio using Next.js, GSAP ScrollTrigger, and Three.js WebGL. Implemented a custom Markdown CMS for blogging.
+              <p className="project-desc" style={{ fontSize: '13px', marginTop: '1rem' }}>
+                Physics-driven portfolio with GSAP ScrollTrigger, WebGL, and custom Markdown CMS. Deployed on Vercel.
               </p>
+              <div className="skill-tags" style={{ marginTop: '1.5rem', paddingTop: 0 }}>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.3rem 0.8rem' }}>Next.js</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.3rem 0.8rem' }}>Three.js</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.3rem 0.8rem' }}>GSAP</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.3rem 0.8rem' }}>Vercel</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* EXPERIENCE */}
-      <section className="posh-section" id="experience">
+      <section className="posh-section" id="experience" style={{ backgroundColor: '#F5F5F5', padding: '6rem 0', minHeight: 'auto', margin: '4rem 0' }}>
         <div className="posh-container">
-          <div className="section-header">
-            <div className="ambient-glow glow-heading"></div>
-            <h2 className="massive-heading">EXPERIENCE</h2>
+          <div className="section-header" style={{ marginBottom: '2rem' }}>
+            <h2 className="massive-heading" style={{ color: 'var(--color-text-secondary)', fontSize: '10px' }}>03 // EXPERIENCE</h2>
+            <div style={{ width: '100%', height: '1px', backgroundColor: '#E0E0E0', marginTop: '1rem' }}></div>
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            <div className="project-card">
-              <div className="project-header">
-                <h4 style={{ maxWidth: '100%' }}>BIOINFORMATICS & SYSTEMS BIOLOGY INTERN</h4>
-              </div>
-              <p className="ed-meta">Bose Informatics c/o Binfosol Pvt Ltd, Kolkata</p>
-              <ul className="project-desc" style={{ paddingLeft: '1.2rem', marginTop: '1rem', listStyleType: 'circle' }}>
-                <li style={{ marginBottom: '0.5rem' }}>Utilized <strong>BLAST</strong> and <strong>MSA (MUSCLE/MAFFT)</strong> for sequence alignments.</li>
-                <li style={{ marginBottom: '0.5rem' }}>Constructed phylogenetics models using <strong>IQ-TREE2</strong>.</li>
-                <li style={{ marginBottom: '0.5rem' }}>Conducted functional enrichment analyses.</li>
-                <li style={{ marginBottom: '0.5rem' }}>Analyzed <strong>ESI-MS</strong> mass spectrometry data for biomolecular characterization.</li>
-              </ul>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '13px', color: 'var(--color-text-secondary)', fontWeight: 500 }}>Bose Informatics c/o Binfosol Pvt Ltd &middot; Kolkata</span>
+              <span style={{ fontSize: '11px', color: 'var(--color-text-secondary)', fontFamily: 'monospace' }}>2024</span>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PUBLICATIONS */}
-      <section className="posh-section" id="publications">
-        <div className="posh-container">
-          <div className="section-header">
-            <div className="ambient-glow glow-heading"></div>
-            <h2 className="massive-heading">PUBLICATIONS</h2>
-          </div>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            <div className="project-card">
+            <div className="project-card" style={{ padding: '2.5rem' }}>
               <div className="project-header">
-                <h4 style={{ fontSize: '1.5rem', lineHeight: '1.4', maxWidth: '100%' }}>BACE1-TARGETED ALZHEIMER&apos;S DRUG DESIGN: STRUCTURAL BIOLOGY AND SELECTIVITY CHALLENGES</h4>
+                <h4 style={{ fontSize: '20px', fontWeight: 500 }}>Bioinformatics & Systems Biology Intern</h4>
               </div>
-              <p className="ed-meta">Manuscript in Preparation // 2025–2026</p>
-              <p className="project-desc" style={{ marginTop: '0.5rem' }}>
-                First author manuscript detailing the structural docking pipeline, virtual screening, and MM-GBSA analysis of novel BACE1 inhibitors.
-              </p>
+              <div className="skill-tags" style={{ marginTop: '1.5rem', paddingTop: 0 }}>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>BLAST</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>MSA (MUSCLE)</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>IQ-TREE2</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>MEGA X</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>AutoDock Vina</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>GATK</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>ESI-MS</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>PyMOL</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* SKILLS */}
-      <section className="posh-section" id="skills">
+      <section className="posh-section" id="skills" style={{ minHeight: 'auto', padding: '4rem 0', marginBottom: '6rem' }}>
         <div className="posh-container">
-          <div className="section-header">
-            <div className="ambient-glow glow-heading"></div>
-            <h2 className="massive-heading">SKILLS</h2>
+          <div className="section-header" style={{ marginBottom: '3rem' }}>
+            <h2 className="massive-heading" style={{ color: 'var(--color-text-secondary)', fontSize: '10px' }}>04 // SKILLS</h2>
+            <div style={{ width: '100%', height: '1px', backgroundColor: 'var(--nav-border)', marginTop: '1rem' }}></div>
           </div>
           
-          <div className="bento-grid">
-            {/* Cell 1: Computational Skills (Medium) */}
-            <div className="bento-card bento-medium">
-              <div className="bento-glow"></div>
-              <div className="bento-content">
-                <div className="bento-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                </div>
-                <h3>COMPUTATIONAL<br/>TOOLKIT</h3>
-                <div className="skill-tags">
-                  <span className="skill-tag">Python</span>
-                  <span className="skill-tag">R</span>
-                  <span className="skill-tag">BioPython</span>
-                  <span className="skill-tag">C/C++</span>
-                  <span className="skill-tag">AutoDock Vina</span>
-                  <span className="skill-tag">PyMOL</span>
-                  <span className="skill-tag">MEGA X</span>
-                  <span className="skill-tag">IQ-TREE2</span>
-                  <span className="skill-tag">GATK</span>
-                  <span className="skill-tag">Pandas & NumPy</span>
-                  <span className="skill-tag">LaTeX</span>
-                  <span className="skill-tag">Zotero</span>
-                </div>
-              </div>
+          <div className="bento-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '3rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <h3 style={{ fontSize: '11px', letterSpacing: '0.1em', color: 'var(--color-text-secondary)', textTransform: 'uppercase', fontWeight: 600 }}>COMPUTATIONAL</h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '13px', color: 'var(--color-text-primary)' }}>
+                <li>&bull; Python &middot; BioPython</li>
+                <li>&bull; AutoDock Vina</li>
+                <li>&bull; PyMOL &middot; UCSF Chimera</li>
+                <li>&bull; MEGA X &middot; IQ-TREE2</li>
+                <li>&bull; GATK &middot; BWA</li>
+              </ul>
             </div>
-
-            {/* Cell 2: Lab Skills (Medium) */}
-            <div className="bento-card bento-medium">
-              <div className="bento-glow"></div>
-              <div className="bento-content">
-                <div className="bento-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 2v7.31"></path><path d="M14 9.3V1.99"></path><path d="M8.5 2h7"></path><path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path><path d="M5.52 16h12.96"></path></svg>
-                </div>
-                <h3>LABORATORY<br/>SKILLS</h3>
-                <div className="skill-tags">
-                  <span className="skill-tag">Microscopy</span>
-                  <span className="skill-tag">PCR</span>
-                  <span className="skill-tag">Gel Electrophoresis</span>
-                  <span className="skill-tag">Cell Culture</span>
-                  <span className="skill-tag">Spectroscopy</span>
-                  <span className="skill-tag">ELISA</span>
-                </div>
-              </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <h3 style={{ fontSize: '11px', letterSpacing: '0.1em', color: 'var(--color-text-secondary)', textTransform: 'uppercase', fontWeight: 600 }}>DATABASES & ANALYSIS</h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '13px', color: 'var(--color-text-primary)' }}>
+                <li>&bull; KEGG &middot; UniProt &middot; PDB</li>
+                <li>&bull; BLAST &middot; MUSCLE &middot; MAFFT</li>
+                <li>&bull; Pandas &middot; NumPy &middot; Matplotlib</li>
+                <li>&bull; LaTeX &middot; Zotero</li>
+                <li>&bull; C / C++</li>
+              </ul>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ACADEMICS */}
-      <section className="posh-section" id="academics">
-        <div className="posh-container">
-          <div className="section-header">
-            <div className="ambient-glow glow-heading"></div>
-            <h2 className="massive-heading">ACADEMICS</h2>
-          </div>
-          
-          <div className="bento-grid">
-            {/* Cell 1: University (Large) */}
-            <div className="bento-card bento-large">
-              <div className="bento-glow"></div>
-              <div className="bento-content">
-                <span className="ed-date">2024 - 2028</span>
-                <h3>BACHELOR OF ENGINEERING,<br/>BIOTECHNOLOGY</h3>
-                <p className="bento-meta">CHANDIGARH UNIVERSITY</p>
-                <div className="bento-gpa">
-                  <span className="gpa-number">8.11</span>
-                  <span className="gpa-text">/ 10.0 GPA</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Cell 2: High School (Medium) */}
-            <div className="bento-card bento-medium">
-              <div className="bento-glow"></div>
-              <div className="bento-content">
-                <span className="ed-date">2022</span>
-                <h3>HIGHER SECONDARY<br/>(CBSE XII)</h3>
-                <p className="bento-meta">SHIV JYOTI INT. SCHOOL</p>
-                <p className="ed-highlight" style={{marginTop: 'auto'}}>92.2% SCORE</p>
-              </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <h3 style={{ fontSize: '11px', letterSpacing: '0.1em', color: 'var(--color-text-secondary)', textTransform: 'uppercase', fontWeight: 600 }}>LABORATORY</h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem', fontSize: '13px', color: 'var(--color-text-primary)' }}>
+                <li>&bull; PCR &middot; Gel Electrophoresis</li>
+                <li>&bull; ELISA &middot; Spectroscopy</li>
+                <li>&bull; Cell Culture</li>
+                <li>&bull; ESI-MS</li>
+                <li>&bull; Microscopy</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <section className="posh-section footer" id="contact">
-        <div className="posh-container text-center">
-          <h2 className="massive-cta">LET&apos;S CONNECT</h2>
-          <div className="thin-line centered-line"></div>
-          <div className="contact-links">
-            <a href="mailto:devjoti.kundu2003@gmail.com" className="posh-btn">EMAIL ME</a>
-            <a href="https://linkedin.com/in/devjotikundu" target="_blank" rel="noopener noreferrer" className="posh-btn">LINKEDIN</a>
-            <a href="https://github.com/devjoti2003" target="_blank" rel="noopener noreferrer" className="posh-btn">GITHUB</a>
+      <section className="posh-section footer" id="contact" style={{ minHeight: 'auto', padding: '3rem 0', borderTop: '1px solid var(--nav-border)' }}>
+        <div className="posh-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '13px', color: 'var(--color-text-primary)', fontWeight: 500 }}>
+          <div style={{ display: 'flex', gap: '2rem' }}>
+            <a href="mailto:devjoti.kundu2003@gmail.com" style={{ textDecoration: 'none', color: 'inherit' }}>Email</a>
+            <a href="https://linkedin.com/in/devjotikundu" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>LinkedIn</a>
+            <a href="https://github.com/devjoti2003" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>GitHub</a>
           </div>
-          <p className="mono-sub mt-4">KOLKATA, INDIA</p>
+          <div style={{ color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px' }}>
+            CHANDIGARH UNIVERSITY &middot; 2024&ndash;2028
+          </div>
         </div>
       </section>
 
