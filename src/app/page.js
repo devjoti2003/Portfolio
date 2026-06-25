@@ -97,11 +97,11 @@ export default function Home() {
       </section>
 
       {/* EXPERIENCE */}
-      <section className="posh-section" id="experience" style={{ backgroundColor: '#F5F5F5', padding: '6rem 0', minHeight: 'auto', margin: '4rem 0' }}>
+      <section className="posh-section" id="experience" style={{ backgroundColor: 'var(--tint-bg)', padding: '6rem 0', minHeight: 'auto', margin: '4rem 0' }}>
         <div className="posh-container">
           <div className="section-header" style={{ marginBottom: '2rem' }}>
             <h2 className="massive-heading" style={{ color: 'var(--color-text-secondary)', fontSize: '10px' }}>03 // EXPERIENCE</h2>
-            <div style={{ width: '100%', height: '1px', backgroundColor: '#E0E0E0', marginTop: '1rem' }}></div>
+            <div style={{ width: '100%', height: '1px', backgroundColor: 'var(--nav-border)', marginTop: '1rem' }}></div>
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -114,14 +114,14 @@ export default function Home() {
                 <h4 style={{ fontSize: '20px', fontWeight: 500 }}>Bioinformatics & Systems Biology Intern</h4>
               </div>
               <div className="skill-tags" style={{ marginTop: '1.5rem', paddingTop: 0 }}>
-                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>BLAST</span>
-                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>MSA (MUSCLE)</span>
-                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>IQ-TREE2</span>
-                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>MEGA X</span>
-                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>AutoDock Vina</span>
-                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>GATK</span>
-                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>ESI-MS</span>
-                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: '#FFFFFF' }}>PyMOL</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: 'var(--bento-bg)' }}>BLAST</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: 'var(--bento-bg)' }}>MSA (MUSCLE)</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: 'var(--bento-bg)' }}>IQ-TREE2</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: 'var(--bento-bg)' }}>MEGA X</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: 'var(--bento-bg)' }}>AutoDock Vina</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: 'var(--bento-bg)' }}>GATK</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: 'var(--bento-bg)' }}>ESI-MS</span>
+                <span className="skill-tag" style={{ fontSize: '10px', padding: '0.4rem 1rem', backgroundColor: 'var(--bento-bg)' }}>PyMOL</span>
               </div>
             </div>
           </div>

@@ -109,7 +109,7 @@ export default function WebGLBackground() {
     const customUniforms = { uTime: { value: 0 } };
 
     const material = new THREE.PointsMaterial({
-      size: 0.16, vertexColors: true, blending: THREE.AdditiveBlending, transparent: true, opacity: 0.8, sizeAttenuation: true,
+      size: 0.16, vertexColors: true, blending: isDarkMode ? THREE.AdditiveBlending : THREE.NormalBlending, transparent: true, opacity: 0.8, sizeAttenuation: true,
       map: circleTexture, alphaTest: 0.1
     });
 
@@ -176,7 +176,7 @@ export default function WebGLBackground() {
     const lineGeometry = new THREE.BufferGeometry();
     lineGeometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
     lineGeometry.setAttribute('color', new THREE.Float32BufferAttribute(lineColors, 3));
-    const lineMaterial = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.25, blending: THREE.AdditiveBlending });
+    const lineMaterial = new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.25, blending: isDarkMode ? THREE.AdditiveBlending : THREE.NormalBlending });
     lineMaterial.onBeforeCompile = material.onBeforeCompile;
     const dnaBonds = new THREE.LineSegments(lineGeometry, lineMaterial);
     dnaGroup.add(dnaBonds);
@@ -220,12 +220,16 @@ export default function WebGLBackground() {
     };
     window.addEventListener('resize', onWindowResize);
 
-    // Custom event listener for theme toggle to update fog
-    const updateFog = () => {
+    // Custom event listener for theme toggle to update fog and blending
+    const updateTheme = () => {
       const isDark = document.body.classList.contains('dark-mode');
       scene.fog.color.setHex(isDark ? 0x0d0f14 : 0xf7f5ef);
+      material.blending = isDark ? THREE.AdditiveBlending : THREE.NormalBlending;
+      lineMaterial.blending = isDark ? THREE.AdditiveBlending : THREE.NormalBlending;
+      material.needsUpdate = true;
+      lineMaterial.needsUpdate = true;
     };
-    window.addEventListener('theme-changed', updateFog);
+    window.addEventListener('theme-changed', updateTheme);
 
     const clock = new THREE.Clock();
     let animationFrameId;
@@ -272,7 +276,7 @@ export default function WebGLBackground() {
       window.removeEventListener('resize', onWindowResize);
       document.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('theme-changed', updateFog);
+      window.removeEventListener('theme-changed', updateTheme);
       cancelAnimationFrame(animationFrameId);
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);

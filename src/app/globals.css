@@ -6,6 +6,7 @@
   --nav-border: rgba(0,0,0,0.05);
   
   --bento-bg: #FFFFFF;
+  --tint-bg: #F5F5F5;
   
   --glass-text: #111111;
   --glass-blend: normal;
@@ -20,17 +21,19 @@
 }
 
 body.dark-mode {
-  --color-bg: #FAFAFA;
-  --color-text-primary: #111111;
-  --color-text-secondary: #555555;
-  --nav-bg: rgba(250, 250, 250, 0.95);
-  --nav-border: rgba(0,0,0,0.05);
-  --bento-bg: #FFFFFF;
-  --glass-text: #111111;
+  --color-bg: #0D0F14;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #8B9BB4;
+  --nav-bg: rgba(13, 15, 20, 0.95);
+  --nav-border: rgba(255, 255, 255, 0.1);
+  --bento-bg: rgba(255, 255, 255, 0.03);
+  --tint-bg: rgba(255, 255, 255, 0.02);
+  --glass-text: #FFFFFF;
   --glass-blend: normal;
   --glass-stroke-width: 0px;
   --glass-stroke-color: transparent;
   --glass-shadow: none;
+  --accent-purple: #9d94ff;
 }
 
 * {
