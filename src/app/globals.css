@@ -339,9 +339,9 @@ body.dark-mode .glow-heading {
 .section-header, .posh-left { position: relative; z-index: 2; }
 .hero-layout { display: flex; flex-direction: column; gap: 4rem; position: relative; z-index: 2; width: 100%; }
 @media (min-width: 1024px) {
-  .hero-layout { flex-direction: row; align-items: flex-start; justify-content: space-between; }
-  .hero-left { flex: 1.2; }
-  .hero-right { flex: 0.8; padding-top: 2rem; }
+  .hero-layout { flex-direction: row; align-items: center; justify-content: space-between; gap: 6rem; }
+  .hero-left { flex: 1.1; }
+  .hero-right { flex: 0.9; padding-top: 0; }
 }
 
 .hero-id-card {
