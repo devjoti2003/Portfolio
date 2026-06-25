@@ -128,11 +128,33 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PUBLICATIONS */}
+      <section className="posh-section" id="publications" style={{ minHeight: 'auto', padding: '4rem 0', marginBottom: '2rem' }}>
+        <div className="posh-container">
+          <div className="section-header" style={{ marginBottom: '2rem' }}>
+            <h2 className="massive-heading" style={{ color: 'var(--color-text-secondary)', fontSize: '10px' }}>04 // PUBLICATIONS / MANUSCRIPTS</h2>
+            <div style={{ width: '100%', height: '1px', backgroundColor: 'var(--nav-border)', marginTop: '1rem' }}></div>
+          </div>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.5rem' }}>
+              <span style={{ fontSize: '13px', color: 'var(--color-text-secondary)', fontWeight: 500 }}>Manuscript in Preparation</span>
+              <span style={{ fontSize: '11px', color: 'var(--color-text-secondary)', fontFamily: 'monospace' }}>2025&ndash;2026</span>
+            </div>
+            <div className="project-card" style={{ padding: '2.5rem' }}>
+              <div className="project-header">
+                <h4 style={{ fontSize: '20px', fontWeight: 500, lineHeight: 1.4 }}>BACE1-targeted Alzheimer's Drug Design: Structural Biology and Selectivity Challenges</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* SKILLS */}
       <section className="posh-section" id="skills" style={{ minHeight: 'auto', padding: '4rem 0', marginBottom: '6rem' }}>
         <div className="posh-container">
           <div className="section-header" style={{ marginBottom: '3rem' }}>
-            <h2 className="massive-heading" style={{ color: 'var(--color-text-secondary)', fontSize: '10px' }}>04 // SKILLS</h2>
+            <h2 className="massive-heading" style={{ color: 'var(--color-text-secondary)', fontSize: '10px' }}>05 // SKILLS</h2>
             <div style={{ width: '100%', height: '1px', backgroundColor: 'var(--nav-border)', marginTop: '1rem' }}></div>
           </div>
           
