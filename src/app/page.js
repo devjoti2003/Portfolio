@@ -17,7 +17,9 @@ export default function Home() {
         <div className="posh-container">
           <div className="hero-layout">
             <div className="hero-left">
-              <h1 className="hero-title">DEVJOTI<br/>KUNDU.</h1>
+              <div className="bento-card" style={{ padding: '3rem 4rem', borderRadius: '16px', display: 'inline-block' }}>
+                <h1 className="hero-title" style={{ margin: 0 }}>DEVJOTI<br/>KUNDU.</h1>
+              </div>
             </div>
             
             <div className="hero-right">
