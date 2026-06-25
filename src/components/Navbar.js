@@ -117,7 +117,8 @@ export default function Navbar() {
             </div>
             <div className="nav-links hidden-links">
               <Link href="/#hero">IDENTITY</Link>
-              <Link href="/#academics">ACADEMICS & SKILLS</Link>
+              <Link href="/#academics">ACADEMICS</Link>
+              <Link href="/#skills">SKILLS</Link>
               <Link href="/#projects">RESEARCH</Link>
               <Link href="/#coding-projects">PROJECTS</Link>
               <Link href="/blog">BLOG</Link>
@@ -141,9 +142,10 @@ export default function Navbar() {
         <aside className="vertical-nav">
           <Link href="#hero" className="nav-dot" data-target="hero"><span className="nav-label">01 // Identity</span></Link>
           <Link href="#academics" className="nav-dot" data-target="academics"><span className="nav-label">02 // Academics</span></Link>
-          <Link href="#projects" className="nav-dot" data-target="projects"><span className="nav-label">03 // Research</span></Link>
-          <Link href="#coding-projects" className="nav-dot" data-target="coding-projects"><span className="nav-label">04 // Projects</span></Link>
-          <Link href="/blog" className="nav-dot" data-target="blog"><span className="nav-label">05 // Blog</span></Link>
+          <Link href="#skills" className="nav-dot" data-target="skills"><span className="nav-label">03 // Skills</span></Link>
+          <Link href="#projects" className="nav-dot" data-target="projects"><span className="nav-label">04 // Research</span></Link>
+          <Link href="#coding-projects" className="nav-dot" data-target="coding-projects"><span className="nav-label">05 // Projects</span></Link>
+          <Link href="/blog" className="nav-dot" data-target="blog"><span className="nav-label">06 // Blog</span></Link>
         </aside>
       )}
     </>

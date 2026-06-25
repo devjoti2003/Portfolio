@@ -44,77 +44,97 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ACADEMICS & TOOLKIT BENTO GRID */}
+      {/* ACADEMICS */}
       <section className="posh-section" id="academics">
         <div className="posh-container">
           <div className="posh-row">
             <div className="posh-left">
               <div className="ambient-glow glow-heading"></div>
-              <p className="mono-sub">02 // ACADEMICS & TOOLKIT</p>
-              <h2 className="massive-heading">KNOWLEDGE<br/>ARCHITECTURE</h2>
+              <p className="mono-sub">02 // ACADEMICS</p>
+              <h2 className="massive-heading">ACADEMICS</h2>
             </div>
             
             <div className="posh-right">
               <div className="bento-grid">
-            {/* Cell 1: University (Large) */}
-            <div className="bento-card bento-large">
-              <div className="bento-glow"></div>
-              <div className="bento-content">
-                <span className="ed-date">2024 - 2028</span>
-                <h3>BACHELOR OF ENGINEERING,<br/>BIOTECHNOLOGY</h3>
-                <p className="bento-meta">CHANDIGARH UNIVERSITY</p>
-                <div className="bento-gpa">
-                  <span className="gpa-number">8.11</span>
-                  <span className="gpa-text">/ 10.0 GPA</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Cell 2: Computational Skills (Medium) */}
-            <div className="bento-card bento-medium">
-              <div className="bento-glow"></div>
-              <div className="bento-content">
-                <div className="bento-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                </div>
-                <h3>COMPUTATIONAL<br/>TOOLKIT</h3>
-                <div className="skill-tags">
-                  <span className="skill-tag">Python</span>
-                  <span className="skill-tag">C/C++</span>
-                  <span className="skill-tag">Pandas</span>
-                  <span className="skill-tag">NumPy</span>
-                  <span className="skill-tag">Matplotlib</span>
-                  <span className="skill-tag">KEGG</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Cell 3: Lab Skills (Wide) */}
-            <div className="bento-card bento-wide">
-              <div className="bento-glow"></div>
-              <div className="bento-content split-content">
-                <div className="split-left">
-                  <div className="bento-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 2v7.31"></path><path d="M14 9.3V1.99"></path><path d="M8.5 2h7"></path><path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path><path d="M5.52 16h12.96"></path></svg>
-                  </div>
-                  <h3>LABORATORY<br/>SKILLS</h3>
-                  <div className="skill-tags">
-                    <span className="skill-tag">Microscopy</span>
-                    <span className="skill-tag">PCR</span>
-                    <span className="skill-tag">Gel Electrophoresis</span>
-                    <span className="skill-tag">Cell Culture</span>
-                    <span className="skill-tag">Spectroscopy</span>
-                    <span className="skill-tag">ELISA</span>
+                {/* Cell 1: University (Large) */}
+                <div className="bento-card bento-large">
+                  <div className="bento-glow"></div>
+                  <div className="bento-content">
+                    <span className="ed-date">2024 - 2028</span>
+                    <h3>BACHELOR OF ENGINEERING,<br/>BIOTECHNOLOGY</h3>
+                    <p className="bento-meta">CHANDIGARH UNIVERSITY</p>
+                    <div className="bento-gpa">
+                      <span className="gpa-number">8.11</span>
+                      <span className="gpa-text">/ 10.0 GPA</span>
+                    </div>
                   </div>
                 </div>
-                <div className="split-right">
-                  <span className="ed-date">2022</span>
-                  <h3>HIGHER SECONDARY (CBSE XII)</h3>
-                  <p className="bento-meta">SHIV JYOTI INT. SCHOOL</p>
-                  <p className="ed-highlight">92.2% SCORE</p>
+
+                {/* Cell 2: High School (Medium) */}
+                <div className="bento-card bento-medium">
+                  <div className="bento-glow"></div>
+                  <div className="bento-content">
+                    <span className="ed-date">2022</span>
+                    <h3>HIGHER SECONDARY<br/>(CBSE XII)</h3>
+                    <p className="bento-meta">SHIV JYOTI INT. SCHOOL</p>
+                    <p className="ed-highlight" style={{marginTop: 'auto'}}>92.2% SCORE</p>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SKILLS */}
+      <section className="posh-section" id="skills">
+        <div className="posh-container">
+          <div className="posh-row">
+            <div className="posh-left">
+              <div className="ambient-glow glow-heading"></div>
+              <p className="mono-sub">03 // SKILLS</p>
+              <h2 className="massive-heading">SKILLS</h2>
+            </div>
+            
+            <div className="posh-right">
+              <div className="bento-grid">
+                {/* Cell 1: Computational Skills (Medium) */}
+                <div className="bento-card bento-medium">
+                  <div className="bento-glow"></div>
+                  <div className="bento-content">
+                    <div className="bento-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    </div>
+                    <h3>COMPUTATIONAL<br/>TOOLKIT</h3>
+                    <div className="skill-tags">
+                      <span className="skill-tag">Python</span>
+                      <span className="skill-tag">C/C++</span>
+                      <span className="skill-tag">Pandas</span>
+                      <span className="skill-tag">NumPy</span>
+                      <span className="skill-tag">Matplotlib</span>
+                      <span className="skill-tag">KEGG</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Cell 2: Lab Skills (Medium) */}
+                <div className="bento-card bento-medium">
+                  <div className="bento-glow"></div>
+                  <div className="bento-content">
+                    <div className="bento-icon">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 2v7.31"></path><path d="M14 9.3V1.99"></path><path d="M8.5 2h7"></path><path d="M14 9.3a6.5 6.5 0 1 1-4 0"></path><path d="M5.52 16h12.96"></path></svg>
+                    </div>
+                    <h3>LABORATORY<br/>SKILLS</h3>
+                    <div className="skill-tags">
+                      <span className="skill-tag">Microscopy</span>
+                      <span className="skill-tag">PCR</span>
+                      <span className="skill-tag">Gel Electrophoresis</span>
+                      <span className="skill-tag">Cell Culture</span>
+                      <span className="skill-tag">Spectroscopy</span>
+                      <span className="skill-tag">ELISA</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -127,8 +147,8 @@ export default function Home() {
           <div className="posh-row">
             <div className="posh-left">
               <div className="ambient-glow glow-heading"></div>
-              <p className="mono-sub">03 // RESEARCH</p>
-              <h2 className="massive-heading">ONGOING<br/>PROJECTS</h2>
+              <p className="mono-sub">04 // RESEARCH</p>
+              <h2 className="massive-heading">RESEARCH</h2>
             </div>
             <div className="posh-right">
               <div className="project-card">
@@ -154,8 +174,8 @@ export default function Home() {
           <div className="posh-row">
             <div className="posh-left">
               <div className="ambient-glow glow-heading"></div>
-              <p className="mono-sub">04 // DEVELOPMENT</p>
-              <h2 className="massive-heading">CODING<br/>PROJECTS</h2>
+              <p className="mono-sub">05 // PROJECTS</p>
+              <h2 className="massive-heading">PROJECTS</h2>
             </div>
             <div className="posh-right">
               <div className="project-card">
@@ -179,8 +199,8 @@ export default function Home() {
           <div className="posh-row">
             <div className="posh-left">
               <div className="ambient-glow glow-heading"></div>
-              <p className="mono-sub">05 // WRITINGS</p>
-              <h2 className="massive-heading">INSIGHTS &<br/>BLOG</h2>
+              <p className="mono-sub">06 // BLOG</p>
+              <h2 className="massive-heading">BLOG</h2>
             </div>
             
             <div className="posh-right">
