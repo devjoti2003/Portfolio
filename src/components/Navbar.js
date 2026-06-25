@@ -42,7 +42,7 @@ export default function Navbar() {
           });
         }
       });
-    }, { root: null, rootMargin: '0px', threshold: 0.5 });
+    }, { root: null, rootMargin: '-20% 0px -40% 0px', threshold: 0.05 });
 
     setTimeout(() => {
       const sections = document.querySelectorAll('.posh-section');
