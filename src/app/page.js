@@ -17,7 +17,6 @@ export default function Home() {
         <div className="posh-container">
           <div className="hero-layout">
             <div className="hero-left">
-              <p className="mono-sub">01 // IDENTITY</p>
               <h1 className="hero-title">DEVJOTI<br/>KUNDU.</h1>
             </div>
             
@@ -42,7 +41,6 @@ export default function Home() {
         <div className="posh-container">
           <div className="section-header">
             <div className="ambient-glow glow-heading"></div>
-            <p className="mono-sub">02 // WORK</p>
             <h2 className="massive-heading">RESEARCH &<br/>PROJECTS</h2>
           </div>
           
@@ -79,7 +77,6 @@ export default function Home() {
         <div className="posh-container">
           <div className="section-header">
             <div className="ambient-glow glow-heading"></div>
-            <p className="mono-sub">03 // SKILLS</p>
             <h2 className="massive-heading">SKILLS</h2>
           </div>
           
@@ -130,7 +127,6 @@ export default function Home() {
         <div className="posh-container">
           <div className="section-header">
             <div className="ambient-glow glow-heading"></div>
-            <p className="mono-sub">04 // ACADEMICS</p>
             <h2 className="massive-heading">ACADEMICS</h2>
           </div>
           
@@ -168,7 +164,6 @@ export default function Home() {
         <div className="posh-container">
           <div className="section-header">
             <div className="ambient-glow glow-heading"></div>
-            <p className="mono-sub">05 // BLOG</p>
             <h2 className="massive-heading">BLOG</h2>
           </div>
           
