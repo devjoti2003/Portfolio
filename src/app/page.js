@@ -43,9 +43,9 @@ export default function Home() {
               </div>
               <p className="ed-meta">Academic Project // Aug 2025 - Present</p>
               <p className="project-desc">
-                Investigating potential drug targets for Alzheimer&apos;s disease by analyzing biological pathways.
-                Utilizing KEGG pathway maps to identify and study signaling cascades related to AD progression. 
-                Applying Python, Pandas, and NumPy for data processing and analysis of pathway components.
+                Investigating potential drug targets for Alzheimer&apos;s disease by analyzing the hsa05010 biological pathway.
+                Utilizing a docking pipeline to target BACE1 (P56817) and running MM-GBSA calculations to study binding affinities. 
+                Tools used: AutoDock Vina, PyMOL, BioPython.
               </p>
             </div>
             
@@ -56,6 +56,53 @@ export default function Home() {
               <p className="ed-meta">Full Stack // June 2026</p>
               <p className="project-desc">
                 Designed and developed a highly interactive, physics-driven portfolio using Next.js, GSAP ScrollTrigger, and Three.js WebGL. Implemented a custom Markdown CMS for blogging.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* EXPERIENCE */}
+      <section className="posh-section" id="experience">
+        <div className="posh-container">
+          <div className="section-header">
+            <div className="ambient-glow glow-heading"></div>
+            <h2 className="massive-heading">EXPERIENCE</h2>
+          </div>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <div className="project-card">
+              <div className="project-header">
+                <h4 style={{ maxWidth: '100%' }}>BIOINFORMATICS & SYSTEMS BIOLOGY INTERN</h4>
+              </div>
+              <p className="ed-meta">Bose Informatics c/o Binfosol Pvt Ltd, Kolkata</p>
+              <ul className="project-desc" style={{ paddingLeft: '1.2rem', marginTop: '1rem', listStyleType: 'circle' }}>
+                <li style={{ marginBottom: '0.5rem' }}>Utilized <strong>BLAST</strong> and <strong>MSA (MUSCLE/MAFFT)</strong> for sequence alignments.</li>
+                <li style={{ marginBottom: '0.5rem' }}>Constructed phylogenetics models using <strong>IQ-TREE2</strong>.</li>
+                <li style={{ marginBottom: '0.5rem' }}>Conducted functional enrichment analyses.</li>
+                <li style={{ marginBottom: '0.5rem' }}>Analyzed <strong>ESI-MS</strong> mass spectrometry data for biomolecular characterization.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PUBLICATIONS */}
+      <section className="posh-section" id="publications">
+        <div className="posh-container">
+          <div className="section-header">
+            <div className="ambient-glow glow-heading"></div>
+            <h2 className="massive-heading">PUBLICATIONS</h2>
+          </div>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <div className="project-card">
+              <div className="project-header">
+                <h4 style={{ fontSize: '1.5rem', lineHeight: '1.4', maxWidth: '100%' }}>BACE1-TARGETED ALZHEIMER&apos;S DRUG DESIGN: STRUCTURAL BIOLOGY AND SELECTIVITY CHALLENGES</h4>
+              </div>
+              <p className="ed-meta">Manuscript in Preparation // 2025–2026</p>
+              <p className="project-desc" style={{ marginTop: '0.5rem' }}>
+                First author manuscript detailing the structural docking pipeline, virtual screening, and MM-GBSA analysis of novel BACE1 inhibitors.
               </p>
             </div>
           </div>
@@ -81,11 +128,17 @@ export default function Home() {
                 <h3>COMPUTATIONAL<br/>TOOLKIT</h3>
                 <div className="skill-tags">
                   <span className="skill-tag">Python</span>
+                  <span className="skill-tag">R</span>
+                  <span className="skill-tag">BioPython</span>
                   <span className="skill-tag">C/C++</span>
-                  <span className="skill-tag">Pandas</span>
-                  <span className="skill-tag">NumPy</span>
-                  <span className="skill-tag">Matplotlib</span>
-                  <span className="skill-tag">KEGG</span>
+                  <span className="skill-tag">AutoDock Vina</span>
+                  <span className="skill-tag">PyMOL</span>
+                  <span className="skill-tag">MEGA X</span>
+                  <span className="skill-tag">IQ-TREE2</span>
+                  <span className="skill-tag">GATK</span>
+                  <span className="skill-tag">Pandas & NumPy</span>
+                  <span className="skill-tag">LaTeX</span>
+                  <span className="skill-tag">Zotero</span>
                 </div>
               </div>
             </div>
@@ -149,56 +202,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* BLOG */}
-      <section className="posh-section" id="blog">
-        <div className="posh-container">
-          <div className="section-header">
-            <div className="ambient-glow glow-heading"></div>
-            <h2 className="massive-heading">BLOG</h2>
-          </div>
-          
-          <div className="blog-grid full-grid">
-            <Link href="/blog" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-              <article className="blog-tile" style={{ height: '100%' }}>
-                <div className="blog-glow"></div>
-                <div className="blog-content">
-                  <span className="blog-date">COMING SOON</span>
-                  <h3>THE INTERSECTION OF DATA AND BIOLOGY</h3>
-                  <p className="blog-excerpt">Thoughts on modern computational pipelines in biotech.</p>
-                  <div className="blog-footer">
-                    <span className="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-                  </div>
-                </div>
-              </article>
-            </Link>
-
-            <Link href="/blog" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-              <article className="blog-tile" style={{ height: '100%' }}>
-                <div className="blog-glow"></div>
-                <div className="blog-content">
-                  <span className="blog-date">COMING SOON</span>
-                  <h3>UNDERSTANDING KEGG PATHWAYS</h3>
-                  <p className="blog-excerpt">A beginner&apos;s guide to pathway analysis for neurodegenerative diseases.</p>
-                  <div className="blog-footer">
-                    <span className="read-more">Read Article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-                  </div>
-                </div>
-              </article>
-            </Link>
-            
-            <Link href="/blog" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-              <article className="blog-tile empty-tile" style={{ height: '100%' }}>
-                <div className="blog-content">
-                  <span className="blog-date">FUTURE</span>
-                  <h3>MORE ARTICLES ON THE HORIZON</h3>
-                  <p className="blog-excerpt">Stay tuned for deep dives into genomics, AI, and protein folding.</p>
-                </div>
-              </article>
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* FOOTER */}
       <section className="posh-section footer" id="contact">
         <div className="posh-container text-center">
@@ -206,9 +209,10 @@ export default function Home() {
           <div className="thin-line centered-line"></div>
           <div className="contact-links">
             <a href="mailto:devjoti.kundu2003@gmail.com" className="posh-btn">EMAIL ME</a>
-            <a href="https://linkedin.com/in/devjotikundu" target="_blank" className="posh-btn">LINKEDIN</a>
+            <a href="https://linkedin.com/in/devjotikundu" target="_blank" rel="noopener noreferrer" className="posh-btn">LINKEDIN</a>
+            <a href="https://github.com/devjoti2003" target="_blank" rel="noopener noreferrer" className="posh-btn">GITHUB</a>
           </div>
-          <p className="mono-sub mt-4">+91 96098 78969 // KOLKATA, INDIA</p>
+          <p className="mono-sub mt-4">KOLKATA, INDIA</p>
         </div>
       </section>
 

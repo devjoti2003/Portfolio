@@ -118,14 +118,18 @@ export default function Navbar() {
             <div className="nav-links hidden-links">
               <Link href="/#hero">IDENTITY</Link>
               <Link href="/#work">WORK</Link>
+              <Link href="/#experience">EXPERIENCE</Link>
+              <Link href="/#publications">PUBLICATIONS</Link>
               <Link href="/#skills">SKILLS</Link>
               <Link href="/#academics">ACADEMICS</Link>
-              <Link href="/blog">BLOG</Link>
               <Link href="/#contact" className="nav-cta">CONNECT</Link>
             </div>
           </div>
 
-          <div className="nav-right">
+          <div className="nav-right" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <a href="https://github.com/devjoti2003" target="_blank" rel="noopener noreferrer" className="theme-toggle" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
             <button id="theme-toggle" className="theme-toggle" onClick={toggleTheme}>
               {isDarkMode ? (
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
@@ -141,9 +145,10 @@ export default function Navbar() {
         <aside className="vertical-nav">
           <Link href="#hero" className="nav-dot" data-target="hero"><span className="nav-label">01 // Identity</span></Link>
           <Link href="#work" className="nav-dot" data-target="work"><span className="nav-label">02 // Work</span></Link>
-          <Link href="#skills" className="nav-dot" data-target="skills"><span className="nav-label">03 // Skills</span></Link>
-          <Link href="#academics" className="nav-dot" data-target="academics"><span className="nav-label">04 // Academics</span></Link>
-          <Link href="/blog" className="nav-dot" data-target="blog"><span className="nav-label">05 // Blog</span></Link>
+          <Link href="#experience" className="nav-dot" data-target="experience"><span className="nav-label">03 // Experience</span></Link>
+          <Link href="#publications" className="nav-dot" data-target="publications"><span className="nav-label">04 // Publications</span></Link>
+          <Link href="#skills" className="nav-dot" data-target="skills"><span className="nav-label">05 // Skills</span></Link>
+          <Link href="#academics" className="nav-dot" data-target="academics"><span className="nav-label">06 // Academics</span></Link>
         </aside>
       )}
     </>
