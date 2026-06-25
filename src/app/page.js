@@ -22,18 +22,11 @@ export default function Home() {
             </div>
             
             <div className="hero-right">
-              <div className="bento-card hero-id-card">
-                <div className="id-header">
-                  <span className="status-indicator"><span className="pulse-dot"></span> SYSTEM ONLINE</span>
-                </div>
-                <div className="thin-line"></div>
-                <p className="editorial-desc">
-                  Bridging the gap between computational logic and biological complexity. Eager to solve neurodegenerative mysteries using data structures.
+              <div className="bento-card" style={{ padding: '2rem', borderRadius: '16px', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <span className="status-indicator"><span className="pulse-dot"></span> SYSTEM ONLINE</span>
+                <p style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: '1.6', fontSize: '1.1rem' }}>
+                  Bridging the gap between computational logic and biological complexity.
                 </p>
-                <div className="id-footer">
-                  <span className="mono-sub" style={{marginBottom: 0, fontSize: '0.75rem'}}>LOCATION // CHANDIGARH, IN</span>
-                  <span className="mono-sub" style={{marginBottom: 0, fontSize: '0.75rem'}}>STATUS // COMPILING DNA</span>
-                </div>
               </div>
             </div>
           </div>
