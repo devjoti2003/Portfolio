@@ -24,7 +24,6 @@ export default function BlogClient({ posts }) {
         <div className="posh-container">
           <div className="section-header reveal-up is-visible">
             <h1 className="massive-heading">ARCHIVE</h1>
-            <p className="lead-paragraph">Explore thoughts on data, biology, and computational systems.</p>
           </div>
 
           <div className="filter-bar reveal-up is-visible delay-1">
