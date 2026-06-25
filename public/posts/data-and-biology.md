@@ -15,8 +15,8 @@ A single human genome is approximately 3.2 billion base pairs. Sequencing a coho
 ### Key Technologies
 - **Pandas and Polars**: For fast manipulation of tabular clinical data.
 - **Biopython**: For sequence analysis.
-- **PyTorch**: For predicting molecular properties and modeling cellular behavior.
+- **PyTorch / TensorFlow**: For predicting molecular properties, modeling cellular behavior, and accelerating structure-based drug design (e.g., AlphaFold's protein structure prediction by Jumper et al., 2021, *Nature*).
 
-> The next blockbuster drug won't be discovered in a petri dish. It will be computed on a GPU.
+> "The next blockbuster drug won't be discovered in a petri dish. It will be computed on a GPU." — Anonymous
 
 As a biotechnology undergraduate, I am focused on building the computational pipelines that turn this raw genomic noise into actionable medical insights.

@@ -15,9 +15,12 @@ export function getAllPosts() {
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       
       const matterResult = matter(fileContents);
+      const wordCount = matterResult.content.split(/\s+/).length;
+      const readTime = Math.ceil(wordCount / 200);
       
       return {
         id,
+        readTime,
         ...matterResult.data,
       };
     });
@@ -37,10 +40,24 @@ export function getPostData(id) {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   
   const matterResult = matter(fileContents);
+  const wordCount = matterResult.content.split(/\s+/).length;
+  const readTime = Math.ceil(wordCount / 200);
   
   return {
     id,
+    readTime,
     content: matterResult.content,
     ...matterResult.data,
   };
+}
+
+export function getNextPostData(currentId) {
+  const posts = getAllPosts();
+  const currentIndex = posts.findIndex(post => post.id === currentId);
+  
+  if (currentIndex === -1 || currentIndex === posts.length - 1) {
+    return null;
+  }
+  
+  return posts[currentIndex + 1];
 }

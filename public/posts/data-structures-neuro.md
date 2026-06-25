@@ -21,7 +21,7 @@ In computer science, a **Graph** is a non-linear data structure consisting of no
 *   **Nodes** represent individual proteins, genes, or metabolites.
 *   **Edges** represent the physical interactions, regulatory relationships, or signaling pathways between them.
 
-When we model the protein-protein interaction (PPI) networks of a healthy brain, we see a highly optimized, small-world network. It is resilient to minor errors. But what happens in neurodegeneration?
+When we model the protein-protein interaction (PPI) networks of a healthy brain, we see a highly optimized, scale-free, small-world network (Barabási & Oltvai, 2004, *Nature Reviews Genetics*). It is resilient to minor errors. But what happens in neurodegeneration?
 
 ### Modeling Protein Misfolding Cascades
 
@@ -45,7 +45,7 @@ By breaking genomic sequences into shorter fragments (k-mers) and hashing them, 
 
 Data structures provide the foundation, but Machine Learning (ML) provides the predictive power. By feeding our graph models and hashed genomic data into deep neural networks, we can begin to predict disease onset years before clinical symptoms appear.
 
-For example, Graph Neural Networks (GNNs) are currently being trained to identify hidden patterns in protein interaction networks that human researchers might miss. These models can highlight potential drug targets by finding "bottleneck" nodes—proteins that, if stabilized with a targeted therapy, could halt the entire cascading failure of the network.
+For example, Graph Neural Networks (GNNs) are currently being trained to identify hidden patterns in protein interaction networks that human researchers might miss (Stokes et al., 2020, *Cell*). These models can highlight potential drug targets by finding "bottleneck" nodes—proteins that, if stabilized with a targeted therapy, could halt the entire cascading failure of the network.
 
 ## Conclusion
 
