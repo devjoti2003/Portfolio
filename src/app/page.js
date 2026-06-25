@@ -19,15 +19,7 @@ export default function Home() {
             <div className="hero-left">
               <h1 className="hero-title">DEVJOTI<br/>KUNDU.</h1>
             </div>
-            
-            <div className="hero-right">
-              <div className="bento-card" style={{ padding: '2rem', borderRadius: '48px', display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', textAlign: 'center' }}>
-                <span className="status-indicator"><span className="pulse-dot"></span> SYSTEM ONLINE</span>
-                <p style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: '1.6', fontSize: '1.1rem' }}>
-                  Bridging the gap between computational logic and biological complexity.
-                </p>
-              </div>
-            </div>
+
           </div>
           <div className="scroll-indicator">
             <div className="mouse"><div className="wheel"></div></div>
