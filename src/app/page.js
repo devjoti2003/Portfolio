@@ -19,7 +19,6 @@ export default function Home() {
             <div className="hero-left">
               <p className="mono-sub">01 // IDENTITY</p>
               <h1 className="hero-title">DEVJOTI<br/>KUNDU.</h1>
-              <h2 className="hero-subtitle">BIOTECHNOLOGY UNDERGRADUATE</h2>
             </div>
             
             <div className="hero-right">
