@@ -44,41 +44,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ACADEMICS */}
-      <section className="posh-section" id="academics">
+      {/* WORK (Combined Research & Projects) */}
+      <section className="posh-section" id="work">
         <div className="posh-container">
           <div className="posh-row">
             <div className="posh-left">
               <div className="ambient-glow glow-heading"></div>
-              <p className="mono-sub">02 // ACADEMICS</p>
-              <h2 className="massive-heading">ACADEMICS</h2>
+              <p className="mono-sub">02 // WORK</p>
+              <h2 className="massive-heading">RESEARCH &<br/>PROJECTS</h2>
             </div>
-            
             <div className="posh-right">
-              <div className="bento-grid">
-                {/* Cell 1: University (Large) */}
-                <div className="bento-card bento-large">
-                  <div className="bento-glow"></div>
-                  <div className="bento-content">
-                    <span className="ed-date">2024 - 2028</span>
-                    <h3>BACHELOR OF ENGINEERING,<br/>BIOTECHNOLOGY</h3>
-                    <p className="bento-meta">CHANDIGARH UNIVERSITY</p>
-                    <div className="bento-gpa">
-                      <span className="gpa-number">8.11</span>
-                      <span className="gpa-text">/ 10.0 GPA</span>
-                    </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                <div className="project-card">
+                  <div className="project-header">
+                    <h4>COMPUTATIONAL ANALYSIS OF ALZHEIMER&apos;S</h4>
+                    <span className="status-pill">ACTIVE</span>
                   </div>
+                  <p className="ed-meta">Academic Project // Aug 2025 - Present</p>
+                  <p className="project-desc">
+                    Investigating potential drug targets for Alzheimer&apos;s disease by analyzing biological pathways.
+                    Utilizing KEGG pathway maps to identify and study signaling cascades related to AD progression. 
+                    Applying Python, Pandas, and NumPy for data processing and analysis of pathway components.
+                  </p>
                 </div>
-
-                {/* Cell 2: High School (Medium) */}
-                <div className="bento-card bento-medium">
-                  <div className="bento-glow"></div>
-                  <div className="bento-content">
-                    <span className="ed-date">2022</span>
-                    <h3>HIGHER SECONDARY<br/>(CBSE XII)</h3>
-                    <p className="bento-meta">SHIV JYOTI INT. SCHOOL</p>
-                    <p className="ed-highlight" style={{marginTop: 'auto'}}>92.2% SCORE</p>
+                
+                <div className="project-card">
+                  <div className="project-header">
+                    <h4>NEXT.JS BIOINFORMATICS PORTFOLIO</h4>
+                    <span className="status-pill" style={{ borderColor: 'var(--pastel-cyan)', color: 'var(--pastel-cyan)', boxShadow: '0 0 10px rgba(0, 210, 255, 0.2)' }}>SHIPPED</span>
                   </div>
+                  <p className="ed-meta">Full Stack // June 2026</p>
+                  <p className="project-desc">
+                    Designed and developed a highly interactive, physics-driven portfolio using Next.js, GSAP ScrollTrigger, and Three.js WebGL. Implemented a custom Markdown CMS for blogging.
+                  </p>
                 </div>
               </div>
             </div>
@@ -141,52 +139,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROJECTS */}
-      <section className="posh-section" id="projects">
+      {/* ACADEMICS */}
+      <section className="posh-section" id="academics">
         <div className="posh-container">
           <div className="posh-row">
             <div className="posh-left">
               <div className="ambient-glow glow-heading"></div>
-              <p className="mono-sub">04 // RESEARCH</p>
-              <h2 className="massive-heading">RESEARCH</h2>
+              <p className="mono-sub">04 // ACADEMICS</p>
+              <h2 className="massive-heading">ACADEMICS</h2>
             </div>
+            
             <div className="posh-right">
-              <div className="project-card">
-                <div className="project-header">
-                  <h4>COMPUTATIONAL ANALYSIS OF ALZHEIMER&apos;S</h4>
-                  <span className="status-pill">ACTIVE</span>
+              <div className="bento-grid">
+                {/* Cell 1: University (Large) */}
+                <div className="bento-card bento-large">
+                  <div className="bento-glow"></div>
+                  <div className="bento-content">
+                    <span className="ed-date">2024 - 2028</span>
+                    <h3>BACHELOR OF ENGINEERING,<br/>BIOTECHNOLOGY</h3>
+                    <p className="bento-meta">CHANDIGARH UNIVERSITY</p>
+                    <div className="bento-gpa">
+                      <span className="gpa-number">8.11</span>
+                      <span className="gpa-text">/ 10.0 GPA</span>
+                    </div>
+                  </div>
                 </div>
-                <p className="ed-meta">Academic Project // Aug 2025 - Present</p>
-                <p className="project-desc">
-                  Investigating potential drug targets for Alzheimer&apos;s disease by analyzing biological pathways.
-                  Utilizing KEGG pathway maps to identify and study signaling cascades related to AD progression. 
-                  Applying Python, Pandas, and NumPy for data processing and analysis of pathway components.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* PROJECTS */}
-      <section className="posh-section" id="coding-projects">
-        <div className="posh-container">
-          <div className="posh-row">
-            <div className="posh-left">
-              <div className="ambient-glow glow-heading"></div>
-              <p className="mono-sub">05 // PROJECTS</p>
-              <h2 className="massive-heading">PROJECTS</h2>
-            </div>
-            <div className="posh-right">
-              <div className="project-card">
-                <div className="project-header">
-                  <h4>NEXT.JS BIOINFORMATICS PORTFOLIO</h4>
-                  <span className="status-pill" style={{ borderColor: 'var(--pastel-cyan)', color: 'var(--pastel-cyan)', boxShadow: '0 0 10px rgba(0, 210, 255, 0.2)' }}>SHIPPED</span>
+                {/* Cell 2: High School (Medium) */}
+                <div className="bento-card bento-medium">
+                  <div className="bento-glow"></div>
+                  <div className="bento-content">
+                    <span className="ed-date">2022</span>
+                    <h3>HIGHER SECONDARY<br/>(CBSE XII)</h3>
+                    <p className="bento-meta">SHIV JYOTI INT. SCHOOL</p>
+                    <p className="ed-highlight" style={{marginTop: 'auto'}}>92.2% SCORE</p>
+                  </div>
                 </div>
-                <p className="ed-meta">Full Stack // June 2026</p>
-                <p className="project-desc">
-                  Designed and developed a highly interactive, physics-driven portfolio using Next.js, GSAP ScrollTrigger, and Three.js WebGL. Implemented a custom Markdown CMS for blogging.
-                </p>
               </div>
             </div>
           </div>
@@ -199,7 +187,7 @@ export default function Home() {
           <div className="posh-row">
             <div className="posh-left">
               <div className="ambient-glow glow-heading"></div>
-              <p className="mono-sub">06 // BLOG</p>
+              <p className="mono-sub">05 // BLOG</p>
               <h2 className="massive-heading">BLOG</h2>
             </div>
             
