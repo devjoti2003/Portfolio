@@ -8,10 +8,22 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const isDark = document.body.classList.contains('dark-mode');
-    setIsDarkMode(isDark);
+    setTimeout(() => {
+      setIsDarkMode(isDark);
+    }, 0);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleTheme = () => {
@@ -29,76 +41,85 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    // Vertical Nav Observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const targetId = entry.target.getAttribute('id');
-          const navDots = document.querySelectorAll('.nav-dot');
-          navDots.forEach(dot => {
-            dot.classList.remove('active');
-            if (dot.getAttribute('data-target') === targetId) {
-              dot.classList.add('active');
-            }
-          });
-        }
-      });
-    }, { root: null, rootMargin: '-20% 0px -40% 0px', threshold: 0.05 });
-
-    setTimeout(() => {
+    let observer;
+    const initObserver = () => {
       const sections = document.querySelectorAll('.posh-section');
+      if (sections.length === 0) return false;
+      
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const targetId = entry.target.getAttribute('id');
+            const navDots = document.querySelectorAll('.nav-dot');
+            navDots.forEach(dot => {
+              dot.classList.remove('active');
+              if (dot.getAttribute('data-target') === targetId) {
+                dot.classList.add('active');
+              }
+            });
+          }
+        });
+      }, { root: null, rootMargin: '-20% 0px -40% 0px', threshold: 0.05 });
+      
       sections.forEach(sec => observer.observe(sec));
+      return true;
+    };
+
+    // Retry finding sections if not immediately available
+    let retryCount = 0;
+    const interval = setInterval(() => {
+      if (initObserver() || retryCount > 10) {
+        clearInterval(interval);
+      }
+      retryCount++;
     }, 500);
 
     return () => {
-      observer.disconnect();
+      if (interval) clearInterval(interval);
+      if (observer) observer.disconnect();
     };
   }, []);
 
   return (
     <>
-      <nav className="top-nav">
-        <div className="nav-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '90%' }}>
+      <nav className={`top-nav ${isScrolled ? 'scrolled' : ''}`}>
+        <div className="nav-container">
           <div className="nav-logo">
-            <Link href="/" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '1.2rem', letterSpacing: '0.05em' }}>DK.</Link>
-          </div>
-          
-          <div className="nav-links-horizontal desktop-only" style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
-            <Link href="/#work" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 500, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>RESEARCH</Link>
-            <Link href="/#experience" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 500, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>EXPERIENCE</Link>
-            <Link href="/#publications" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 500, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>PUBLICATIONS</Link>
-            <Link href="/#skills" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 500, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>SKILLS</Link>
-            <Link href="/#blog" style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 500, fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>BLOG</Link>
+            <Link href="/">DK.</Link>
           </div>
 
-          <div className="nav-right desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <button className="theme-toggle" onClick={toggleTheme} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', color: 'var(--color-text-primary)', padding: 0 }}>
+          <div className="nav-right desktop-only">
+            <Link href="/blog" className="nav-blog-link">BLOG</Link>
+            
+            <div className="nav-right-gap" />
+            
+            <div className="nav-connections-group">
+              <a href="https://linkedin.com/in/devjotikundu" target="_blank" rel="noopener noreferrer" className="circle-icon-btn nav-btn" title="LinkedIn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><circle cx="4" cy="4" r="2"></circle><rect x="2" y="9" width="4" height="12"></rect></svg>
+              </a>
+              <a href="https://github.com/devjoti2003" target="_blank" rel="noopener noreferrer" className="circle-icon-btn nav-btn" title="GitHub">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </a>
+              <a href="mailto:devjoti.kundu2003@gmail.com" className="circle-icon-btn nav-btn" title="Email">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </a>
+              <a href="https://linkedin.com/in/devjotikundu" target="_blank" rel="noopener noreferrer" className="circle-icon-btn nav-btn" title="Resume">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              </a>
+            </div>
+            
+            <div className="nav-right-gap" />
+            
+            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
               {isDarkMode ? (
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
               ) : (
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
               )}
             </button>
-            <a href="https://github.com/devjoti2003" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', color: 'var(--color-text-primary)' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            </a>
-            <Link href="/#contact" style={{ 
-              display: 'flex', alignItems: 'center', gap: '0.5rem',
-              padding: '0.6rem 1.2rem', 
-              border: '1px solid var(--color-text-primary)', 
-              borderRadius: '8px', 
-              textDecoration: 'none', 
-              color: 'var(--color-text-primary)', 
-              fontWeight: 500, 
-              fontSize: '0.8rem', 
-              letterSpacing: '0.1em' 
-            }}>
-              CONNECT
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-            </Link>
           </div>
 
-          <div className="mobile-menu-toggle mobile-only" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} style={{ display: 'none', cursor: 'pointer', zIndex: 1001 }}>
+          <div className="mobile-menu-toggle mobile-only" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               {isMobileMenuOpen ? (
                 <>
@@ -118,21 +139,19 @@ export default function Navbar() {
 
         {/* Mobile Menu Overlay */}
         <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
-          <div className="mobile-nav-links" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-            <Link href="/#work" onClick={() => setIsMobileMenuOpen(false)} style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '1.5rem', letterSpacing: '0.1em' }}>RESEARCH</Link>
-            <Link href="/#experience" onClick={() => setIsMobileMenuOpen(false)} style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '1.5rem', letterSpacing: '0.1em' }}>EXPERIENCE</Link>
-            <Link href="/#publications" onClick={() => setIsMobileMenuOpen(false)} style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '1.5rem', letterSpacing: '0.1em' }}>PUBLICATIONS</Link>
-            <Link href="/#skills" onClick={() => setIsMobileMenuOpen(false)} style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '1.5rem', letterSpacing: '0.1em' }}>SKILLS</Link>
-            <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontWeight: 600, fontSize: '1.5rem', letterSpacing: '0.1em' }}>BLOG</Link>
+          <div className="mobile-nav-links">
+            <Link href="/#work" onClick={() => setIsMobileMenuOpen(false)}>RESEARCH</Link>
+            <Link href="/#experience" onClick={() => setIsMobileMenuOpen(false)}>EXPERIENCE</Link>
+            <Link href="/#publications" onClick={() => setIsMobileMenuOpen(false)}>PUBLICATIONS</Link>
+            <Link href="/#skills" onClick={() => setIsMobileMenuOpen(false)}>SKILLS</Link>
+            <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)}>BLOG</Link>
             
-            <div style={{ display: 'flex', gap: '2rem', marginTop: '2rem', alignItems: 'center' }}>
-              <button onClick={() => { toggleTheme(); setIsMobileMenuOpen(false); }} style={{ background: 'none', border: 'none', color: 'var(--color-text-primary)', cursor: 'pointer' }}>
+            <div className="mobile-theme-group">
+              <button onClick={() => { toggleTheme(); setIsMobileMenuOpen(false); }} className="theme-toggle">
                 {isDarkMode ? 'LIGHT MODE' : 'DARK MODE'}
               </button>
-              <a href="https://github.com/devjoti2003" onClick={() => setIsMobileMenuOpen(false)} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-text-primary)', textDecoration: 'none', fontWeight: 600 }}>GITHUB</a>
+              <a href="https://github.com/devjoti2003" onClick={() => setIsMobileMenuOpen(false)} target="_blank" rel="noopener noreferrer">GITHUB</a>
             </div>
-            
-            <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="posh-btn" style={{ padding: '0.8rem 2rem', marginTop: '1rem', border: '1px solid var(--color-text-primary)', borderRadius: '30px', color: 'var(--color-text-primary)', textDecoration: 'none' }}>CONNECT</Link>
           </div>
         </div>
       </nav>
@@ -144,7 +163,6 @@ export default function Navbar() {
           <Link href="#experience" className="nav-dot" data-target="experience"><span className="nav-label">03 // Experience</span></Link>
           <Link href="#publications" className="nav-dot" data-target="publications"><span className="nav-label">04 // Publications</span></Link>
           <Link href="#skills" className="nav-dot" data-target="skills"><span className="nav-label">05 // Skills</span></Link>
-          <Link href="#blog" className="nav-dot" data-target="blog"><span className="nav-label">06 // Blog</span></Link>
         </aside>
       )}
     </>

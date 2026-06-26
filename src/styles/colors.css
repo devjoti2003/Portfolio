@@ -1,0 +1,33 @@
+:root {
+  /* Light Mode (Default) */
+  --bg-primary: #FAFAFA;
+  --bg-secondary: #FFFFFF;
+  
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  
+  --accent-primary: #534AB7;
+  --accent-success: #00C853;
+  
+  --border-color: rgba(0, 0, 0, 0.05);
+  
+  /* Translucent card background: light background but 20% opacity */
+  --card-bg: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode {
+  /* Dark Mode */
+  --bg-primary: #0D0F14;
+  --bg-secondary: rgba(255, 255, 255, 0.03);
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: #8B9BB4;
+  
+  --accent-primary: #9d94ff; /* Lighter purple for dark mode */
+  --accent-success: #00C853;
+  
+  --border-color: rgba(255, 255, 255, 0.1);
+  
+  /* Translucent card background for dark mode */
+  --card-bg: rgba(255, 255, 255, 0.05);
+}

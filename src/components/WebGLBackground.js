@@ -196,21 +196,10 @@ export default function WebGLBackground() {
     // 4. Parallax Physics & Animation Loop
     let scrollY = window.scrollY;
     let targetScrollY = window.scrollY;
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetMouseX = 0;
-    let targetMouseY = 0;
-
     const onScroll = () => {
       targetScrollY = window.scrollY;
     };
     window.addEventListener('scroll', onScroll);
-
-    const onMouseMove = (e) => {
-      targetMouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      targetMouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-    };
-    document.addEventListener('mousemove', onMouseMove);
 
     // Resize Handler
     const onWindowResize = () => {
@@ -238,11 +227,9 @@ export default function WebGLBackground() {
       animationFrameId = requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
 
-      // Smooth interpolation for scroll and mouse
+      // Smooth interpolation for scroll
       customUniforms.uTime.value = elapsedTime;
       scrollY += (targetScrollY - scrollY) * 0.12;
-      mouseX += (targetMouseX - mouseX) * 0.12;
-      mouseY += (targetMouseY - mouseY) * 0.12;
 
       // 3D Parallax synced to physical scroll
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -254,17 +241,14 @@ export default function WebGLBackground() {
       // DNA rotates slightly faster based on scroll
       dnaGroup.rotation.y = elapsedTime * 0.05 + (scrollRatio * Math.PI * 2);
       
-      // Interactive mouse tilt
-      dnaGroup.rotation.z = mouseX * 0.15;
-      dnaGroup.rotation.x = mouseY * 0.15;
 
       // Ambient dust rotation
       dust.rotation.y = elapsedTime * 0.02;
       dust.rotation.x = elapsedTime * 0.01;
 
-      // Mouse Parallax Camera Movement
-      camera.position.x = mouseX * 2;
-      camera.position.z = 18 + mouseY * 2;
+      // Removed mouse parallax camera movement
+      camera.position.x = 0;
+      camera.position.z = 18;
       camera.lookAt(0, camera.position.y - 5, 0);
 
       renderer.render(scene, camera);
@@ -274,7 +258,6 @@ export default function WebGLBackground() {
 
     return () => {
       window.removeEventListener('resize', onWindowResize);
-      document.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('theme-changed', updateTheme);
       cancelAnimationFrame(animationFrameId);

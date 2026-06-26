@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Prism from 'prismjs';
+import Card from '@/components/Card';
 import 'prismjs/themes/prism-tomorrow.css';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-javascript';
@@ -34,7 +35,9 @@ export default function ArticleClient({ postData, contentHtml, formattedDate, ne
         heading.id = id;
         return { id, text: heading.innerText };
       });
-      setHeadings(extractedHeadings);
+      setTimeout(() => {
+        setHeadings(extractedHeadings);
+      }, 0);
 
       // Code Block Enhancements (Copy & Label)
       const pres = articleBody.querySelectorAll('pre');
@@ -44,7 +47,6 @@ export default function ArticleClient({ postData, contentHtml, formattedDate, ne
 
         const wrapper = document.createElement('div');
         wrapper.className = 'code-block-wrapper';
-        wrapper.style.position = 'relative';
         
         pre.parentNode.insertBefore(wrapper, pre);
         wrapper.appendChild(pre);
@@ -54,30 +56,14 @@ export default function ArticleClient({ postData, contentHtml, formattedDate, ne
         const language = langMatch ? langMatch[1].toUpperCase() : 'CODE';
 
         const header = document.createElement('div');
-        header.style.display = 'flex';
-        header.style.justifyContent = 'space-between';
-        header.style.alignItems = 'center';
-        header.style.background = 'rgba(0,0,0,0.1)';
-        header.style.padding = '0.4rem 1rem';
-        header.style.borderTopLeftRadius = '12px';
-        header.style.borderTopRightRadius = '12px';
-        header.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
-        header.style.fontFamily = 'var(--font-sans)';
-        header.style.fontSize = '0.75rem';
-        header.style.color = 'var(--color-text-secondary)';
-        header.style.fontWeight = '600';
+        header.className = 'code-block-header';
 
         const langSpan = document.createElement('span');
         langSpan.innerText = language;
 
         const copyBtn = document.createElement('button');
         copyBtn.innerText = 'COPY';
-        copyBtn.style.background = 'none';
-        copyBtn.style.border = 'none';
-        copyBtn.style.color = 'var(--pastel-purple)';
-        copyBtn.style.cursor = 'pointer';
-        copyBtn.style.fontWeight = '700';
-        copyBtn.style.fontSize = '0.7rem';
+        copyBtn.className = 'code-copy-btn';
         
         copyBtn.onclick = () => {
           navigator.clipboard.writeText(pre.innerText).then(() => {
@@ -88,10 +74,6 @@ export default function ArticleClient({ postData, contentHtml, formattedDate, ne
 
         header.appendChild(langSpan);
         header.appendChild(copyBtn);
-        
-        pre.style.borderTopLeftRadius = '0';
-        pre.style.borderTopRightRadius = '0';
-        pre.style.marginTop = '0';
         wrapper.insertBefore(header, pre);
       });
     }
@@ -126,16 +108,16 @@ export default function ArticleClient({ postData, contentHtml, formattedDate, ne
         <div className="progress-bar" id="progress-bar"></div>
       </div>
 
-      <main className="article-page-container" style={{ position: 'relative' }}>
+      <main className="article-page-container">
         
         {/* Sticky TOC */}
         {headings.length > 0 && (
-          <aside className="article-toc desktop-only" style={{ position: 'sticky', top: '120px', left: '0', width: '250px', padding: '0 2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <h4 style={{ fontSize: '0.8rem', letterSpacing: '0.1em', color: 'var(--color-text-secondary)', textTransform: 'uppercase' }}>ON THIS PAGE</h4>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+          <aside className="article-toc desktop-only">
+            <h4>ON THIS PAGE</h4>
+            <ul>
               {headings.map(h => (
                 <li key={h.id}>
-                  <a href={`#${h.id}`} style={{ textDecoration: 'none', color: 'var(--color-text-primary)', fontSize: '0.85rem', fontWeight: 500, opacity: 0.8, transition: 'opacity 0.2s' }} onMouseOver={e => e.target.style.opacity = 1} onMouseOut={e => e.target.style.opacity = 0.8}>
+                  <a href={`#${h.id}`}>
                     {h.text}
                   </a>
                 </li>
@@ -144,7 +126,7 @@ export default function ArticleClient({ postData, contentHtml, formattedDate, ne
           </aside>
         )}
 
-        <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+        <div className="article-content-wrapper">
           <article className="reading-canvas reveal-up is-visible">
             <Link href="/blog" className="back-link">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
@@ -169,7 +151,7 @@ export default function ArticleClient({ postData, contentHtml, formattedDate, ne
 
             <div className="share-section">
               <div className="thin-line centered-line"></div>
-              <p className="mono-sub" style={{ marginTop: '2rem' }}>SHARE THIS PIECE</p>
+              <p className="mono-sub share-section-title">SHARE THIS PIECE</p>
               <div className="share-links">
                 <a href="#" onClick={shareTwitter}>TWITTER</a>
                 <a href="#" onClick={shareLinkedIn}>LINKEDIN</a>
@@ -177,20 +159,20 @@ export default function ArticleClient({ postData, contentHtml, formattedDate, ne
               </div>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4rem' }}>
-              <button onClick={scrollToTop} className="posh-btn" style={{ padding: '0.8rem 1.5rem', border: '1px solid var(--nav-border)', borderRadius: '30px', background: 'transparent', color: 'var(--color-text-secondary)', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.1em' }}>
+            <div className="back-to-top-wrap">
+              <button onClick={scrollToTop} className="posh-btn">
                 ↑ BACK TO TOP
               </button>
             </div>
             
             {nextPost && (
-              <div style={{ marginTop: '6rem', padding: '3rem', borderTop: '1px solid var(--nav-border)', backgroundColor: 'var(--tint-bg)', borderRadius: '16px' }}>
-                <span style={{ fontSize: '0.75rem', letterSpacing: '0.1em', color: 'var(--color-text-secondary)', textTransform: 'uppercase', fontWeight: 600 }}>NEXT ARTICLE</span>
-                <h3 style={{ fontSize: '1.5rem', margin: '1rem 0 2rem 0', fontFamily: 'var(--font-sans)', color: 'var(--color-text-primary)' }}>{nextPost.title}</h3>
-                <Link href={`/blog/${nextPost.id}`} className="posh-btn" style={{ padding: '0.8rem 1.5rem', border: 'none', backgroundColor: 'var(--color-text-primary)', color: 'var(--color-bg)', borderRadius: '30px', textDecoration: 'none', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.1em' }}>
+              <Card className="next-article-card">
+                <span>NEXT ARTICLE</span>
+                <h3>{nextPost.title}</h3>
+                <Link href={`/blog/${nextPost.id}`} className="posh-btn">
                   READ NOW →
                 </Link>
-              </div>
+              </Card>
             )}
           </article>
         </div>

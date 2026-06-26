@@ -1,0 +1,44 @@
+:root {
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.2);
+
+  /* Blurs */
+  --blur-md: blur(12px);
+  --blur-xl: blur(40px);
+
+  /* Border Radiuses */
+  --radius-sm: 5px;
+  --radius-md: 10px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+}
+
+body.dark-mode {
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+
+/* 
+  Interaction Classes 
+  Usage: add "hover-lift" or "hover-glow" class to elements
+*/
+
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px) scale(1);
+  box-shadow: var(--shadow-lg);
+}
+
+.hover-glow {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.hover-glow:hover {
+  color: var(--accent-primary);
+}

@@ -1,18 +1,18 @@
 ## To Do
 
-- Edit the left edge in-page nav bar to expand on hover, and show labels. Then on clicking labels to scroll to that section.
-    - The labels should be hidden on idle, and the container should be transparent
-    - The labels should appear on hover, and the container should expand to right
-    - Only the vertical line that corresponds to the current section should get colored and the bloom, just how it is right now except the label should not be visible on idle 
-    - This also means we can get rid of the section nav items from the nav bar
-    - The labels should animate from left to right when hovered just from the side of the vertical lines that already exist
+- Reduce the width of the readable section, should be same for all pages. Let's do 1500px.
+- Blog is not a section of this page, it should not go to the left nav section. It should stay in the top nav bar as it is a link to a different page.
+- The sections i.e. experience, skills, etc of the portfolio, are inconsistent. They all should be transparent. The children can be as they want.
+- The background DNA structure still responds to mouse movements. it should not respond at all on mouse xy movement. 
+- The cards used throughout the page are not standardized. There should be one card component that accepts all parameters and children to display whatever is needed to display
+- Card component should have a different color: the light background one, but 20% opacity. Tokenize this as a new token and use it. With this, add the blur. This goes only for the card component. card will also use the large rounded corners token.
+- The pills are not standardized either. There should be a Pill component that accepts children for the text, or whatever. 
+- The skill section, each category of skills can use a card. 
+- The button like "View full archive" is not standardized. Buttons don't move on hover. The colors change, that's alright.
 
-- Remove the revolvement of the dna structure with mouse movement. The rotation on idle and scroll should stay
+- The connection links will go away from footer, and the Connect button will also go away. Instead, icons for linkedin, github, email and resume will be there on top nav bar to the right, with the theme button on extreme right. So the order is Blog, then gap, then the 4 connection links, then gap, then theme toggle
 
-- The hover effects that make the component rise and enlarge, which makes it translate to -x and scale in y a bit too much.
-    - Reduce x translation to a very small amount to keep the animation subtle
-    - Reduce y scaling to 0, no need to expand the card.
-    - The shadow also needs to increase just a bit to keep it subtle
+- The top bar needs to narrow up a bit
+- The top nav bar stays fully transparent and no border when on very top of page. When scroll starts, the nav bar bg becomes that 20% bg, the border comes back to the bottom.
 
-- Corner Radii is not yet standardized into tokebs.
-    - let's have 3 sizes for corner radii: 5px, 10px, 20px. And the 999px stays as pill or xxl whatever suits better.
+- Add the 4 connection icon buttons right below the ACTIVE line in the Hero section: bg foreground, opposite color bg, circular buttons. This is also the style for the nav bar connection buttons I just said earlier.
