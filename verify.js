@@ -127,6 +127,60 @@ async function runTests() {
       throw new Error('Theme toggle failed to revert back to original state');
     }
     console.log('✓ Theme toggler verification passed!');
+
+    // Test 7: Paper Mode toggling via button click
+    console.log('Testing Paper Mode toggling via button click...');
+    const paperBtn = page.locator('.top-nav .paper-toggle').first();
+    
+    // Get initial state
+    const initialPaper = await page.evaluate(() => document.body.classList.contains('paper-mode'));
+    console.log(`- Initial paper mode state: ${initialPaper}`);
+    
+    // Toggle paper mode via button click
+    await paperBtn.click();
+    await page.waitForTimeout(500); // Wait for transition
+    const afterClickPaper = await page.evaluate(() => document.body.classList.contains('paper-mode'));
+    console.log(`- Paper mode state after button click: ${afterClickPaper}`);
+    if (afterClickPaper === initialPaper) {
+      throw new Error('Paper toggle button click did not alter body classList');
+    }
+    
+    // Check that custom pen-nib cursor element is present when paper mode is active
+    const cursorSvgCount = await page.locator('.cursor-dot.paper-cursor svg').count();
+    console.log(`- Found ${cursorSvgCount} pen-nib SVGs inside cursor-dot`);
+    if (cursorSvgCount !== 1) {
+      throw new Error(`Expected exactly 1 pen-nib cursor SVG, found ${cursorSvgCount}`);
+    }
+    
+    // Toggle back via button click
+    await paperBtn.click();
+    await page.waitForTimeout(500);
+    const finalPaper = await page.evaluate(() => document.body.classList.contains('paper-mode'));
+    console.log(`- Paper mode state after second button click: ${finalPaper}`);
+    if (finalPaper !== initialPaper) {
+      throw new Error('Paper toggle button failed to revert back to original state');
+    }
+    console.log('✓ Paper mode button toggle verification passed!');
+
+    // Test 8: Paper Mode toggling via "P" keybinding
+    console.log('Testing Paper Mode toggling via "P" keybinding...');
+    await page.keyboard.press('p');
+    await page.waitForTimeout(500);
+    const afterKeyPaper = await page.evaluate(() => document.body.classList.contains('paper-mode'));
+    console.log(`- Paper mode state after pressing "p": ${afterKeyPaper}`);
+    if (afterKeyPaper === initialPaper) {
+      throw new Error('Pressing "p" key did not alter body classList');
+    }
+    
+    // Revert back via "P" keypress
+    await page.keyboard.press('p');
+    await page.waitForTimeout(500);
+    const finalKeyPaper = await page.evaluate(() => document.body.classList.contains('paper-mode'));
+    console.log(`- Paper mode state after second "p" press: ${finalKeyPaper}`);
+    if (finalKeyPaper !== initialPaper) {
+      throw new Error('Pressing "p" key second time failed to revert back to original state');
+    }
+    console.log('✓ Paper mode keybinding verification passed!');
     
     console.log('All tests passed successfully!');
     

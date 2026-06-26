@@ -1405,4 +1405,92 @@ body.dark-mode .code-block-header {
   color: var(--text-primary);
 }
 
+/* =========================================
+   PAPER MODE STYLING
+   ========================================= */
+body.paper-mode {
+  background-color: var(--paper-backdrop);
+  transition: background-color 0.5s ease;
+}
+
+body.paper-mode .scroll-container {
+  background-color: var(--paper-bg);
+  background-image: var(--paper-texture);
+  background-attachment: scroll;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.08);
+  border-left: 1px solid var(--paper-border);
+  border-right: 1px solid var(--paper-border);
+  min-height: 100vh;
+}
+
+body.dark-mode.paper-mode .scroll-container {
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Watermark DNA adjustments in paper mode */
+body.paper-mode #bg-color-layer {
+  background-color: var(--paper-backdrop);
+}
+
+body.paper-mode #webgl-container {
+  opacity: 0.15;
+  transition: opacity 0.5s ease;
+}
+
+/* Paper mode specific adjustments for components */
+body.paper-mode .app-card, 
+body.paper-mode .bento-card, 
+body.paper-mode .project-card, 
+body.paper-mode .blog-tile,
+body.paper-mode .reading-canvas {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  border-color: var(--paper-border) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
+}
+
+body.dark-mode.paper-mode .app-card, 
+body.dark-mode.paper-mode .bento-card, 
+body.dark-mode.paper-mode .project-card, 
+body.dark-mode.paper-mode .blog-tile,
+body.dark-mode.paper-mode .reading-canvas {
+  background-color: rgba(0, 0, 0, 0.25) !important;
+  border-color: var(--paper-border) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Custom Pen Nib Cursor Style */
+.cursor-dot.paper-cursor {
+  width: auto;
+  height: auto;
+  background: transparent !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+/* Paper mode buttons and interactive styles */
+body.paper-mode .circle-icon-btn {
+  background-color: var(--text-primary);
+  color: var(--paper-bg);
+  border-color: var(--text-primary);
+}
+
+body.paper-mode .circle-icon-btn:hover {
+  background-color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: #ffffff;
+}
+
+body.paper-mode .theme-toggle:hover,
+body.paper-mode .paper-toggle:hover {
+  color: var(--accent-primary);
+}
+
+/* Hide cursor follower in paper mode */
+body.paper-mode .cursor-follower {
+  display: none !important;
+}
+
 

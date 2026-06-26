@@ -7,13 +7,22 @@ import { usePathname } from 'next/navigation';
 export default function Navbar() {
   const pathname = usePathname();
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isPaperMode, setIsPaperMode] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const isDark = document.body.classList.contains('dark-mode');
+    const paper = localStorage.getItem('paper-mode') === 'true';
+    if (paper) {
+      document.body.classList.add('paper-mode');
+    }
     setTimeout(() => {
       setIsDarkMode(isDark);
+      if (paper) {
+        setIsPaperMode(true);
+        window.dispatchEvent(new Event('paper-mode-changed'));
+      }
     }, 0);
   }, []);
 
@@ -39,6 +48,44 @@ export default function Navbar() {
     }
     window.dispatchEvent(new Event('theme-changed'));
   };
+
+  const togglePaperMode = () => {
+    setIsPaperMode((prev) => {
+      const next = !prev;
+      const body = document.body;
+      if (next) {
+        body.classList.add('paper-mode');
+        localStorage.setItem('paper-mode', 'true');
+      } else {
+        body.classList.remove('paper-mode');
+        localStorage.setItem('paper-mode', 'false');
+      }
+      window.dispatchEvent(new Event('paper-mode-changed'));
+      return next;
+    });
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const activeEl = document.activeElement;
+      if (
+        activeEl && 
+        (activeEl.tagName === 'INPUT' || 
+         activeEl.tagName === 'TEXTAREA' || 
+         activeEl.isContentEditable)
+      ) {
+        return;
+      }
+
+      if (e.key === 'p' || e.key === 'P') {
+        e.preventDefault();
+        togglePaperMode();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   useEffect(() => {
     let observer;
@@ -117,6 +164,16 @@ export default function Navbar() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
               )}
             </button>
+
+            <button className="theme-toggle paper-toggle" onClick={togglePaperMode} aria-label="Toggle paper mode" title="Toggle paper mode (Press P)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </button>
           </div>
 
           <div className="mobile-menu-toggle mobile-only" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
@@ -149,6 +206,9 @@ export default function Navbar() {
             <div className="mobile-theme-group">
               <button onClick={() => { toggleTheme(); setIsMobileMenuOpen(false); }} className="theme-toggle">
                 {isDarkMode ? 'LIGHT MODE' : 'DARK MODE'}
+              </button>
+              <button onClick={() => { togglePaperMode(); setIsMobileMenuOpen(false); }} className="theme-toggle">
+                {isPaperMode ? 'NORMAL MODE' : 'PAPER MODE'}
               </button>
               <a href="https://github.com/devjoti2003" onClick={() => setIsMobileMenuOpen(false)} target="_blank" rel="noopener noreferrer">GITHUB</a>
             </div>

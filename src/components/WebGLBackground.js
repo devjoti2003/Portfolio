@@ -222,29 +222,41 @@ export default function WebGLBackground() {
 
     const clock = new THREE.Clock();
     let animationFrameId;
+    let lastTime = 0;
 
     function animate() {
       animationFrameId = requestAnimationFrame(animate);
-      const elapsedTime = clock.getElapsedTime();
+      const isPaperMode = document.body.classList.contains('paper-mode');
 
-      // Smooth interpolation for scroll
-      customUniforms.uTime.value = elapsedTime;
-      scrollY += (targetScrollY - scrollY) * 0.12;
+      if (!isPaperMode) {
+        const elapsedTime = clock.getElapsedTime();
+        lastTime = elapsedTime;
 
-      // 3D Parallax synced to physical scroll
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollRatio = scrollY / (maxScroll || 1);
-      
-      // Camera flies upwards slowly as we scroll down
-      camera.position.y = 15 - (scrollRatio * 30);
-      
-      // DNA rotates slightly faster based on scroll
-      dnaGroup.rotation.y = elapsedTime * 0.05 + (scrollRatio * Math.PI * 2);
-      
+        // Smooth interpolation for scroll
+        customUniforms.uTime.value = elapsedTime;
+        scrollY += (targetScrollY - scrollY) * 0.12;
 
-      // Ambient dust rotation
-      dust.rotation.y = elapsedTime * 0.02;
-      dust.rotation.x = elapsedTime * 0.01;
+        // 3D Parallax synced to physical scroll
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollRatio = scrollY / (maxScroll || 1);
+        
+        // Camera flies upwards slowly as we scroll down
+        camera.position.y = 15 - (scrollRatio * 30);
+        
+        // DNA rotates slightly faster based on scroll
+        dnaGroup.rotation.y = elapsedTime * 0.05 + (scrollRatio * Math.PI * 2);
+        
+        // Ambient dust rotation
+        dust.rotation.y = elapsedTime * 0.02;
+        dust.rotation.x = elapsedTime * 0.01;
+      } else {
+        // In paper mode, lock all positions/animations to a static watermark state
+        camera.position.y = 0;
+        dnaGroup.rotation.y = 1.2; // static showcase angle
+        dust.rotation.y = 0.5;
+        dust.rotation.x = 0.2;
+        customUniforms.uTime.value = lastTime || 1.0;
+      }
 
       // Removed mouse parallax camera movement
       camera.position.x = 0;
