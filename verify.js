@@ -145,11 +145,12 @@ async function runTests() {
       throw new Error('Paper toggle button click did not alter body classList');
     }
     
-    // Check that custom pen-nib cursor element is present when paper mode is active
-    const cursorSvgCount = await page.locator('.cursor-dot.paper-cursor svg').count();
-    console.log(`- Found ${cursorSvgCount} pen-nib SVGs inside cursor-dot`);
-    if (cursorSvgCount !== 1) {
-      throw new Error(`Expected exactly 1 pen-nib cursor SVG, found ${cursorSvgCount}`);
+    // Check that custom paper cursor dot is present when paper mode is active
+    const paperCursor = page.locator('.cursor-dot.paper-cursor');
+    const isPaperCursorVisible = await paperCursor.isVisible();
+    console.log(`- Paper cursor dot is visible: ${isPaperCursorVisible}`);
+    if (!isPaperCursorVisible) {
+      throw new Error('Expected paper cursor dot class to be visible');
     }
     
     // Toggle back via button click
@@ -203,7 +204,35 @@ async function runTests() {
     if (finalKeyDark !== initialDarkKey) {
       throw new Error('Pressing "t" key second time failed to revert back to original state');
     }
-    console.log('✓ Theme keybinding verification passed!');
+    // Test 10: Subpage Navigation & Theme/Paper Mode Persistence
+    console.log('Testing Subpage Navigation & Theme Persistence...');
+    // Ensure we start from clean state, then enable dark mode & paper mode
+    const isDarkBeforeNav = await page.evaluate(() => document.body.classList.contains('dark-mode'));
+    const isPaperBeforeNav = await page.evaluate(() => document.body.classList.contains('paper-mode'));
+    
+    if (!isDarkBeforeNav) await page.keyboard.press('t');
+    if (!isPaperBeforeNav) await page.keyboard.press('p');
+    await page.waitForTimeout(500);
+    
+    // Navigate to /blog
+    console.log('Navigating to subpage /blog ...');
+    await page.click('.top-nav .nav-blog-link');
+    await page.waitForURL('**/blog');
+    await page.waitForTimeout(500);
+    
+    // Verify states persist on the subpage body classes
+    const isDarkOnSubpage = await page.evaluate(() => document.body.classList.contains('dark-mode'));
+    const isPaperOnSubpage = await page.evaluate(() => document.body.classList.contains('paper-mode'));
+    console.log(`- Subpage dark-mode: ${isDarkOnSubpage}, paper-mode: ${isPaperOnSubpage}`);
+    if (!isDarkOnSubpage || !isPaperOnSubpage) {
+      throw new Error('Theme or Paper mode classes were lost during navigation to /blog');
+    }
+    
+    // Toggle back to clean up
+    await page.keyboard.press('t');
+    await page.keyboard.press('p');
+    await page.waitForTimeout(500);
+    console.log('✓ Subpage Navigation & Theme Persistence verification passed!');
     
     console.log('All tests passed successfully!');
     

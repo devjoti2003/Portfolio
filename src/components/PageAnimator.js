@@ -39,16 +39,16 @@ export default function PageAnimator({ pageRef }) {
     const bentoCards = gsap.utils.toArray('.bento-card');
     if (bentoCards.length) {
       gsap.fromTo(bentoCards, 
-        { y: 150, opacity: 0, scale: 0.9, filter: 'blur(20px)' },
+        { y: 80, opacity: 0, scale: 0.95, filter: 'blur(10px)' },
         {
           y: 0, opacity: 1, scale: 1, filter: 'blur(0px)',
-          duration: 2,
-          stagger: 0.25,
-          ease: 'power3.out',
-          clearProps: 'all',
+          stagger: 0.15,
+          ease: 'power1.out',
           scrollTrigger: {
             trigger: '.bento-grid',
-            start: 'top 85%',
+            start: 'top 95%',
+            end: 'top 60%',
+            scrub: 1.5
           }
         }
       );
@@ -58,16 +58,16 @@ export default function PageAnimator({ pageRef }) {
     const blogTiles = gsap.utils.toArray('.blog-tile');
     if (blogTiles.length) {
       gsap.fromTo(blogTiles, 
-        { y: 150, opacity: 0, scale: 0.95, filter: 'blur(15px)' },
+        { y: 80, opacity: 0, scale: 0.97, filter: 'blur(10px)' },
         {
           y: 0, opacity: 1, scale: 1, filter: 'blur(0px)',
-          duration: 2,
-          stagger: 0.25,
-          ease: 'power3.out',
-          clearProps: 'all',
+          stagger: 0.15,
+          ease: 'power1.out',
           scrollTrigger: {
             trigger: '.blog-grid',
-            start: 'top 85%',
+            start: 'top 95%',
+            end: 'top 60%',
+            scrub: 1.5
           }
         }
       );
@@ -81,15 +81,15 @@ export default function PageAnimator({ pageRef }) {
 
       if (header) {
         gsap.fromTo(header,
-          { y: 100, opacity: 0, filter: 'blur(30px)', scale: 0.95 },
+          { y: 120, opacity: 0, filter: 'blur(20px)', scale: 0.93 },
           {
             y: 0, opacity: 1, filter: 'blur(0px)', scale: 1,
-            duration: 2.5,
-            ease: 'power3.out',
-            clearProps: 'filter',
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: sec,
-              start: 'top 80%',
+              start: 'top bottom',
+              end: 'top 35%',
+              scrub: 1.5
             }
           }
         );
@@ -97,16 +97,15 @@ export default function PageAnimator({ pageRef }) {
 
       if (rightContent) {
         gsap.fromTo(rightContent,
-          { x: 50, opacity: 0, filter: 'blur(20px)' },
+          { y: 80, opacity: 0, filter: 'blur(15px)' },
           {
-            x: 0, opacity: 1, filter: 'blur(0px)',
-            duration: 2.5,
-            ease: 'power3.out',
-            clearProps: 'filter',
-            delay: 0.2,
+            y: 0, opacity: 1, filter: 'blur(0px)',
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: sec,
-              start: 'top 80%',
+              start: 'top bottom',
+              end: 'top 30%',
+              scrub: 1.5
             }
           }
         );

@@ -79,8 +79,34 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${lora.variable}`}>
-      <body>
+    <html lang="en" className={`${inter.variable} ${lora.variable}`} suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  var paper = localStorage.getItem('paper-mode') === 'true';
+                  var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                  
+                  var isDark = theme ? theme === 'dark' : systemTheme === 'dark';
+                  if (isDark) {
+                    document.body.classList.add('dark-mode');
+                  } else {
+                    document.body.classList.remove('dark-mode');
+                  }
+                  
+                  if (paper) {
+                    document.body.classList.add('paper-mode');
+                  } else {
+                    document.body.classList.remove('paper-mode');
+                  }
+                } catch (e) {}
+              })();
+            `
+          }}
+        />
         <style
           id="glass-backdrop-browser-fix"
           dangerouslySetInnerHTML={{ __html: glassBackdropStyles }}

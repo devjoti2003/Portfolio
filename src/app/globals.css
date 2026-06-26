@@ -12,15 +12,14 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
   scroll-padding-top: 100px;
 }
 
 body {
-  background-color: transparent;
+  background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  transition: color 0.5s ease;
+  transition: background-color 0.5s ease, color 0.5s ease;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -28,8 +27,10 @@ body {
 .vertical-nav {
   position: fixed;
   left: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  bottom: 0;
+  height: fit-content;
+  margin: auto 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -47,7 +48,7 @@ body {
 }
 .vertical-nav:hover {
   width: 220px;
-  background-color: var(--bg-secondary);
+  background-color: var(--nav-bg);
   box-shadow: var(--shadow-md);
   border-color: var(--border-color);
   backdrop-filter: var(--blur-md);
@@ -140,7 +141,7 @@ body {
   border-bottom: 1px solid transparent;
   z-index: 100;
   padding: var(--space-3) 0;
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
   box-shadow: none;
 }
 .top-nav.scrolled {
@@ -160,6 +161,7 @@ body.dark-mode .top-nav.scrolled {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 .nav-logo {
   display: flex;
@@ -245,7 +247,6 @@ body.dark-mode .hidden-links { box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
   padding: 10rem 0;
   display: flex;
   align-items: center;
-  scroll-snap-align: start;
 }
 
 .hero {
@@ -488,7 +489,7 @@ body.dark-mode .project-card {
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02), 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 .project-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-.project-header h4 { font-size: 2rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; max-width: 80%;}
+.project-header h4 { font-size: 1.35rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; max-width: 80%;}
 .status-pill { border: 1px solid var(--accent-primary); color: var(--accent-primary); padding: 0.4rem 1rem; border-radius: var(--radius-pill); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; }
 .project-desc { font-size: 1.0rem; line-height: 1.7; color: var(--text-primary); font-weight: 300; }
 
@@ -717,6 +718,56 @@ body.dark-mode .app-pill {
 body.dark-mode .theme-toggle .sun-icon { display: none; }
 body.dark-mode .theme-toggle .moon-icon { display: block; }
 
+/* Centered Desktop Navigation Toggles */
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav-center .theme-toggle {
+  margin-left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.02);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+body.dark-mode .nav-center .theme-toggle {
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-center .theme-toggle:hover {
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+  color: var(--bg-primary);
+  transform: rotate(15deg) scale(1.05);
+}
+
+body.paper-mode .nav-center .theme-toggle {
+  background: var(--paper-bg);
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  box-shadow: none;
+}
+
+body.paper-mode .nav-center .theme-toggle:hover {
+  background: var(--text-primary);
+  color: var(--paper-bg);
+  border-color: var(--text-primary);
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .posh-row { flex-direction: column; gap: 4rem; }
@@ -800,7 +851,7 @@ body.light-mode .mobile-menu-overlay {
   
   /* Projects Mobile */
   .project-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-  .project-header h4 { font-size: 1.5rem; max-width: 100%; }
+  .project-header h4 { font-size: 1.2rem; line-height: 1.25; max-width: 100%; }
   
   /* Blog Mobile */
   .blog-grid { grid-template-columns: 1fr; gap: 1rem; }
@@ -1410,28 +1461,25 @@ body.dark-mode .code-block-header {
    ========================================= */
 body.paper-mode {
   background-color: var(--paper-bg);
-  background-image: 
-    url("data:image/svg+xml,%3Csvg width='150' height='150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200.035%200'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E"),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.03) 100%);
-  background-attachment: scroll, fixed;
-  background-size: 150px 150px, 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='150' height='150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200.035%200'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  background-attachment: scroll;
+  background-size: 150px 150px;
   transition: background-color 0.5s ease;
   
   /* Ink colors in light paper mode */
   --text-primary: #1C2024;
   --text-secondary: #5C626A;
+  --nav-bg: rgba(250, 245, 232, 0.85);
 }
 
 body.dark-mode.paper-mode {
-  background-image: 
-    url("data:image/svg+xml,%3Csvg width='150' height='150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200.015%200'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E"),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.01) 0%, rgba(0, 0, 0, 0.15) 100%);
-    
+  background-image: url("data:image/svg+xml,%3Csvg width='150' height='150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200.015%200'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+  
   /* Ink colors in dark paper mode */
   --text-primary: #FAF5E8;
   --text-secondary: #A5ABB6;
+  --nav-bg: rgba(36, 37, 40, 0.85);
 }
-
 /* Hide background color layer to reveal body paper texture */
 body.paper-mode #bg-color-layer {
   display: none !important;
@@ -1447,8 +1495,10 @@ body.paper-mode .app-card,
 body.paper-mode .bento-card, 
 body.paper-mode .project-card, 
 body.paper-mode .blog-tile,
-body.paper-mode .reading-canvas {
-  background-color: rgba(255, 255, 255, 0.45) !important;
+body.paper-mode .reading-canvas,
+body.paper-mode .vertical-nav:hover,
+body.paper-mode .hidden-links {
+  background-color: var(--nav-bg) !important;
   border-color: var(--paper-border) !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
 }
@@ -1457,20 +1507,23 @@ body.dark-mode.paper-mode .app-card,
 body.dark-mode.paper-mode .bento-card, 
 body.dark-mode.paper-mode .project-card, 
 body.dark-mode.paper-mode .blog-tile,
-body.dark-mode.paper-mode .reading-canvas {
-  background-color: rgba(255, 255, 255, 0.03) !important;
+body.dark-mode.paper-mode .reading-canvas,
+body.dark-mode.paper-mode .vertical-nav:hover,
+body.dark-mode.paper-mode .hidden-links {
+  background-color: var(--nav-bg) !important;
   border-color: var(--paper-border) !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
 }
-
-/* Custom Pen Nib Cursor Style */
+/* Custom Paper Mode Cursor Style (Simple circular dot) */
 .cursor-dot.paper-cursor {
-  width: auto;
-  height: auto;
-  background: transparent !important;
-  box-shadow: none !important;
+  width: 10px !important;
+  height: 10px !important;
+  background-color: var(--text-primary) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15) !important;
   animation: none !important;
 }
+
 
 /* Paper mode buttons and interactive styles */
 body.paper-mode .circle-icon-btn {
@@ -1493,6 +1546,29 @@ body.paper-mode .paper-toggle:hover {
 /* Hide cursor follower in paper mode */
 body.paper-mode .cursor-follower {
   display: none !important;
+}
+
+/* Custom View Transition fade-in for theme toggles */
+::view-transition-group(root) {
+  animation-duration: 1000ms;
+}
+
+html.theme-transitioning::view-transition-old(root) {
+  animation: 1000ms cubic-bezier(0.65, 0, 0.35, 1) both theme-fade-out;
+}
+
+html.theme-transitioning::view-transition-new(root) {
+  animation: 1000ms cubic-bezier(0.65, 0, 0.35, 1) both theme-fade-in;
+}
+
+@keyframes theme-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes theme-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 

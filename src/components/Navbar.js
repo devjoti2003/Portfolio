@@ -12,18 +12,22 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const isDark = document.body.classList.contains('dark-mode');
-    const paper = localStorage.getItem('paper-mode') === 'true';
-    if (paper) {
-      document.body.classList.add('paper-mode');
-    }
-    setTimeout(() => {
+    const checkThemeAndPaper = () => {
+      const isDark = document.body.classList.contains('dark-mode');
+      const isPaper = document.body.classList.contains('paper-mode');
       setIsDarkMode(isDark);
-      if (paper) {
-        setIsPaperMode(true);
-        window.dispatchEvent(new Event('paper-mode-changed'));
-      }
-    }, 0);
+      setIsPaperMode(isPaper);
+    };
+
+    checkThemeAndPaper();
+
+    window.addEventListener('theme-changed', checkThemeAndPaper);
+    window.addEventListener('paper-mode-changed', checkThemeAndPaper);
+
+    return () => {
+      window.removeEventListener('theme-changed', checkThemeAndPaper);
+      window.removeEventListener('paper-mode-changed', checkThemeAndPaper);
+    };
   }, []);
 
   useEffect(() => {
@@ -35,35 +39,101 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleTheme = () => {
-    const body = document.body;
-    if (body.classList.contains('dark-mode')) {
-      body.classList.remove('dark-mode');
-      localStorage.setItem('theme', 'light');
-      setIsDarkMode(false);
+  const toggleTheme = (e) => {
+    const performThemeToggle = () => {
+      const body = document.body;
+      if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light');
+        setIsDarkMode(false);
+      } else {
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+        setIsDarkMode(true);
+      }
+      window.dispatchEvent(new Event('theme-changed'));
+    };
+
+    if (typeof document !== 'undefined' && document.startViewTransition) {
+      let x, y;
+      if (e && e.clientX !== undefined && e.clientY !== undefined) {
+        x = e.clientX;
+        y = e.clientY;
+      } else {
+        const btn = document.querySelector('.nav-center .theme-toggle') || document.querySelector('.theme-toggle');
+        if (btn) {
+          const rect = btn.getBoundingClientRect();
+          x = rect.left + rect.width / 2;
+          y = rect.top + rect.height / 2;
+        } else {
+          x = window.innerWidth / 2;
+          y = window.innerHeight / 2;
+        }
+      }
+      document.documentElement.style.setProperty('--theme-toggle-x', `${x}px`);
+      document.documentElement.style.setProperty('--theme-toggle-y', `${y}px`);
+      
+      document.documentElement.classList.add('theme-transitioning');
+      const transition = document.startViewTransition(() => {
+        performThemeToggle();
+      });
+      
+      transition.finished.then(() => {
+        document.documentElement.classList.remove('theme-transitioning');
+      });
     } else {
-      body.classList.add('dark-mode');
-      localStorage.setItem('theme', 'dark');
-      setIsDarkMode(true);
+      performThemeToggle();
     }
-    window.dispatchEvent(new Event('theme-changed'));
   };
 
-  const togglePaperMode = () => {
-    const body = document.body;
-    const isCurrentlyPaper = body.classList.contains('paper-mode');
-    
-    if (isCurrentlyPaper) {
-      body.classList.remove('paper-mode');
-      localStorage.setItem('paper-mode', 'false');
-      setIsPaperMode(false);
+  const togglePaperMode = (e) => {
+    const performPaperToggle = () => {
+      const body = document.body;
+      const isCurrentlyPaper = body.classList.contains('paper-mode');
+      
+      if (isCurrentlyPaper) {
+        body.classList.remove('paper-mode');
+        localStorage.setItem('paper-mode', 'false');
+        setIsPaperMode(false);
+      } else {
+        body.classList.add('paper-mode');
+        localStorage.setItem('paper-mode', 'true');
+        setIsPaperMode(true);
+      }
+      
+      window.dispatchEvent(new Event('paper-mode-changed'));
+    };
+
+    if (typeof document !== 'undefined' && document.startViewTransition) {
+      let x, y;
+      if (e && e.clientX !== undefined && e.clientY !== undefined) {
+        x = e.clientX;
+        y = e.clientY;
+      } else {
+        const btn = document.querySelector('.paper-toggle') || document.querySelector('.theme-toggle');
+        if (btn) {
+          const rect = btn.getBoundingClientRect();
+          x = rect.left + rect.width / 2;
+          y = rect.top + rect.height / 2;
+        } else {
+          x = window.innerWidth / 2;
+          y = window.innerHeight / 2;
+        }
+      }
+      document.documentElement.style.setProperty('--theme-toggle-x', `${x}px`);
+      document.documentElement.style.setProperty('--theme-toggle-y', `${y}px`);
+      
+      document.documentElement.classList.add('theme-transitioning');
+      const transition = document.startViewTransition(() => {
+        performPaperToggle();
+      });
+      
+      transition.finished.then(() => {
+        document.documentElement.classList.remove('theme-transitioning');
+      });
     } else {
-      body.classList.add('paper-mode');
-      localStorage.setItem('paper-mode', 'true');
-      setIsPaperMode(true);
+      performPaperToggle();
     }
-    
-    window.dispatchEvent(new Event('paper-mode-changed'));
   };
 
   useEffect(() => {
@@ -141,6 +211,26 @@ export default function Navbar() {
             <Link href="/">DK.</Link>
           </div>
 
+          <div className="nav-center desktop-only">
+            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+              {isDarkMode ? (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+              ) : (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+              )}
+            </button>
+
+            <button className="theme-toggle paper-toggle" onClick={togglePaperMode} aria-label="Toggle paper mode" title="Toggle paper mode (Press P)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3L8 15h8L12 3Z" />
+                <path d="M8 15l4 6 4-6" />
+                <path d="M12 3v18" />
+                <path d="M8 15L3 10l-1 2" />
+                <path d="M16 15l5-5" />
+              </svg>
+            </button>
+          </div>
+
           <div className="nav-right desktop-only">
             <Link href="/blog" className="nav-blog-link">BLOG</Link>
             
@@ -160,26 +250,6 @@ export default function Navbar() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
               </a>
             </div>
-            
-            <div className="nav-right-gap" />
-            
-            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-              {isDarkMode ? (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
-              ) : (
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-              )}
-            </button>
-
-            <button className="theme-toggle paper-toggle" onClick={togglePaperMode} aria-label="Toggle paper mode" title="Toggle paper mode (Press P)">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-              </svg>
-            </button>
           </div>
 
           <div className="mobile-menu-toggle mobile-only" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
