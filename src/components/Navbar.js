@@ -50,19 +50,20 @@ export default function Navbar() {
   };
 
   const togglePaperMode = () => {
-    setIsPaperMode((prev) => {
-      const next = !prev;
-      const body = document.body;
-      if (next) {
-        body.classList.add('paper-mode');
-        localStorage.setItem('paper-mode', 'true');
-      } else {
-        body.classList.remove('paper-mode');
-        localStorage.setItem('paper-mode', 'false');
-      }
-      window.dispatchEvent(new Event('paper-mode-changed'));
-      return next;
-    });
+    const body = document.body;
+    const isCurrentlyPaper = body.classList.contains('paper-mode');
+    
+    if (isCurrentlyPaper) {
+      body.classList.remove('paper-mode');
+      localStorage.setItem('paper-mode', 'false');
+      setIsPaperMode(false);
+    } else {
+      body.classList.add('paper-mode');
+      localStorage.setItem('paper-mode', 'true');
+      setIsPaperMode(true);
+    }
+    
+    window.dispatchEvent(new Event('paper-mode-changed'));
   };
 
   useEffect(() => {
