@@ -82,6 +82,11 @@ export default function Navbar() {
         e.preventDefault();
         togglePaperMode();
       }
+
+      if (e.key === 't' || e.key === 'T') {
+        e.preventDefault();
+        toggleTheme();
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);

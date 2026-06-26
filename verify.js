@@ -182,6 +182,29 @@ async function runTests() {
     }
     console.log('✓ Paper mode keybinding verification passed!');
     
+    // Test 9: Theme toggling via "T" keybinding
+    console.log('Testing Theme toggling via "T" keybinding...');
+    const initialDarkKey = await page.evaluate(() => document.body.classList.contains('dark-mode'));
+    console.log(`- Initial dark mode state before "t" press: ${initialDarkKey}`);
+    
+    await page.keyboard.press('t');
+    await page.waitForTimeout(500);
+    const afterKeyDark = await page.evaluate(() => document.body.classList.contains('dark-mode'));
+    console.log(`- Dark mode state after pressing "t": ${afterKeyDark}`);
+    if (afterKeyDark === initialDarkKey) {
+      throw new Error('Pressing "t" key did not alter body classList');
+    }
+    
+    // Revert back via "T" keypress
+    await page.keyboard.press('t');
+    await page.waitForTimeout(500);
+    const finalKeyDark = await page.evaluate(() => document.body.classList.contains('dark-mode'));
+    console.log(`- Dark mode state after second "t" press: ${finalKeyDark}`);
+    if (finalKeyDark !== initialDarkKey) {
+      throw new Error('Pressing "t" key second time failed to revert back to original state');
+    }
+    console.log('✓ Theme keybinding verification passed!');
+    
     console.log('All tests passed successfully!');
     
     await browser.close();
