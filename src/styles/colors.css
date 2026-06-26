@@ -36,6 +36,6 @@ body.dark-mode {
   --card-bg: rgba(255, 255, 255, 0.05);
 
   /* Paper Mode Color Tokens (Dark) */
-  --paper-bg: #131416;
-  --paper-border: #2A2A2D;
+  --paper-bg: #242528;
+  --paper-border: #3A3B3E;
 }

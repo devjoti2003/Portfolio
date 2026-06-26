@@ -1411,30 +1411,35 @@ body.dark-mode .code-block-header {
 body.paper-mode {
   background-color: var(--paper-bg);
   background-image: 
-    url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='4' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff' surfaceScale='2'%3E%3CfeDistantLight azimuth='60' elevation='50'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E"),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.05) 100%);
-  background-blend-mode: multiply;
-  background-attachment: scroll, fixed; /* repeating paper texture scrolls, vignette lighting is fixed */
-  background-size: 300px 300px, 100% 100%;
+    url("data:image/svg+xml,%3Csvg width='150' height='150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200.035%200'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.03) 100%);
+  background-attachment: scroll, fixed;
+  background-size: 150px 150px, 100% 100%;
   transition: background-color 0.5s ease;
+  
+  /* Ink colors in light paper mode */
+  --text-primary: #1C2024;
+  --text-secondary: #5C626A;
 }
 
 body.dark-mode.paper-mode {
   background-image: 
-    url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='4' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff' surfaceScale='2'%3E%3CfeDistantLight azimuth='60' elevation='50'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E"),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.2) 100%);
+    url("data:image/svg+xml,%3Csvg width='150' height='150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch' result='noise'/%3E%3CfeColorMatrix type='matrix' values='0%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200%200%20%200%200%200%200.015%200'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.01) 0%, rgba(0, 0, 0, 0.15) 100%);
+    
+  /* Ink colors in dark paper mode */
+  --text-primary: #FAF5E8;
+  --text-secondary: #A5ABB6;
 }
 
 /* Hide background color layer to reveal body paper texture */
 body.paper-mode #bg-color-layer {
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  display: none !important;
 }
 
-/* Watermark DNA adjustments in paper mode */
+/* Hide animated DNA background in paper mode */
 body.paper-mode #webgl-container {
-  opacity: 0.15;
-  transition: opacity 0.5s ease;
+  display: none !important;
 }
 
 /* Paper mode specific adjustments for components */
@@ -1453,9 +1458,9 @@ body.dark-mode.paper-mode .bento-card,
 body.dark-mode.paper-mode .project-card, 
 body.dark-mode.paper-mode .blog-tile,
 body.dark-mode.paper-mode .reading-canvas {
-  background-color: rgba(0, 0, 0, 0.25) !important;
+  background-color: rgba(255, 255, 255, 0.03) !important;
   border-color: var(--paper-border) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Custom Pen Nib Cursor Style */
