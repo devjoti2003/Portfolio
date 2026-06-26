@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
@@ -10,6 +10,9 @@ export default function Navbar() {
   const [isPaperMode, setIsPaperMode] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const mobileMenuButtonRef = useRef(null);
+  const mobileMenuPanelRef = useRef(null);
+  const mobileMenuId = 'mobile-navigation-menu';
 
   useEffect(() => {
     const checkThemeAndPaper = () => {
@@ -39,6 +42,81 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      document.body.classList.remove('mobile-menu-open');
+      return;
+    }
+
+    document.body.classList.add('mobile-menu-open');
+
+    const focusableSelector = 'a[href], button:not([disabled])';
+    const focusMenu = window.requestAnimationFrame(() => {
+      const firstFocusable = mobileMenuPanelRef.current?.querySelector(focusableSelector);
+      firstFocusable?.focus();
+    });
+
+    const handleMenuKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+        mobileMenuButtonRef.current?.focus();
+        return;
+      }
+
+      if (e.key !== 'Tab' || !mobileMenuPanelRef.current) return;
+
+      const focusableItems = Array.from(
+        mobileMenuPanelRef.current.querySelectorAll(focusableSelector)
+      ).filter((item) => item.offsetParent !== null);
+
+      if (focusableItems.length === 0) return;
+
+      const firstItem = focusableItems[0];
+      const lastItem = focusableItems[focusableItems.length - 1];
+
+      if (e.shiftKey && document.activeElement === firstItem) {
+        e.preventDefault();
+        lastItem.focus();
+      } else if (!e.shiftKey && document.activeElement === lastItem) {
+        e.preventDefault();
+        firstItem.focus();
+      }
+    };
+
+    window.addEventListener('keydown', handleMenuKeyDown);
+
+    return () => {
+      window.cancelAnimationFrame(focusMenu);
+      window.removeEventListener('keydown', handleMenuKeyDown);
+      document.body.classList.remove('mobile-menu-open');
+    };
+  }, [isMobileMenuOpen]);
+
+  const getTransitionPoint = (e, fallbackSelector) => {
+    const target = e?.currentTarget || document.querySelector(fallbackSelector);
+
+    if (target && typeof target.getBoundingClientRect === 'function') {
+      const rect = target.getBoundingClientRect();
+      return {
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2,
+      };
+    }
+
+    if (e && typeof e.clientX === 'number' && typeof e.clientY === 'number') {
+      return { x: e.clientX, y: e.clientY };
+    }
+
+    return {
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2,
+    };
+  };
+
   const toggleTheme = (e) => {
     const performThemeToggle = () => {
       const body = document.body;
@@ -55,21 +133,7 @@ export default function Navbar() {
     };
 
     if (typeof document !== 'undefined' && document.startViewTransition) {
-      let x, y;
-      if (e && e.clientX !== undefined && e.clientY !== undefined) {
-        x = e.clientX;
-        y = e.clientY;
-      } else {
-        const btn = document.querySelector('.nav-center .theme-toggle') || document.querySelector('.theme-toggle');
-        if (btn) {
-          const rect = btn.getBoundingClientRect();
-          x = rect.left + rect.width / 2;
-          y = rect.top + rect.height / 2;
-        } else {
-          x = window.innerWidth / 2;
-          y = window.innerHeight / 2;
-        }
-      }
+      const { x, y } = getTransitionPoint(e, '.nav-center .theme-toggle, .theme-toggle');
       document.documentElement.style.setProperty('--theme-toggle-x', `${x}px`);
       document.documentElement.style.setProperty('--theme-toggle-y', `${y}px`);
       
@@ -105,21 +169,7 @@ export default function Navbar() {
     };
 
     if (typeof document !== 'undefined' && document.startViewTransition) {
-      let x, y;
-      if (e && e.clientX !== undefined && e.clientY !== undefined) {
-        x = e.clientX;
-        y = e.clientY;
-      } else {
-        const btn = document.querySelector('.paper-toggle') || document.querySelector('.theme-toggle');
-        if (btn) {
-          const rect = btn.getBoundingClientRect();
-          x = rect.left + rect.width / 2;
-          y = rect.top + rect.height / 2;
-        } else {
-          x = window.innerWidth / 2;
-          y = window.innerHeight / 2;
-        }
-      }
+      const { x, y } = getTransitionPoint(e, '.paper-toggle, .theme-toggle');
       document.documentElement.style.setProperty('--theme-toggle-x', `${x}px`);
       document.documentElement.style.setProperty('--theme-toggle-y', `${y}px`);
       
@@ -212,7 +262,13 @@ export default function Navbar() {
           </div>
 
           <div className="nav-center desktop-only">
-            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+            <button
+              type="button"
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              aria-pressed={isDarkMode}
+            >
               {isDarkMode ? (
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
               ) : (
@@ -220,7 +276,14 @@ export default function Navbar() {
               )}
             </button>
 
-            <button className="theme-toggle paper-toggle" onClick={togglePaperMode} aria-label="Toggle paper mode" title="Toggle paper mode (Press P)">
+            <button
+              type="button"
+              className="theme-toggle paper-toggle"
+              onClick={togglePaperMode}
+              aria-label={isPaperMode ? 'Switch to standard mode' : 'Switch to paper mode'}
+              aria-pressed={isPaperMode}
+              title="Toggle paper mode"
+            >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 3L8 15h8L12 3Z" />
                 <path d="M8 15l4 6 4-6" />
@@ -252,7 +315,15 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="mobile-menu-toggle mobile-only" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <button
+            type="button"
+            ref={mobileMenuButtonRef}
+            className="mobile-menu-toggle mobile-only"
+            onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+            aria-controls={mobileMenuId}
+            aria-expanded={isMobileMenuOpen}
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               {isMobileMenuOpen ? (
                 <>
@@ -267,26 +338,73 @@ export default function Navbar() {
                 </>
               )}
             </svg>
-          </div>
+          </button>
         </div>
 
         {/* Mobile Menu Overlay */}
-        <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
-          <div className="mobile-nav-links">
-            <Link href="/#work" onClick={() => setIsMobileMenuOpen(false)}>RESEARCH</Link>
-            <Link href="/#experience" onClick={() => setIsMobileMenuOpen(false)}>EXPERIENCE</Link>
-            <Link href="/#publications" onClick={() => setIsMobileMenuOpen(false)}>PUBLICATIONS</Link>
-            <Link href="/#skills" onClick={() => setIsMobileMenuOpen(false)}>SKILLS</Link>
-            <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)}>BLOG</Link>
-            
-            <div className="mobile-theme-group">
-              <button onClick={() => { toggleTheme(); setIsMobileMenuOpen(false); }} className="theme-toggle">
-                {isDarkMode ? 'LIGHT MODE' : 'DARK MODE'}
+        <div
+          id={mobileMenuId}
+          className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation"
+          aria-hidden={!isMobileMenuOpen}
+        >
+          <div className="mobile-menu-panel" ref={mobileMenuPanelRef}>
+            <div className="mobile-mode-controls" aria-label="Display modes">
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className={`mobile-mode-toggle ${isDarkMode ? 'active' : ''}`}
+                aria-pressed={isDarkMode}
+              >
+                <span className="mobile-mode-icon" aria-hidden="true">
+                  {isDarkMode ? (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
+                  )}
+                </span>
+                <span>
+                  <span className="mobile-mode-title">Theme</span>
+                  <span className="mobile-mode-state">{isDarkMode ? 'Dark' : 'Light'}</span>
+                </span>
               </button>
-              <button onClick={() => { togglePaperMode(); setIsMobileMenuOpen(false); }} className="theme-toggle">
-                {isPaperMode ? 'NORMAL MODE' : 'PAPER MODE'}
+
+              <button
+                type="button"
+                onClick={togglePaperMode}
+                className={`mobile-mode-toggle ${isPaperMode ? 'active' : ''}`}
+                aria-pressed={isPaperMode}
+              >
+                <span className="mobile-mode-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M7 3h8l4 4v14H7z"></path>
+                    <path d="M15 3v5h5"></path>
+                    <path d="M10 13h6"></path>
+                    <path d="M10 17h4"></path>
+                  </svg>
+                </span>
+                <span>
+                  <span className="mobile-mode-title">Paper</span>
+                  <span className="mobile-mode-state">{isPaperMode ? 'On' : 'Off'}</span>
+                </span>
               </button>
-              <a href="https://github.com/devjoti2003" onClick={() => setIsMobileMenuOpen(false)} target="_blank" rel="noopener noreferrer">GITHUB</a>
+            </div>
+
+            <div className="mobile-nav-links" aria-label="Primary navigation">
+              <Link href="/#work" onClick={() => setIsMobileMenuOpen(false)}>Research</Link>
+              <Link href="/#experience" onClick={() => setIsMobileMenuOpen(false)}>Experience</Link>
+              <Link href="/#publications" onClick={() => setIsMobileMenuOpen(false)}>Publications</Link>
+              <Link href="/#skills" onClick={() => setIsMobileMenuOpen(false)}>Skills</Link>
+              <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} aria-current={pathname === '/blog' ? 'page' : undefined}>Blog</Link>
+            </div>
+
+            <div className="mobile-external-links" aria-label="External links">
+              <a href="https://linkedin.com/in/devjotikundu" onClick={() => setIsMobileMenuOpen(false)} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://github.com/devjoti2003" onClick={() => setIsMobileMenuOpen(false)} target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="mailto:devjoti.kundu2003@gmail.com" onClick={() => setIsMobileMenuOpen(false)}>Email</a>
+              <a href="https://linkedin.com/in/devjotikundu" onClick={() => setIsMobileMenuOpen(false)} target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
           </div>
         </div>
