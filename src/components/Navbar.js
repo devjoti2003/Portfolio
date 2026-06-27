@@ -314,31 +314,63 @@ export default function Navbar() {
               </a>
             </div>
           </div>
-
-          <button
-            type="button"
-            ref={mobileMenuButtonRef}
-            className="mobile-menu-toggle mobile-only"
-            onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
-            aria-controls={mobileMenuId}
-            aria-expanded={isMobileMenuOpen}
-            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              {isMobileMenuOpen ? (
-                <>
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </>
+          <div className="nav-mobile-right">
+            <button
+              type="button"
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              aria-pressed={isDarkMode}
+            >
+              {isDarkMode ? (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
               ) : (
-                <>
-                  <line x1="3" y1="12" x2="21" y2="12"></line>
-                  <line x1="3" y1="6" x2="21" y2="6"></line>
-                  <line x1="3" y1="18" x2="21" y2="18"></line>
-                </>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
               )}
-            </svg>
-          </button>
+            </button>
+
+            <button
+              type="button"
+              className="theme-toggle paper-toggle"
+              onClick={togglePaperMode}
+              aria-label={isPaperMode ? 'Switch to standard mode' : 'Switch to paper mode'}
+              aria-pressed={isPaperMode}
+              title="Toggle paper mode"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3L8 15h8L12 3Z" />
+                <path d="M8 15l4 6 4-6" />
+                <path d="M12 3v18" />
+                <path d="M8 15L3 10l-1 2" />
+                <path d="M16 15l5-5" />
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              ref={mobileMenuButtonRef}
+              className="mobile-menu-toggle"
+              onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+              aria-controls={mobileMenuId}
+              aria-expanded={isMobileMenuOpen}
+              aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {isMobileMenuOpen ? (
+                  <>
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </>
+                ) : (
+                  <>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                  </>
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Overlay */}
@@ -351,46 +383,7 @@ export default function Navbar() {
           aria-hidden={!isMobileMenuOpen}
         >
           <div className="mobile-menu-panel" ref={mobileMenuPanelRef}>
-            <div className="mobile-mode-controls" aria-label="Display modes">
-              <button
-                type="button"
-                onClick={toggleTheme}
-                className={`mobile-mode-toggle ${isDarkMode ? 'active' : ''}`}
-                aria-pressed={isDarkMode}
-              >
-                <span className="mobile-mode-icon" aria-hidden="true">
-                  {isDarkMode ? (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
-                  ) : (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line></svg>
-                  )}
-                </span>
-                <span>
-                  <span className="mobile-mode-title">Theme</span>
-                  <span className="mobile-mode-state">{isDarkMode ? 'Dark' : 'Light'}</span>
-                </span>
-              </button>
 
-              <button
-                type="button"
-                onClick={togglePaperMode}
-                className={`mobile-mode-toggle ${isPaperMode ? 'active' : ''}`}
-                aria-pressed={isPaperMode}
-              >
-                <span className="mobile-mode-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M7 3h8l4 4v14H7z"></path>
-                    <path d="M15 3v5h5"></path>
-                    <path d="M10 13h6"></path>
-                    <path d="M10 17h4"></path>
-                  </svg>
-                </span>
-                <span>
-                  <span className="mobile-mode-title">Paper</span>
-                  <span className="mobile-mode-state">{isPaperMode ? 'On' : 'Off'}</span>
-                </span>
-              </button>
-            </div>
 
             <div className="mobile-nav-links" aria-label="Primary navigation">
               <Link href="/#work" onClick={() => setIsMobileMenuOpen(false)}>Research</Link>
